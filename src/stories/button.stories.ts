@@ -1,11 +1,13 @@
+import type { Meta, StoryFn } from '@storybook/vue3'
 import Button from '../components/FbButton.vue'
 
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
 }
+export default meta
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Button> = (args) => ({
   components: { Button },
   setup() {
     return { args }
@@ -14,7 +16,4 @@ const Template = (args: any) => ({
 })
 
 export const Primary = Template.bind({})
-Primary.args = {
-  type: 'primary',
-  disabled: false,
-}
+Primary.args = {}
