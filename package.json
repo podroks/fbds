@@ -28,7 +28,7 @@
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
-    "format": "prettier --write src/",
+    "format": "prettier --write **/*.json",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@prettier/plugin-oxc": "^0.0.4",
     "@storybook/vue3-vite": "^9.1.1",
+    "@stylistic/eslint-plugin": "^5.2.2",
     "@tailwindcss/vite": "^4.1.11",
     "@tsconfig/node22": "^22.0.2",
     "@types/jsdom": "^21.1.7",
@@ -49,6 +50,9 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.32.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-no-relative-import-paths": "^1.6.1",
     "eslint-plugin-oxlint": "~1.9.0",
     "eslint-plugin-storybook": "^9.1.1",
     "eslint-plugin-vue": "~10.4.0",

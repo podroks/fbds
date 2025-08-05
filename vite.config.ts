@@ -1,10 +1,9 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import { resolve } from 'node:path'
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
-import dts from 'vite-plugin-dts'
+import tailwindcss from '@tailwindcss/vite';
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'node:path';
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -36,4 +35,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

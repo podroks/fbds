@@ -1,7 +1,7 @@
-import '@/assets/main.css'
+import '@/assets/main.css';
 
-export * from './components'
+export * from './components';
 
-export { default as FbdsPlugin } from './plugins/FbdsPlugin'
+export { default as FbdsPlugin } from './plugins/FbdsPlugin';
 
-export * from './types'
+export * from './types';

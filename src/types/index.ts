@@ -1,1 +1,1 @@
-export type Toto = 'toto'
+export type Toto = 'toto';
