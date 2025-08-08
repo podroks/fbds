@@ -1,0 +1,17 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+ 
+import * as FbdsTypographyStories from './FbdsTypography.stories';
+ 
+<Meta of={FbdsTypographyStories} />
+ 
+# Typographies
+
+La typographie par défaut utilisée par **FBDS** est **Hanken Grotesk**. Elle peut être remplacée via une règle CSS personnalisée :
+
+```css
+:root {
+  --fbds-font-family: <votre-police>;
+}
+```
+
+<Canvas of={FbdsTypographyStories.Typography} sourceState="none" withToolbar={false} />

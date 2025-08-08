@@ -10,7 +10,7 @@ import pluginOxlint from 'eslint-plugin-oxlint';
 import pluginVue from 'eslint-plugin-vue';
 
 const importOrderConfig: Linter.Config = {
-  files: ['**/*.{ts,tsx,vue}'], // ✅ obligatoire pour flat config
+  files: ['**/*.{ts,vue}'], // ✅ obligatoire pour flat config
   plugins: { import: pluginImport },
   rules: {
     'sort-imports': [
@@ -57,7 +57,7 @@ const importOrderConfig: Linter.Config = {
 };
 
 const noRelativeImportPathsConfig: Linter.Config = {
-  files: ['**/*.{ts,tsx,vue}'],
+  files: ['**/*.{ts,vue}'],
   plugins: {
     'no-relative-import-paths': noRelPath,
   },
@@ -90,7 +90,7 @@ export default defineConfigWithVueTs(
     files: ['**/*.{ts,tsx,vue}'],
   },
   // 👇 Ignorer des dossiers / fichiers
-  globalIgnores(['**/dist/**', '**/coverage/**', '**/.storybook/**', 'vitest.config.ts']),
+  globalIgnores(['**/node_modules/**', '**/dist/**', '**/coverage/**', '**/.storybook/**', '**/storybook-static/**', 'vitest.config.ts']),
 
   // 👇 Plugins de librairies
   pluginVue.configs['flat/recommended'],
