@@ -1,54 +1,43 @@
+<script setup lang="ts">
+import FbdsTypographyCard from '@/docs/typography/FbdsTypographyCard.vue';
+</script>
+
 <template>
-  <p class="fbds-font-display-large">
-    display-large
-  </p>
-  <p class="fbds-font-display-medium">
-    display-medium
-  </p>
-  <p class="fbds-font-display-small">
-    display-small
-  </p>
-  <hr>
-  <p class="fbds-font-headline-large">
-    headline-large
-  </p>
-  <p class="fbds-font-headline-medium">
-    headline-medium
-  </p>
-  <p class="fbds-font-headline-small">
-    headline-small
-  </p>
-  <hr>
-  <p class="fbds-font-title-large">
-    title-large
-  </p>
-  <p class="fbds-font-title-medium">
-    title-medium
-  </p>
-  <p class="fbds-font-title-small">
-    title-small
-  </p>
-  <hr>
-  <p class="fbds-font-label-large-prominent">
-    label-large-prominent
-  </p>
-  <p class="fbds-font-label-large">
-    label-large
-  </p>
-  <p class="fbds-font-label-medium-prominent">
-    label-medium-prominent
-  </p>
-  <p class="fbds-font-label-medium">
-    label-medium
-  </p>
-  <hr>
-  <p class="fbds-font-body-large">
-    body-large
-  </p>
-  <p class="fbds-font-body-medium">
-    body-medium
-  </p>
-  <p class="fbds-font-body-small">
-    body-small
-  </p>
+  <div class="flex flex-col gap-6">
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
+      Display
+    </h1>
+    <FbdsTypographyCard font="display-large" />
+    <FbdsTypographyCard font="display-medium" />
+    <FbdsTypographyCard font="display-small" />
+
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
+      Headline
+    </h1>
+    <FbdsTypographyCard font="headline-large" />
+    <FbdsTypographyCard font="headline-medium" />
+    <FbdsTypographyCard font="headline-small" />
+
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
+      Title
+    </h1>
+    <FbdsTypographyCard font="title-large" />
+    <FbdsTypographyCard font="title-medium" />
+    <FbdsTypographyCard font="title-small" />
+
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
+      Label
+    </h1>
+    <FbdsTypographyCard font="label-large-prominent" />
+    <FbdsTypographyCard font="label-large" />
+    <FbdsTypographyCard font="label-medium-prominent" />
+    <FbdsTypographyCard font="label-medium" />
+
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
+      Body
+    </h1>
+    <FbdsTypographyCard font="body-large" />
+    <FbdsTypographyCard font="body-medium" />
+    <FbdsTypographyCard font="body-small" />
+  </div>
 </template>
