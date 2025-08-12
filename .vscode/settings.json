@@ -14,6 +14,7 @@
 
   // 👇 Activer Eslint pour ces formats
   "eslint.validate": ["javascript", "typescript", "vue"],
+  "eslint.format.enable": true,
 
   // 👇 Activer Eslint comme formatter par défaut
   "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },

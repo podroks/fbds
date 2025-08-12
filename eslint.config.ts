@@ -1,6 +1,5 @@
 import stylistic from '@stylistic/eslint-plugin';
 import pluginVitest from '@vitest/eslint-plugin';
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
 import { Linter } from 'eslint';
 import { globalIgnores } from 'eslint/config';
@@ -83,6 +82,24 @@ const stylisticConfigCustomized: Linter.Config = {
   },
 };
 
+const vueTemplateConfig: Linter.Config = {
+  files: ['**/*.vue'],
+  rules: {
+    'vue/html-indent': ['error', 2],
+    'vue/first-attribute-linebreak': ['error', {
+      singleline: 'beside',
+      multiline: 'below',
+    }],
+    'vue/max-attributes-per-line': ['error', {
+      singleline: { max: 1 },
+      multiline: { max: 1 },
+    }],
+    'vue/array-bracket-spacing': ['error', 'never'],
+    'vue/object-curly-spacing': ['error', 'never'],
+    'vue/space-in-parens': ['error', 'never'],
+  },
+};
+
 export default defineConfigWithVueTs(
   // 👇 La config de base
   {
@@ -94,13 +111,14 @@ export default defineConfigWithVueTs(
 
   // 👇 Plugins de librairies
   pluginVue.configs['flat/recommended'],
+  pluginVue.configs['flat/essential'],
+  vueTemplateConfig,
   vueTsConfigs.recommended,
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
   ...pluginOxlint.configs['flat/recommended'],
-  skipFormatting,
 
   // 👇 Plugins global de style
   stylistic.configs.recommended,
