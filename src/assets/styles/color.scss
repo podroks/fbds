@@ -1,0 +1,156 @@
+:root {
+  --fbds-base-surface: #ffffff;
+  --fbds-on-base-surface-low: #757777;
+  --fbds-on-base-surface-medium: #484848;
+  --fbds-on-base-surface-high: #0a0a0a;
+  --fbds-state-layer-base-surface-hover: rgb(from var(--fbds-base-surface) r g b / 10%);
+  --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
+  --fbds-state-layer-on-base-surface-hover: rgb(from var(--fbds-on-base-surface-high) r g b / 10%);
+  --fbds-state-layer-on-base-surface-press: rgb(from var(--fbds-on-base-surface-high) r g b / 16%);
+
+  --fbds-surface-elevation-neutral-lowest: #f7f7f7;
+  --fbds-surface-elevation-neutral-low: #ededed;
+  --fbds-surface-elevation-neutral-medium: #e2e2e2;
+  --fbds-surface-elevation-neutral-high: #d7d7d7;
+  --fbds-surface-elevation-neutral-highest: #cccccc;
+  --fbds-surface-elevation-primary-lowest: #f9fbff;
+  --fbds-surface-elevation-primary-low: #f2f7ff;
+  --fbds-surface-elevation-primary-medium: #e5efff;
+  --fbds-surface-elevation-primary-high: #d8e7ff;
+  --fbds-surface-elevation-primary-highest: #cadfff;
+
+  --fbds-base-primary: #2b7fff;
+  --fbds-on-base-primary: #0a0a0a;
+  --fbds-state-layer-base-primary-hover: rgb(from var(--fbds-base-primary) r g b / 10%);
+  --fbds-state-layer-base-primary-press: rgb(from var(--fbds-base-primary) r g b / 16%);
+
+  --fbds-base-alert: #fb2c36;
+  --fbds-on-base-alert: #0a0a0a;
+  --fbds-state-layer-base-alert-hover: rgb(from var(--fbds-base-alert) r g b / 10%);
+  --fbds-state-layer-base-alert-press: rgb(from var(--fbds-base-alert) r g b / 16%);
+
+  --fbds-base-warning: #ff6900;
+  --fbds-on-base-warning: #0a0a0a;
+  --fbds-state-layer-base-warning-hover: rgb(from var(--fbds-base-warning) r g b / 10%);
+  --fbds-state-layer-base-warning-press: rgb(from var(--fbds-base-warning) r g b / 16%);
+
+  --fbds-base-success: #00a63e;
+  --fbds-on-base-success: #0a0a0a;
+  --fbds-state-layer-base-success-hover: rgb(from var(--fbds-base-success) r g b / 10%);
+  --fbds-state-layer-base-success-press: rgb(from var(--fbds-base-success) r g b / 16%);
+
+  --fbds-base-info: #2b7fff;
+  --fbds-on-base-info: #0a0a0a;
+  --fbds-state-layer-base-info-hover: rgb(from var(--fbds-base-info) r g b / 10%);
+  --fbds-state-layer-base-info-press: rgb(from var(--fbds-base-info) r g b / 16%);
+
+  --fbds-base-disable: #a1a1a1;
+  --fbds-on-base-disable: #737373;
+
+  --fbds-container-primary: #e5efff;
+  --fbds-on-container-primary: #2b7fff;
+  --fbds-state-layer-container-primary-hover: rgb(from var(--fbds-container-primary) r g b / 10%);
+  --fbds-state-layer-container-primary-press: rgb(from var(--fbds-container-primary) r g b / 16%);
+
+  --fbds-container-alert: #ffe5e6;
+  --fbds-on-container-alert: #fb2c36;
+  --fbds-state-layer-container-alert-hover: rgb(from var(--fbds-container-alert) r g b / 10%);
+  --fbds-state-layer-container-alert-press: rgb(from var(--fbds-container-alert) r g b / 16%);
+
+  --fbds-container-warning: #ffede0;
+  --fbds-on-container-warning: #ff6900;
+  --fbds-state-layer-container-warning-hover: rgb(from var(--fbds-container-warning) r g b / 10%);
+  --fbds-state-layer-container-warning-press: rgb(from var(--fbds-container-warning) r g b / 16%);
+
+  --fbds-container-success: #e0f4e7;
+  --fbds-on-container-success: #00a63e;
+  --fbds-state-layer-container-success-hover: rgb(from var(--fbds-container-success) r g b / 10%);
+  --fbds-state-layer-container-success-press: rgb(from var(--fbds-container-success) r g b / 16%);
+
+  --fbds-container-info: #e5efff;
+  --fbds-on-container-info: #2b7fff;
+  --fbds-state-layer-container-info-hover: rgb(from var(--fbds-container-info) r g b / 10%);
+  --fbds-state-layer-container-info-press: rgb(from var(--fbds-container-info) r g b / 16%);
+
+  --fbds-container-accent-1: #f5e8ff;
+  --fbds-on-container-accent-1: #ad46ff;
+  --fbds-state-layer-container-accent-1-hover: rgb(from var(--fbds-container-accent-1) r g b / 10%);
+  --fbds-state-layer-container-accent-1-press: rgb(from var(--fbds-container-accent-1) r g b / 16%);
+
+  --fbds-container-accent-2: #e0f7fb;
+  --fbds-on-container-accent-2: #00b8db;
+  --fbds-state-layer-container-accent-2-hover: rgb(from var(--fbds-container-accent-2) r g b / 10%);
+  --fbds-state-layer-container-accent-2-press: rgb(from var(--fbds-container-accent-2) r g b / 16%);
+
+  --fbds-container-accent-3: #e8e4e0;
+  --fbds-on-container-accent-3: #432004;
+  --fbds-state-layer-container-accent-3-hover: rgb(from var(--fbds-container-accent-3) r g b / 10%);
+  --fbds-state-layer-container-accent-3-press: rgb(from var(--fbds-container-accent-3) r g b / 16%);
+
+  --fbds-container-accent-4: #eff9e0;
+  --fbds-on-container-accent-4: #7cce00;
+  --fbds-state-layer-container-accent-4-hover: rgb(from var(--fbds-container-accent-4) r g b / 10%);
+  --fbds-state-layer-container-accent-4-press: rgb(from var(--fbds-container-accent-4) r g b / 16%);
+
+  --fbds-border-low: #6a7282;
+  --fbds-border-medium: #c6c9d0;
+  --fbds-border-high: #eaeaea;
+
+  --fbds-overlay: #1111117f;
+}
+
+[theme='dark'] {
+  --fbds-base-surface: #0a0a0a;
+  --fbds-on-base-surface-low: #525252;
+  --fbds-on-base-surface-medium: #a1a1a1;
+  --fbds-on-base-surface-high: #fafafa;
+  --fbds-state-layer-base-surface-hover: rgb(from var(--fbds-base-surface) r g b / 10%);
+  --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
+  --fbds-state-layer-on-base-surface-hover: rgb(from var(--fbds-on-base-surface-high) r g b / 10%);
+  --fbds-state-layer-on-base-surface-press: rgb(from var(--fbds-on-base-surface-high) r g b / 16%);
+
+  --fbds-surface-elevation-neutral-lowest: #111111;
+  --fbds-surface-elevation-neutral-low: #181819;
+  --fbds-surface-elevation-neutral-medium: #1f1f20;
+  --fbds-surface-elevation-neutral-high: #262628;
+  --fbds-surface-elevation-neutral-highest: #2c2d2f;
+  --fbds-surface-elevation-primary-lowest: #cadfff;
+  --fbds-surface-elevation-primary-low: #d8e7ff;
+  --fbds-surface-elevation-primary-medium: #e5efff;
+  --fbds-surface-elevation-primary-high: #f2f7ff;
+  --fbds-surface-elevation-primary-highest: #f9fbff;
+
+  --fbds-base-primary: #2b7fff;
+  --fbds-on-base-primary: #0a0a0a;
+  --fbds-state-layer-base-primary-hover: rgb(from var(--fbds-base-primary) r g b / 10%);
+  --fbds-state-layer-base-primary-press: rgb(from var(--fbds-base-primary) r g b / 16%);
+
+  --fbds-base-alert: #ff6467;
+  --fbds-on-base-alert: #0a0a0a;
+  --fbds-state-layer-base-alert-hover: rgb(from var(--fbds-base-alert) r g b / 10%);
+  --fbds-state-layer-base-alert-press: rgb(from var(--fbds-base-alert) r g b / 16%);
+
+  --fbds-base-warning: #ffb900;
+  --fbds-on-base-warning: #0a0a0a;
+  --fbds-state-layer-base-warning-hover: rgb(from var(--fbds-base-warning) r g b / 10%);
+  --fbds-state-layer-base-warning-press: rgb(from var(--fbds-base-warning) r g b / 16%);
+
+  --fbds-base-success: #05df72;
+  --fbds-on-base-success: #0a0a0a;
+  --fbds-state-layer-base-success-hover: rgb(from var(--fbds-base-success) r g b / 10%);
+  --fbds-state-layer-base-success-press: rgb(from var(--fbds-base-success) r g b / 16%);
+
+  --fbds-base-info: #51a2ff;
+  --fbds-on-base-info: #0a0a0a;
+  --fbds-state-layer-base-info-hover: rgb(from var(--fbds-base-info) r g b / 10%);
+  --fbds-state-layer-base-info-press: rgb(from var(--fbds-base-info) r g b / 16%);
+
+  --fbds-base-disable: #a1a1a1;
+  --fbds-on-base-disable: #737373;
+
+  --fbds-border-low: #353941;
+  --fbds-border-medium: #6a7282;
+  --fbds-border-high: #c2c6cd;
+
+  --fbds-overlay: #1111117f;
+}

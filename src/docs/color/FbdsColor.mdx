@@ -1,0 +1,17 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+ 
+import * as FbdsColorStories from './FbdsColor.stories';
+ 
+<Meta of={FbdsColorStories} />
+ 
+# Couleurs
+
+Les couleurs par défaut utilisées par **FBDS** sont remplacables via une règle CSS personnalisée :
+
+```css
+:root {
+  --fbds-base-surface: <votre-couleur>;
+}
+```
+
+<Canvas of={FbdsColorStories.Color} sourceState="none" withToolbar={false} />

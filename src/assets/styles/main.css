@@ -1,1 +1,118 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-fbds-base-surface: var(--fbds-base-surface);
+  --color-fbds-on-base-surface-low: var(--fbds-on-base-surface-low);
+  --color-fbds-on-base-surface-medium: var(--fbds-on-base-surface-medium);
+  --color-fbds-on-base-surface-high: var(--fbds-on-base-surface-high);
+  --color-fbds-state-layer-base-surface-hover: var(--fbds-state-layer-surface-hover);
+  --color-fbds-state-layer-base-surface-press: var(--fbds-state-layer-surface-press);
+  --color-fbds-state-layer-on-base-surface-hover: var(--fbds-state-layer-on-surface-hover);
+  --color-fbds-state-layer-on-base-surface-press: var(--fbds-state-layer-on-surface-press);
+
+  --color-fbds-surface-elevation-neutral-lowest: var(--fbds-surface-elevation-neutral-lowest);
+  --color-fbds-surface-elevation-neutral-low: var(--fbds-surface-elevation-neutral-low);
+  --color-fbds-surface-elevation-neutral-medium: var(--fbds-surface-elevation-neutral-medium);
+  --color-fbds-surface-elevation-neutral-high: var(--fbds-surface-elevation-neutral-high);
+  --color-fbds-surface-elevation-neutral-highest: var(--fbds-surface-elevation-neutral-highest);
+  --color-fbds-surface-elevation-primary-lowest: var(--fbds-surface-elevation-primary-lowest);
+  --color-fbds-surface-elevation-primary-low: var(--fbds-surface-elevation-primary-low);
+  --color-fbds-surface-elevation-primary-medium: var(--fbds-surface-elevation-primary-medium);
+  --color-fbds-surface-elevation-primary-high: var(--fbds-surface-elevation-primary-high);
+  --color-fbds-surface-elevation-primary-highest: var(--fbds-surface-elevation-primary-highest);
+
+  --color-fbds-base-primary: var(--fbds-base-primary);
+  --color-fbds-on-base-primary: var(--fbds-on-base-primary);
+  --color-fbds-state-layer-base-primary-hover: var(--fbds-state-layer-primary-hover);
+  --color-fbds-state-layer-base-primary-press: var(--fbds-state-layer-primary-press);
+
+  --color-fbds-base-alert: var(--fbds-base-alert);
+  --color-fbds-on-base-alert: var(--fbds-on-base-alert);
+  --color-fbds-state-layer-base-alert-hover: var(--fbds-state-layer-alert-hover);
+  --color-fbds-state-layer-base-alert-press: var(--fbds-state-layer-alert-press);
+
+  --color-fbds-base-warning: var(--fbds-base-warning);
+  --color-fbds-on-base-warning: var(--fbds-on-base-warning);
+  --color-fbds-state-layer-base-warning-hover: var(--fbds-state-layer-warning-hover);
+  --color-fbds-state-layer-base-warning-press: var(--fbds-state-layer-warning-press);
+
+  --color-fbds-base-success: var(--fbds-base-success);
+  --color-fbds-on-base-success: var(--fbds-on-base-success);
+  --color-fbds-state-layer-base-success-hover: var(--fbds-state-layer-success-hover);
+  --color-fbds-state-layer-base-success-press: var(--fbds-state-layer-success-press);
+
+  --color-fbds-base-info: var(--fbds-base-info);
+  --color-fbds-on-base-info: var(--fbds-on-base-info);
+  --color-fbds-state-layer-base-info-hover: var(--fbds-state-layer-info-hover);
+  --color-fbds-state-layer-base-info-press: var(--fbds-state-layer-info-press);
+
+  --color-fbds-container-primary: var(--fbds-container-primary);
+  --color-fbds-on-container-primary: var(--fbds-on-container-primary);
+  --color-fbds-state-layer-container-primary-hover: var(--fbds-state-layer-container-primary-hover);
+  --color-fbds-state-layer-container-primary-press: var(--fbds-state-layer-container-primary-press);
+
+  --color-fbds-container-alert: var(--fbds-container-alert);
+  --color-fbds-on-container-alert: var(--fbds-on-container-alert);
+  --color-fbds-state-layer-container-alert-hover: var(--fbds-state-layer-container-alert-hover);
+  --color-fbds-state-layer-container-alert-press: var(--fbds-state-layer-container-alert-press);
+
+  --color-fbds-container-warning: var(--fbds-container-warning);
+  --color-fbds-on-container-warning: var(--fbds-on-container-warning);
+  --color-fbds-state-layer-container-warning-hover: var(--fbds-state-layer-container-warning-hover);
+  --color-fbds-state-layer-container-warning-press: var(--fbds-state-layer-container-warning-press);
+
+  --color-fbds-container-success: var(--fbds-container-success);
+  --color-fbds-on-container-success: var(--fbds-on-container-success);
+  --color-fbds-state-layer-container-success-hover: var(--fbds-state-layer-container-success-hover);
+  --color-fbds-state-layer-container-success-press: var(--fbds-state-layer-container-success-press);
+
+  --color-fbds-container-info: var(--fbds-container-info);
+  --color-fbds-on-container-info: var(--fbds-on-container-info);
+  --color-fbds-state-layer-container-info-hover: var(--fbds-state-layer-container-info-hover);
+  --color-fbds-state-layer-container-info-press: var(--fbds-state-layer-container-info-press);
+
+  --color-fbds-container-accent-1: var(--fbds-container-accent-1);
+  --color-fbds-on-container-accent-1: var(--fbds-on-container-accent-1);
+  --color-fbds-state-layer-container-accent-1-hover: var(
+    --fbds-state-layer-container-accent-1-hover
+  );
+  --color-fbds-state-layer-container-accent-1-press: var(
+    --fbds-state-layer-container-accent-1-press
+  );
+
+  --color-fbds-container-accent-2: var(--fbds-container-accent-2);
+  --color-fbds-on-container-accent-2: var(--fbds-on-container-accent-2);
+  --color-fbds-state-layer-container-accent-2-hover: var(
+    --fbds-state-layer-container-accent-2-hover
+  );
+  --color-fbds-state-layer-container-accent-2-press: var(
+    --fbds-state-layer-container-accent-2-press
+  );
+
+  --color-fbds-container-accent-3: var(--fbds-container-accent-3);
+  --color-fbds-on-container-accent-3: var(--fbds-on-container-accent-3);
+  --color-fbds-state-layer-container-accent-3-hover: var(
+    --fbds-state-layer-container-accent-3-hover
+  );
+  --color-fbds-state-layer-container-accent-3-press: var(
+    --fbds-state-layer-container-accent-3-press
+  );
+
+  --color-fbds-container-accent-4: var(--fbds-container-accent-4);
+  --color-fbds-on-container-accent-4: var(--fbds-on-container-accent-4);
+  --color-fbds-state-layer-container-accent-4-hover: var(
+    --fbds-state-layer-container-accent-4-hover
+  );
+  --color-fbds-state-layer-container-accent-4-press: var(
+    --fbds-state-layer-container-accent-4-press
+  );
+
+  --color-fbds-base-disable: var(--fbds-base-disable);
+  --color-fbds-on-base-disable: var(--fbds-on-base-disable);
+
+  --color-fbds-border-low: var(--fbds-border-low);
+  --color-fbds-border-medium: var(--fbds-border-medium);
+  --color-fbds-border-high: var(--fbds-border-high);
+
+  --color-fbds-overlay: var(--fbds-overlay);
+}
