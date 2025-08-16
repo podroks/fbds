@@ -24,7 +24,7 @@ const rgbToHex = (css: string) => {
   const m = css.match(/\d+(\.\d+)?/g)?.map(Number);
   if (!m) return '';
   const [r, g, b, a] = m.map((n, i) => i < 3 ? clamp(n, 0, 255) : clamp(n, 0, 1));
-  const toHex = (n: number) => n.toString(16).padStart(2, '0');
+  const toHex = (n: number | undefined) => n?.toString(16).padStart(2, '0') ?? '';
   return `#${toHex(r)}${toHex(g)}${toHex(b)}${a !== undefined ? toHex(Math.round(a * 255)) : ''}`;
 };
 
@@ -35,7 +35,7 @@ const handlePreviewRef = (el: Element | ComponentPublicInstance | null, color: s
 
 const getClassWithoutPrefix = (color: string) => color.replace(/^bg-fbds-/, '');
 
-const isHexa = (hexa: string) => hexa && hexa.length > 7;
+const isHexa = (hexa: string | undefined) => hexa && hexa.length > 7;
 
 const hexToRgb = (hex: string) => {
   const n = parseInt(hex.slice(1), 16);
@@ -49,10 +49,13 @@ const relativeLuminance = ({ r, g, b }: { r: number, g: number, b: number }) => 
 
 const contrastRatio = (h1: string, h2: string) => {
   const [l1, l2] = [h1, h2].map(c => relativeLuminance(hexToRgb(c)));
-  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+  return (Math.max(l1!, l2!) + 0.05) / (Math.min(l1!, l2!) + 0.05);
 };
 
-const checkRGAA = (h1: string, h2: string) => {
+const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
+  if (!h1 || !h2) {
+    return { ratio: '' };
+  }
   const ratio = contrastRatio(h1, h2);
   return { ratio: +ratio.toFixed(2), normalText: ratio >= 4.5, largeText: ratio >= 3 };
 };
