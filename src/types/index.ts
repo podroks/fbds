@@ -1,1 +1,1 @@
-export type Toto = 'toto';
+export type { Icon } from '@/types/icon';

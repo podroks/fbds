@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import FbdsTypography from '@/docs/typography/FbdsTypography.vue';
+import FbdsTypography from '@/components/subatoms/typography/FbdsTypography.vue';
 
 const meta = {
-  title: 'Base/Typographies',
+  title: 'Subatomes/Typographies',
   component: FbdsTypography,
   tags: ['!dev'],
 } satisfies Meta<typeof FbdsTypography>;

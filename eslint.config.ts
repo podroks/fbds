@@ -83,7 +83,7 @@ const stylisticConfigCustomized: Linter.Config = {
 };
 
 const vueTemplateConfig: Linter.Config = {
-  files: ['**/*.vue'],
+  files: ['**/*.{vue,ts}'],
   rules: {
     'vue/html-indent': ['error', 2],
     'vue/first-attribute-linebreak': ['error', {
@@ -97,6 +97,7 @@ const vueTemplateConfig: Linter.Config = {
     'vue/array-bracket-spacing': ['error', 'never'],
     'vue/object-curly-spacing': ['error', 'never'],
     'vue/space-in-parens': ['error', 'never'],
+    'vue/component-definition-name-casing': ['error', 'kebab-case'],
   },
 };
 

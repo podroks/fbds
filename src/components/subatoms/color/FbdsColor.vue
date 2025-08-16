@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FbdsColorCard from '@/docs/color/FbdsColorCard.vue';
+import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
 </script>
 
 <template>

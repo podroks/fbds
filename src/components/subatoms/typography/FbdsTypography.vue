@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FbdsTypographyCard from '@/docs/typography/FbdsTypographyCard.vue';
+import FbdsTypographyCard from '@/components/subatoms/typography/FbdsTypographyCard.vue';
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import FbdsColor from '@/docs/color/FbdsColor.vue';
+import FbdsColor from '@/components/subatoms/color/FbdsColor.vue';
 
 const meta = {
-  title: 'Base/Couleurs',
+  title: 'Subatomes/Couleurs',
   component: FbdsColor,
   tags: ['!dev'],
 } satisfies Meta<typeof FbdsColor>;
