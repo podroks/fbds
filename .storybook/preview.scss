@@ -1,0 +1,59 @@
+/* -------------------------------------------------------------------------- */
+/*                                     Doc                                    */
+/* -------------------------------------------------------------------------- */
+.sbdocs-wrapper {
+  background: var(--color-fbds-surface-elevation-neutral-lowest) !important;
+
+  & .sbdocs-content {
+    & h1 {
+      color: var(--color-fbds-on-base-surface-high);
+    }
+
+    & p {
+      color: var(--color-fbds-on-base-surface-high);
+    }
+  }
+}
+
+/* ------------------------------- Code block ------------------------------- */
+.docblock-source {
+  background: var(--color-fbds-base-surface) !important;
+  border-color: var(--color-fbds-border-low) !important;
+  box-shadow: rgb(from var(--color-fbds-on-base-surface-high) r g b / 10%) 0px 1px 3px 0px !important;
+  color: var(--color-fbds-on-base-surface-high) !important;
+
+  & .token {
+    &.punctuation {
+      color: var(--color-fbds-on-base-surface-high) !important;
+    }
+    &.selector {
+      color: var(--color-fbds-on-container-accent-1) !important;
+    }
+    &.property {
+      color: var(--color-fbds-on-container-accent-2) !important;
+    }
+  }
+
+  & div:has(> button) {
+    background: unset !important;
+
+    & button {
+      background: var(--color-fbds-surface-elevation-neutral-low) !important;
+      color: var(--color-fbds-on-base-surface-high) !important;
+      border-top: 1px solid var(--color-fbds-border-low) !important;
+      border-left: 1px solid var(--color-fbds-border-low) !important;
+
+      &:focus {
+        box-shadow: var(--color-fbds-base-info) 0px -3px 0px 0px inset;
+      }
+    }
+  }
+}
+
+/* ------------------------------ Preview Block ----------------------------- */
+.sbdocs-preview {
+  background: var(--color-fbds-base-surface) !important;
+  border-color: var(--color-fbds-border-low) !important;
+  box-shadow: rgb(from var(--color-fbds-on-base-surface-high) r g b / 10%) 0px 1px 3px 0px !important;
+  color: var(--color-fbds-on-base-surface-high) !important;
+}

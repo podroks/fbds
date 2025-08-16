@@ -42,7 +42,7 @@ const fontProperties = computed<string>(() => {
     <aside class="basis-40 grow gap-2 flex flex-col overflow-hidden">
       <div
         ref="preview"
-        class="rounded-md shadow-md border border-fbds-border-high overflow-hidden text-center"
+        class="rounded-md shadow-md border border-fbds-border-low overflow-hidden text-center"
         :class="`fbds-font-${font}`"
       >
         {{ font }}

@@ -71,7 +71,7 @@ const checkRGAA = (h1: string, h2: string) => {
         :key="color"
         class="basis-40 grow flex flex-col overflow-hidden"
       >
-        <div class="relative h-10 rounded-md shadow-md border border-fbds-border-high overflow-hidden">
+        <div class="relative h-10 mb-2 rounded-md shadow-md border border-fbds-border-low overflow-hidden">
           <div class="absolute h-full w-full -z-10 striped-diag" />
           <div
             :ref="el => handlePreviewRef(el, color)"

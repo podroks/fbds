@@ -145,16 +145,16 @@ import FbdsColorCard from '@/docs/color/FbdsColorCard.vue';
       Border
     </h1>
     <FbdsColorCard
-      label="High"
-      background="bg-fbds-border-high"
+      label="Low"
+      background="bg-fbds-border-low"
     />
     <FbdsColorCard
       label="Medium"
       background="bg-fbds-border-medium"
     />
     <FbdsColorCard
-      label="Low"
-      background="bg-fbds-border-low"
+      label="High"
+      background="bg-fbds-border-high"
     />
 
     <h1 class="fbds-font-title-large border-b border-fbds-border-medium">

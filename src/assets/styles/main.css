@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@theme {
+@theme static {
   --color-fbds-base-surface: var(--fbds-base-surface);
   --color-fbds-on-base-surface-low: var(--fbds-on-base-surface-low);
   --color-fbds-on-base-surface-medium: var(--fbds-on-base-surface-medium);
