@@ -1,3 +1,39 @@
+html {
+  background: var(--color-fbds-surface-elevation-neutral-lowest) !important;
+  height: 100%;
+  display: flex;
+}
+body {
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+#storybook-docs {
+  height: 100%;
+  overflow: auto;
+  scrollbar-gutter: stable both-edges;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--fbds-scrollbar);
+    border-radius: 100px;
+    transition: border 1s ease-in-out;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    border-width: 1.5px;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                     Doc                                    */
 /* -------------------------------------------------------------------------- */
