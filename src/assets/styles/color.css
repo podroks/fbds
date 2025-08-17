@@ -97,6 +97,8 @@
   --fbds-border-high: #6a7282;
 
   --fbds-overlay: #1111117f;
+
+  --fbds-scrollbar: #7272727f;
 }
 
 [theme='dark'] {
@@ -198,4 +200,6 @@
   --fbds-border-high: #c2c6cd;
 
   --fbds-overlay: #1111117f;
+
+  --fbds-scrollbar: #7272727f;
 }
