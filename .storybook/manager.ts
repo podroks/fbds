@@ -2,10 +2,10 @@ import '../src/assets/styles/color.css';
 import './manager.css';
 
 import { addons } from 'storybook/manager-api';
-import FbdsTheme from './FbdsTheme';
+import { darkTheme, lightTheme } from './FbdsTheme';
 
 addons.setConfig({
-  theme: FbdsTheme,
+  theme: lightTheme,
 });
 
 function onUrlChange(callback: (url: URL) => void) {
@@ -66,6 +66,10 @@ function setTheme (theme) {
   timeoutId = setTimeout(() => {
     const documentElement = window.document.documentElement;
     documentElement.setAttribute('theme', theme);
+
+    addons.setConfig({
+      theme: theme === 'dark' ? darkTheme : lightTheme,
+    });
   }, 200);
 }
 
