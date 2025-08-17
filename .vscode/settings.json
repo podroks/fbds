@@ -22,5 +22,10 @@
   "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
 
   // 👇 Activer Prettier comme formatter par défaut
-  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  }
 }

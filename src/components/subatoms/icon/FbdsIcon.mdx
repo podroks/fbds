@@ -1,11 +1,11 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
  
-import * as FbdsIconsStories from './FbdsIcons.stories';
+import FbdsIconsMeta, { Icons } from './FbdsIcons.stories';
  
-<Meta of={FbdsIconsStories} />
+<Meta of={FbdsIconsMeta} />
  
 # Icônes
 
 Les icônes utilisées par **FBDS** sont ceux de [FontAwesome 7](https://fontawesome.com/icons?o=r) et viennent s'y ajouter des icônes personnalisés.
 
-<Canvas of={FbdsIconsStories.Icons} sourceState="none" withToolbar={false} />
+<Canvas of={Icons} sourceState="none" withToolbar={false} />

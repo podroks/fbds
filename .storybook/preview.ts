@@ -24,7 +24,6 @@ const preview: Preview = {
       description: 'Thème global pour les composants',
       toolbar: {
         title: 'Theme',
-        defaultValue: 'light',
         items: [{ value: 'light', title: "Clair", icon: "sun"}, { value: 'dark', title: "Sombre", icon: "moon"}],
         dynamicTitle: true,
       },
@@ -44,7 +43,7 @@ export const decorators = [
 
     watch(() => context.globals.theme, (newTheme) => {
       const documentElement = window.document.documentElement;
-      documentElement.setAttribute('theme', newTheme )
+      documentElement.setAttribute('theme', newTheme );
     }, { immediate: true })
 
     return {
