@@ -1,8 +1,8 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
  
-import * as FbdsColorStories from './FbdsColor.stories';
+import FbdsColorMeta, { Color } from './FbdsColor.stories';
  
-<Meta of={FbdsColorStories} />
+<Meta of={FbdsColorMeta} />
  
 # Couleurs
 
@@ -14,4 +14,4 @@ Les couleurs par défaut utilisées par **FBDS** sont remplacables via une règl
 }
 ```
 
-<Canvas of={FbdsColorStories.Color} sourceState="none" withToolbar={false} />
+<Canvas of={Color} sourceState="none" withToolbar={false} />

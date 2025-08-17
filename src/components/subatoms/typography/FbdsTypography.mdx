@@ -1,8 +1,8 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
  
-import * as FbdsTypographyStories from './FbdsTypography.stories';
+import FbdsTypographyMeta, { Typography } from './FbdsTypography.stories';
  
-<Meta of={FbdsTypographyStories} />
+<Meta of={FbdsTypographyMeta} />
  
 # Typographies
 
@@ -14,4 +14,4 @@ La typographie par défaut utilisée par **FBDS** est **Hanken Grotesk**. Elle p
 }
 ```
 
-<Canvas of={FbdsTypographyStories.Typography} sourceState="none" withToolbar={false} />
+<Canvas of={Typography} sourceState="none" withToolbar={false} />

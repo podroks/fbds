@@ -4,3 +4,168 @@
 .sb-bar div > span:first-child {
   display: none !important;
 }
+
+.sb-bar {
+  background: var(--fbds-base-surface) !important;
+  box-shadow: var(--fbds-border-low) 0px -1px 0px 0px inset !important;
+}
+
+.sb-bar button,
+.sb-bar a {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.sb-bar button:hover,
+.sb-bar button:active,
+.sb-bar a:hover,
+.sb-bar a:active {
+  color: var(--fbds-on-container-info) !important;
+  background: var(--fbds-container-info) !important;
+}
+
+.sb-bar
+  button[title='Thème global pour les composants']:has(> :nth-child(1)):not(:has(> :nth-child(2))),
+.sb-bar
+  button[title='Change the size of the preview']:has(> :nth-child(2)):not(:has(> :nth-child(3))) {
+  color: var(--fbds-on-container-info) !important;
+  background: var(--fbds-container-info) !important;
+}
+
+.sb-bar .tabbutton-active {
+  border-color: transparent transparent var(--fbds-base-info);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Sidebar                                  */
+/* -------------------------------------------------------------------------- */
+
+div:has(> .sidebar-container) {
+  border-right: 1px solid var(--fbds-border-low) !important;
+}
+
+.sidebar-container {
+  background: var(--fbds-base-surface) !important;
+}
+
+*:focus {
+  box-shadow: var(--fbds-base-info) 0px 0px 0px 1px inset !important;
+}
+
+/* --------------------------------- Entête --------------------------------- */
+button[title='Shortcuts'],
+.search-field button,
+button.sidebar-subheading-action,
+.sidebar-subheading > button:first-child {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+button[title='Shortcuts']:hover,
+button[title='Shortcuts']:active,
+.search-field button:hover,
+.search-field button:active,
+button.sidebar-subheading-action:hover,
+button.sidebar-subheading-action:active {
+  color: var(--fbds-on-container-info) !important;
+  background: var(--fbds-container-info) !important;
+}
+
+button[title='Shortcuts']::after {
+  background: var(--fbds-base-success) !important;
+  border: 1px solid var(--fbds-base-surface);
+  box-shadow: var(--fbds-base-surface) 0px 0px 0px 2px !important;
+}
+button[title='Shortcuts']::before {
+  background: var(--fbds-base-surface);
+  border: 1px solid var(--fbds-base-surface);
+  box-shadow: var(--fbds-base-surface) 0px 0px 0px 2px;
+}
+
+/* --------------------------- Barre de recherche --------------------------- */
+.search-field {
+  box-shadow: rgb(from var(--fbds-on-base-surface-high) r g b / 20%) 0px 0px 0px 1px inset !important;
+}
+.search-field:has(input:focus) {
+  background: var(--fbds-surface-elevation-neutral-lowest) !important;
+}
+
+.search-field > div:first-child {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-field input {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-field input::placeholder {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-field code {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-result-recentlyOpened {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+[id^='downshift'] strong {
+  color: var(--fbds-on-base-surface-high) !important;
+}
+
+[id^='downshift'] small {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-result-item:hover {
+  background: var(--fbds-surface-elevation-primary-low) !important;
+}
+
+/* --------------- Les éléments par d"faut de la barre latéral -------------- */
+.sidebar-item {
+  color: var(--fbds-on-base-surface-high) !important;
+}
+
+.sidebar-item > button[aria-expanded] > div:first-child > div:first-child > svg > path {
+  fill: var(--fbds-on-base-surface-medium) !important;
+}
+
+.search-result-item--label {
+  color: var(--fbds-on-base-surface-high) !important;
+}
+
+/* -------------------------------- Les svgs -------------------------------- */
+.sidebar-item svg {
+  color: var(--fbds-on-base-surface-medium) !important;
+}
+.sidebar-subheading > button[data-action='collapse-root'] > div:first-child > svg > path {
+  fill: var(--fbds-on-base-surface-medium) !important;
+}
+svg[type='document'] {
+  color: var(--fbds-on-container-accent-1) !important;
+}
+svg[type='component'] {
+  color: var(--fbds-on-container-accent-2) !important;
+}
+svg[type='story'] {
+  color: var(--fbds-on-container-accent-4) !important;
+}
+
+.sidebar-item[data-selected='true'] {
+  color: var(--fbds-on-base-primary) !important;
+  background: var(--fbds-base-primary) !important;
+}
+.sidebar-item[data-selected='true'] svg[type='component'],
+.sidebar-item[data-selected='true'] svg[type='document'] {
+  color: var(--fbds-on-base-primary) !important;
+}
+
+.sidebar-item[data-selected='false']:hover,
+.sidebar-item:has(> button[aria-expanded]):hover {
+  background: var(--fbds-state-layer-base-primary-hover) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Tooltip                                  */
+/* -------------------------------------------------------------------------- */
+[data-testid='tooltip'] button:hover {
+  background: var(--fbds-state-layer-base-primary-hover) !important;
+}
