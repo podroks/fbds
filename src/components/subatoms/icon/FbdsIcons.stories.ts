@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import FbdsIcons from '@/components/subatoms/icon/FbdsIcons.vue';
 
 const meta = {
-  title: 'Subatomes/Icônes',
+  title: 'FBDS/Subatomes/Icônes',
   component: FbdsIcons,
   tags: ['!dev'],
 } satisfies Meta<typeof FbdsIcons>;

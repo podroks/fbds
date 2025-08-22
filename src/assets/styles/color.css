@@ -19,76 +19,76 @@
   --fbds-surface-elevation-primary-high: #d8e7ff;
   --fbds-surface-elevation-primary-highest: #cadfff;
 
-  --fbds-base-primary: #2b7fff;
-  --fbds-on-base-primary: #0a0a0a;
+  --fbds-base-primary: #2468d5;
+  --fbds-on-base-primary: #ffffff;
   --fbds-state-layer-base-primary-hover: rgb(from var(--fbds-base-primary) r g b / 10%);
   --fbds-state-layer-base-primary-press: rgb(from var(--fbds-base-primary) r g b / 16%);
 
-  --fbds-base-alert: #fb2c36;
-  --fbds-on-base-alert: #0a0a0a;
+  --fbds-base-alert: #d62424;
+  --fbds-on-base-alert: #ffffff;
   --fbds-state-layer-base-alert-hover: rgb(from var(--fbds-base-alert) r g b / 10%);
   --fbds-state-layer-base-alert-press: rgb(from var(--fbds-base-alert) r g b / 16%);
 
-  --fbds-base-warning: #ff6900;
-  --fbds-on-base-warning: #0a0a0a;
+  --fbds-base-warning: #d69824;
+  --fbds-on-base-warning: #302003;
   --fbds-state-layer-base-warning-hover: rgb(from var(--fbds-base-warning) r g b / 10%);
   --fbds-state-layer-base-warning-press: rgb(from var(--fbds-base-warning) r g b / 16%);
 
-  --fbds-base-success: #00a63e;
-  --fbds-on-base-success: #0a0a0a;
+  --fbds-base-success: #24d624;
+  --fbds-on-base-success: #033003;
   --fbds-state-layer-base-success-hover: rgb(from var(--fbds-base-success) r g b / 10%);
   --fbds-state-layer-base-success-press: rgb(from var(--fbds-base-success) r g b / 16%);
 
-  --fbds-base-info: #2b7fff;
-  --fbds-on-base-info: #0a0a0a;
+  --fbds-base-info: #2468d5;
+  --fbds-on-base-info: #ffffff;
   --fbds-state-layer-base-info-hover: rgb(from var(--fbds-base-info) r g b / 10%);
   --fbds-state-layer-base-info-press: rgb(from var(--fbds-base-info) r g b / 16%);
 
-  --fbds-base-disable: #a1a1a1;
-  --fbds-on-base-disable: #737373;
+  --fbds-base-disable: #bfbfbf;
+  --fbds-on-base-disable: #666666;
 
   --fbds-container-primary: #e5efff;
-  --fbds-on-container-primary: #2b7fff;
+  --fbds-on-container-primary: #06327a;
   --fbds-state-layer-container-primary-hover: rgb(from var(--fbds-container-primary) r g b / 10%);
   --fbds-state-layer-container-primary-press: rgb(from var(--fbds-container-primary) r g b / 16%);
 
-  --fbds-container-alert: #ffe5e6;
-  --fbds-on-container-alert: #fb2c36;
+  --fbds-container-alert: #ffe5e5;
+  --fbds-on-container-alert: #7a0606;
   --fbds-state-layer-container-alert-hover: rgb(from var(--fbds-container-alert) r g b / 10%);
   --fbds-state-layer-container-alert-press: rgb(from var(--fbds-container-alert) r g b / 16%);
 
-  --fbds-container-warning: #ffede0;
-  --fbds-on-container-warning: #ff6900;
+  --fbds-container-warning: #fff6e5;
+  --fbds-on-container-warning: #7a5106;
   --fbds-state-layer-container-warning-hover: rgb(from var(--fbds-container-warning) r g b / 10%);
   --fbds-state-layer-container-warning-press: rgb(from var(--fbds-container-warning) r g b / 16%);
 
-  --fbds-container-success: #e0f4e7;
-  --fbds-on-container-success: #00a63e;
+  --fbds-container-success: #e5ffe5;
+  --fbds-on-container-success: #067a06;
   --fbds-state-layer-container-success-hover: rgb(from var(--fbds-container-success) r g b / 10%);
   --fbds-state-layer-container-success-press: rgb(from var(--fbds-container-success) r g b / 16%);
 
   --fbds-container-info: #e5efff;
-  --fbds-on-container-info: #2b7fff;
+  --fbds-on-container-info: #06327a;
   --fbds-state-layer-container-info-hover: rgb(from var(--fbds-container-info) r g b / 10%);
   --fbds-state-layer-container-info-press: rgb(from var(--fbds-container-info) r g b / 16%);
 
-  --fbds-container-accent-1: #f5e8ff;
-  --fbds-on-container-accent-1: #ad46ff;
+  --fbds-container-accent-1: #eee5ff;
+  --fbds-on-container-accent-1: #2a067a;
   --fbds-state-layer-container-accent-1-hover: rgb(from var(--fbds-container-accent-1) r g b / 10%);
   --fbds-state-layer-container-accent-1-press: rgb(from var(--fbds-container-accent-1) r g b / 16%);
 
-  --fbds-container-accent-2: #e0f7fb;
-  --fbds-on-container-accent-2: #00b8db;
+  --fbds-container-accent-2: #ffe5ee;
+  --fbds-on-container-accent-2: #7a062e;
   --fbds-state-layer-container-accent-2-hover: rgb(from var(--fbds-container-accent-2) r g b / 10%);
   --fbds-state-layer-container-accent-2-press: rgb(from var(--fbds-container-accent-2) r g b / 16%);
 
-  --fbds-container-accent-3: #e8e4e0;
-  --fbds-on-container-accent-3: #432004;
+  --fbds-container-accent-3: #e5fffc;
+  --fbds-on-container-accent-3: #067a6e;
   --fbds-state-layer-container-accent-3-hover: rgb(from var(--fbds-container-accent-3) r g b / 10%);
   --fbds-state-layer-container-accent-3-press: rgb(from var(--fbds-container-accent-3) r g b / 16%);
 
-  --fbds-container-accent-4: #eff9e0;
-  --fbds-on-container-accent-4: #7cce00;
+  --fbds-container-accent-4: #f6ffe5;
+  --fbds-on-container-accent-4: #537a06;
   --fbds-state-layer-container-accent-4-hover: rgb(from var(--fbds-container-accent-4) r g b / 10%);
   --fbds-state-layer-container-accent-4-press: rgb(from var(--fbds-container-accent-4) r g b / 16%);
 
@@ -122,76 +122,76 @@
   --fbds-surface-elevation-primary-high: #18283c;
   --fbds-surface-elevation-primary-highest: #1c3048;
 
-  --fbds-base-primary: #51a2ff;
-  --fbds-on-base-primary: #0a0a0a;
+  --fbds-base-primary: #a0bded;
+  --fbds-on-base-primary: #062e6f;
   --fbds-state-layer-base-primary-hover: rgb(from var(--fbds-base-primary) r g b / 10%);
   --fbds-state-layer-base-primary-press: rgb(from var(--fbds-base-primary) r g b / 16%);
 
-  --fbds-base-alert: #ff6467;
-  --fbds-on-base-alert: #0a0a0a;
+  --fbds-base-alert: #eda1a1;
+  --fbds-on-base-alert: #6f0606;
   --fbds-state-layer-base-alert-hover: rgb(from var(--fbds-base-alert) r g b / 10%);
   --fbds-state-layer-base-alert-press: rgb(from var(--fbds-base-alert) r g b / 16%);
 
-  --fbds-base-warning: #ffb900;
-  --fbds-on-base-warning: #0a0a0a;
+  --fbds-base-warning: #edd2a1;
+  --fbds-on-base-warning: #6f4a06;
   --fbds-state-layer-base-warning-hover: rgb(from var(--fbds-base-warning) r g b / 10%);
   --fbds-state-layer-base-warning-press: rgb(from var(--fbds-base-warning) r g b / 16%);
 
-  --fbds-base-success: #05df72;
-  --fbds-on-base-success: #0a0a0a;
+  --fbds-base-success: #a1eda1;
+  --fbds-on-base-success: #066f06;
   --fbds-state-layer-base-success-hover: rgb(from var(--fbds-base-success) r g b / 10%);
   --fbds-state-layer-base-success-press: rgb(from var(--fbds-base-success) r g b / 16%);
 
-  --fbds-base-info: #51a2ff;
-  --fbds-on-base-info: #0a0a0a;
+  --fbds-base-info: #a0bded;
+  --fbds-on-base-info: #062e6f;
   --fbds-state-layer-base-info-hover: rgb(from var(--fbds-base-info) r g b / 10%);
   --fbds-state-layer-base-info-press: rgb(from var(--fbds-base-info) r g b / 16%);
 
-  --fbds-base-disable: #a1a1a1;
-  --fbds-on-base-disable: #737373;
+  --fbds-base-disable: #e6e6e6;
+  --fbds-on-base-disable: #808080;
 
-  --fbds-container-primary: #0f141a;
-  --fbds-on-container-primary: #51a2ff;
+  --fbds-container-primary: #131c2a;
+  --fbds-on-container-primary: #5294ff;
   --fbds-state-layer-container-primary-hover: rgb(from var(--fbds-container-primary) r g b / 10%);
   --fbds-state-layer-container-primary-press: rgb(from var(--fbds-container-primary) r g b / 16%);
 
-  --fbds-container-alert: #1a1010;
-  --fbds-on-container-alert: #ff6467;
+  --fbds-container-alert: #2a1313;
+  --fbds-on-container-alert: #ff5252;
   --fbds-state-layer-container-alert-hover: rgb(from var(--fbds-container-alert) r g b / 10%);
   --fbds-state-layer-container-alert-press: rgb(from var(--fbds-container-alert) r g b / 16%);
 
-  --fbds-container-warning: #1a150a;
-  --fbds-on-container-warning: #ffb900;
+  --fbds-container-warning: #2a2213;
+  --fbds-on-container-warning: #ffc252;
   --fbds-state-layer-container-warning-hover: rgb(from var(--fbds-container-warning) r g b / 10%);
   --fbds-state-layer-container-warning-press: rgb(from var(--fbds-container-warning) r g b / 16%);
 
-  --fbds-container-success: #0a1811;
-  --fbds-on-container-success: #05df72;
+  --fbds-container-success: #132a13;
+  --fbds-on-container-success: #52ff52;
   --fbds-state-layer-container-success-hover: rgb(from var(--fbds-container-success) r g b / 10%);
   --fbds-state-layer-container-success-press: rgb(from var(--fbds-container-success) r g b / 16%);
 
-  --fbds-container-info: #0f141a;
-  --fbds-on-container-info: #51a2ff;
+  --fbds-container-info: #131c2a;
+  --fbds-on-container-info: #5294ff;
   --fbds-state-layer-container-info-hover: rgb(from var(--fbds-container-info) r g b / 10%);
   --fbds-state-layer-container-info-press: rgb(from var(--fbds-container-info) r g b / 16%);
 
-  --fbds-container-accent-1: #16111a;
-  --fbds-on-container-accent-1: #c275ff;
+  --fbds-container-accent-1: #1a132a;
+  --fbds-on-container-accent-1: #8952ff;
   --fbds-state-layer-container-accent-1-hover: rgb(from var(--fbds-container-accent-1) r g b / 10%);
   --fbds-state-layer-container-accent-1-press: rgb(from var(--fbds-container-accent-1) r g b / 16%);
 
-  --fbds-container-accent-2: #0e1618;
-  --fbds-on-container-accent-2: #40cae4;
+  --fbds-container-accent-2: #2a131b;
+  --fbds-on-container-accent-2: #ff528e;
   --fbds-state-layer-container-accent-2-hover: rgb(from var(--fbds-container-accent-2) r g b / 10%);
   --fbds-state-layer-container-accent-2-press: rgb(from var(--fbds-container-accent-2) r g b / 16%);
 
-  --fbds-container-accent-3: #110f0e;
-  --fbds-on-container-accent-3: #725843;
+  --fbds-container-accent-3: #132a28;
+  --fbds-on-container-accent-3: #52ffee;
   --fbds-state-layer-container-accent-3-hover: rgb(from var(--fbds-container-accent-3) r g b / 10%);
   --fbds-state-layer-container-accent-3-press: rgb(from var(--fbds-container-accent-3) r g b / 16%);
 
-  --fbds-container-accent-4: #14180e;
-  --fbds-on-container-accent-4: #7cce00;
+  --fbds-container-accent-4: #222a13;
+  --fbds-on-container-accent-4: #c5ff52;
   --fbds-state-layer-container-accent-4-hover: rgb(from var(--fbds-container-accent-4) r g b / 10%);
   --fbds-state-layer-container-accent-4-press: rgb(from var(--fbds-container-accent-4) r g b / 16%);
 
@@ -201,5 +201,5 @@
 
   --fbds-overlay: #1111117f;
 
-  --fbds-scrollbar: #7272727f;
+  --fbds-scrollbar: #8c8c8c7f;
 }
