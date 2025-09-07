@@ -11,6 +11,15 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-base-surface-low', 'bg-fbds-on-base-surface-medium', 'bg-fbds-on-base-surface-high']"
     />
     <FbdsColorCard
+      label="Surface inverted"
+      background="bg-fbds-base-surface-inverted"
+      :foregrounds="[
+        'bg-fbds-on-base-surface-inverted-low',
+        'bg-fbds-on-base-surface-inverted-medium',
+        'bg-fbds-on-base-surface-inverted-high',
+      ]"
+    />
+    <FbdsColorCard
       label="Primary"
       background="bg-fbds-base-primary"
       :foregrounds="['bg-fbds-on-base-primary']"
