@@ -7,9 +7,9 @@
   --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
 
   --fbds-base-surface-inverted: #0a0a0a;
-  --fbds-on-base-surface-inverted-low: #565656;
-  --fbds-on-base-surface-inverted-medium: #757777;
-  --fbds-on-base-surface-inverted-high: #f7f7f7;
+  --fbds-on-base-surface-inverted-low: #78787c;
+  --fbds-on-base-surface-inverted-medium: #b9b9bb;
+  --fbds-on-base-surface-inverted-high: #fafafa;
   --fbds-state-layer-base-surface-inverted-hover: rgb(
     from var(--fbds-base-surface-inverted) r g b / 10%
   );
@@ -124,9 +124,9 @@
   --fbds-state-layer-base-surface-hover: rgb(from var(--fbds-base-surface) r g b / 10%);
   --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
 
-  --fbds-base-surface-inverted: #f7f7f7;
-  --fbds-on-base-surface-inverted-low: #454545;
-  --fbds-on-base-surface-inverted-medium: #2c2d2f;
+  --fbds-base-surface-inverted: #ffffff;
+  --fbds-on-base-surface-inverted-low: #757777;
+  --fbds-on-base-surface-inverted-medium: #484848;
   --fbds-on-base-surface-inverted-high: #0a0a0a;
   --fbds-state-layer-base-surface-inverted-hover: rgb(
     from var(--fbds-base-surface-inverted) r g b / 10%
