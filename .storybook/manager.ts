@@ -78,7 +78,7 @@ function updateLogo() {
   if (!logo) return;
 
   const theme = parent.document.documentElement.getAttribute('theme') || 'light';
-  logo.src = theme === 'dark' ? '/storybook-dark.svg' : '/storybook-light.svg';
+  logo.src = theme === 'dark' ? '/fbds-dark.svg' : '/fbds-light.svg';
 }
 
 // Au chargement
