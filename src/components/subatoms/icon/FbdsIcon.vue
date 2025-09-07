@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 import type { Icon } from '@/types/icon';
 
 const props = withDefaults(
   defineProps<{
-    icon: Icon
-    size?: `size-${number}`
+    icon: Icon;
+    size?: `size-${number}`;
   }>(),
   {
     size: 'size-5',
@@ -16,10 +16,14 @@ const props = withDefaults(
 const isVueComponent = computed<boolean>(() => {
   return typeof props.icon === 'object' && 'render' in props.icon;
 });
+
+const el = ref(null);
+defineExpose({ el });
 </script>
 
 <template>
   <div
+    ref="el"
     class="flex items-center justify-center"
     :class="size"
   >

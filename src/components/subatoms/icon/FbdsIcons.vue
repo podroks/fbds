@@ -14,7 +14,7 @@ const group = [
 <template>
   <div class="flex flex-col gap-6">
     <template
-      v-for="({prefix, label}) in group"
+      v-for="{ prefix, label } in group"
       :key="prefix"
     >
       <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
@@ -23,7 +23,7 @@ const group = [
 
       <div class="flex flex-wrap gap-4">
         <FbdsIcon
-          v-for="([key, icon]) in Object.entries(Icons).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
+          v-for="[key, icon] in Object.entries(Icons).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
           :key
           :icon
         />

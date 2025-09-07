@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import { type ComponentPublicInstance, computed, ref } from 'vue';
 
-const props = withDefaults(defineProps<{
-  label: string
-  background: string
-  foregrounds?: string[]
-}>(), {
-  foregrounds: () => [],
-});
+const props = withDefaults(
+  defineProps<{
+    label: string;
+    background: string;
+    foregrounds?: string[];
+  }>(),
+  {
+    foregrounds: () => [],
+  },
+);
 
 const preview = ref<Record<string, HTMLDivElement | null>>({});
 
 const hex = computed(() =>
   Object.fromEntries(
-    Object.entries(preview.value).map(([k, v]) => [
-      k,
-      v ? rgbToHex(getComputedStyle(v).backgroundColor) : '',
-    ]),
+    Object.entries(preview.value).map(([k, v]) => [k, v ? rgbToHex(getComputedStyle(v).backgroundColor) : '']),
   ),
 );
 
 const rgbToHex = (css: string) => {
   const m = css.match(/\d+(\.\d+)?/g)?.map(Number);
   if (!m) return '';
-  const [r, g, b, a] = m.map((n, i) => i < 3 ? clamp(n, 0, 255) : clamp(n, 0, 1));
+  const [r, g, b, a] = m.map((n, i) => (i < 3 ? clamp(n, 0, 255) : clamp(n, 0, 1)));
   const toHex = (n: number | undefined) => n?.toString(16).padStart(2, '0') ?? '';
   return `#${toHex(r)}${toHex(g)}${toHex(b)}${a !== undefined ? toHex(Math.round(a * 255)) : ''}`;
 };
@@ -31,7 +31,7 @@ const rgbToHex = (css: string) => {
 const clamp = (n: number, min: number, max: number) => Math.min(Math.max(n, min), max);
 
 const handlePreviewRef = (el: Element | ComponentPublicInstance | null, color: string) =>
-  preview.value[color] = el as HTMLDivElement | null;
+  (preview.value[color] = el as HTMLDivElement | null);
 
 const getClassWithoutPrefix = (color: string) => color.replace(/^bg-fbds-/, '');
 
@@ -42,13 +42,13 @@ const hexToRgb = (hex: string) => {
   return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
 };
 
-const relativeLuminance = ({ r, g, b }: { r: number, g: number, b: number }) => {
-  const f = (v: number) => (v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+const relativeLuminance = ({ r, g, b }: { r: number; g: number; b: number }) => {
+  const f = (v: number) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
   return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
 };
 
 const contrastRatio = (h1: string, h2: string) => {
-  const [l1, l2] = [h1, h2].map(c => relativeLuminance(hexToRgb(c)));
+  const [l1, l2] = [h1, h2].map((c) => relativeLuminance(hexToRgb(c)));
   return (Math.max(l1!, l2!) + 0.05) / (Math.min(l1!, l2!) + 0.05);
 };
 
@@ -77,9 +77,9 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
         <div class="relative h-10 mb-2 rounded-md shadow-md border border-fbds-border-low overflow-hidden">
           <div class="absolute h-full w-full -z-10 striped-diag" />
           <div
-            :ref="el => handlePreviewRef(el, color)"
+            :ref="(el) => handlePreviewRef(el, color)"
             class="w-full"
-            :class=" [color, isHexa(hex[color]) ? 'h-1/2' : 'h-full']"
+            :class="[color, isHexa(hex[color]) ? 'h-1/2' : 'h-full']"
           />
         </div>
 
@@ -95,9 +95,11 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
         <span
           v-if="index > 0 && hex[color] && hex[props.background]"
           class="self-center rounded-full px-2 text-center fbds-font-label-medium border"
-          :class="checkRGAA(hex[props.background], hex[color]).normalText
-            ? 'text-fbds-base-success border-fbds-base-success'
-            : 'text-fbds-base-alert border-fbds-base-alert'"
+          :class="
+            checkRGAA(hex[props.background], hex[color]).normalText
+              ? 'text-fbds-base-success border-fbds-base-success'
+              : 'text-fbds-base-alert border-fbds-base-alert'
+          "
         >
           {{ checkRGAA(hex[props.background], hex[color]).ratio }}
         </span>

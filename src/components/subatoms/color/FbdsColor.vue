@@ -4,17 +4,11 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
 
 <template>
   <div class="flex flex-col gap-6">
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
-      Base
-    </h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Base</h1>
     <FbdsColorCard
       label="Surface"
       background="bg-fbds-base-surface"
-      :foregrounds="[
-        'bg-fbds-on-base-surface-low',
-        'bg-fbds-on-base-surface-medium',
-        'bg-fbds-on-base-surface-high',
-      ]"
+      :foregrounds="['bg-fbds-on-base-surface-low', 'bg-fbds-on-base-surface-medium', 'bg-fbds-on-base-surface-high']"
     />
     <FbdsColorCard
       label="Primary"
@@ -47,9 +41,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-base-disable']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
-      Container
-    </h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Container</h1>
     <FbdsColorCard
       label="Primary"
       background="bg-fbds-container-primary"
@@ -96,9 +88,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-container-accent-4']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
-      Surface elevation
-    </h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Surface elevation</h1>
     <FbdsColorCard
       label="Neutral lowest"
       background="bg-fbds-surface-elevation-neutral-lowest"
@@ -141,9 +131,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       background="bg-fbds-surface-elevation-primary-highest"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
-      Border
-    </h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Border</h1>
     <FbdsColorCard
       label="Low"
       background="bg-fbds-border-low"
@@ -157,9 +145,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       background="bg-fbds-border-high"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">
-      Overlay
-    </h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Overlay</h1>
     <FbdsColorCard
       label="-"
       background="bg-fbds-overlay"
