@@ -8,14 +8,24 @@
   --color-fbds-on-base-surface-high: var(--fbds-on-base-surface-high);
   --color-fbds-state-layer-base-surface-hover: var(--fbds-state-layer-surface-hover);
   --color-fbds-state-layer-base-surface-press: var(--fbds-state-layer-surface-press);
-  --color-fbds-state-layer-on-base-surface-hover: var(--fbds-state-layer-on-surface-hover);
-  --color-fbds-state-layer-on-base-surface-press: var(--fbds-state-layer-on-surface-press);
+
+  --color-fbds-base-surface-inverted: var(--fbds-base-surface-inverted);
+  --color-fbds-on-base-surface-inverted-low: var(--fbds-on-base-surface-inverted-low);
+  --color-fbds-on-base-surface-inverted-medium: var(--fbds-on-base-surface-inverted-medium);
+  --color-fbds-on-base-surface-inverted-high: var(--fbds-on-base-surface-inverted-high);
+  --color-fbds-state-layer-base-surface-inverted-hover: var(
+    --fbds-state-layer-surface-inverted-hover
+  );
+  --color-fbds-state-layer-base-surface-inverted-press: var(
+    --fbds-state-layer-surface-inverted-press
+  );
 
   --color-fbds-surface-elevation-neutral-lowest: var(--fbds-surface-elevation-neutral-lowest);
   --color-fbds-surface-elevation-neutral-low: var(--fbds-surface-elevation-neutral-low);
   --color-fbds-surface-elevation-neutral-medium: var(--fbds-surface-elevation-neutral-medium);
   --color-fbds-surface-elevation-neutral-high: var(--fbds-surface-elevation-neutral-high);
   --color-fbds-surface-elevation-neutral-highest: var(--fbds-surface-elevation-neutral-highest);
+
   --color-fbds-surface-elevation-primary-lowest: var(--fbds-surface-elevation-primary-lowest);
   --color-fbds-surface-elevation-primary-low: var(--fbds-surface-elevation-primary-low);
   --color-fbds-surface-elevation-primary-medium: var(--fbds-surface-elevation-primary-medium);
@@ -116,4 +126,9 @@
   --color-fbds-border-high: var(--fbds-border-high);
 
   --color-fbds-overlay: var(--fbds-overlay);
+
+  --color-fbds-state-layer-low-hover: var(--fbds-state-layer-low-hover);
+  --color-fbds-state-layer-low-press: var(--fbds-state-layer-low-press);
+  --color-fbds-state-layer-high-hover: var(--fbds-state-layer-high-hover);
+  --color-fbds-state-layer-high-press: var(--fbds-state-layer-high-press);
 }

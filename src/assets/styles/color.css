@@ -5,14 +5,24 @@
   --fbds-on-base-surface-high: #0a0a0a;
   --fbds-state-layer-base-surface-hover: rgb(from var(--fbds-base-surface) r g b / 10%);
   --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
-  --fbds-state-layer-on-base-surface-hover: rgb(from var(--fbds-on-base-surface-high) r g b / 10%);
-  --fbds-state-layer-on-base-surface-press: rgb(from var(--fbds-on-base-surface-high) r g b / 16%);
+
+  --fbds-base-surface-inverted: #0a0a0a;
+  --fbds-on-base-surface-inverted-low: #565656;
+  --fbds-on-base-surface-inverted-medium: #757777;
+  --fbds-on-base-surface-inverted-high: #f7f7f7;
+  --fbds-state-layer-base-surface-inverted-hover: rgb(
+    from var(--fbds-base-surface-inverted) r g b / 10%
+  );
+  --fbds-state-layer-base-surface-inverted-press: rgb(
+    from var(--fbds-base-surface-inverted) r g b / 16%
+  );
 
   --fbds-surface-elevation-neutral-lowest: #f7f7f7;
   --fbds-surface-elevation-neutral-low: #ededed;
   --fbds-surface-elevation-neutral-medium: #e2e2e2;
   --fbds-surface-elevation-neutral-high: #d7d7d7;
   --fbds-surface-elevation-neutral-highest: #cccccc;
+
   --fbds-surface-elevation-primary-lowest: #f9fbff;
   --fbds-surface-elevation-primary-low: #f2f7ff;
   --fbds-surface-elevation-primary-medium: #e5efff;
@@ -99,6 +109,11 @@
   --fbds-overlay: #1111117f;
 
   --fbds-scrollbar: #7272727f;
+
+  --fbds-state-layer-low-hover: rgb(#fff / 10%);
+  --fbds-state-layer-low-press: rgb(#fff / 16%);
+  --fbds-state-layer-high-hover: rgb(#000 / 10%);
+  --fbds-state-layer-high-press: rgb(#000 / 16%);
 }
 
 [theme='dark'] {
@@ -108,14 +123,24 @@
   --fbds-on-base-surface-high: #fafafa;
   --fbds-state-layer-base-surface-hover: rgb(from var(--fbds-base-surface) r g b / 10%);
   --fbds-state-layer-base-surface-press: rgb(from var(--fbds-base-surface) r g b / 16%);
-  --fbds-state-layer-on-base-surface-hover: rgb(from var(--fbds-on-base-surface-high) r g b / 10%);
-  --fbds-state-layer-on-base-surface-press: rgb(from var(--fbds-on-base-surface-high) r g b / 16%);
+
+  --fbds-base-surface-inverted: #f7f7f7;
+  --fbds-on-base-surface-inverted-low: #454545;
+  --fbds-on-base-surface-inverted-medium: #2c2d2f;
+  --fbds-on-base-surface-inverted-high: #0a0a0a;
+  --fbds-state-layer-base-surface-inverted-hover: rgb(
+    from var(--fbds-base-surface-inverted) r g b / 10%
+  );
+  --fbds-state-layer-base-surface-inverted-press: rgb(
+    from var(--fbds-base-surface-inverted) r g b / 16%
+  );
 
   --fbds-surface-elevation-neutral-lowest: #111111;
   --fbds-surface-elevation-neutral-low: #181819;
   --fbds-surface-elevation-neutral-medium: #1f1f20;
   --fbds-surface-elevation-neutral-high: #262628;
   --fbds-surface-elevation-neutral-highest: #2c2d2f;
+
   --fbds-surface-elevation-primary-lowest: #0e1216;
   --fbds-surface-elevation-primary-low: #111923;
   --fbds-surface-elevation-primary-medium: #15212f;
@@ -202,4 +227,9 @@
   --fbds-overlay: #1111117f;
 
   --fbds-scrollbar: #8c8c8c7f;
+
+  --fbds-state-layer-low-hover: rgb(#000 / 10%);
+  --fbds-state-layer-low-press: rgb(#000 / 16%);
+  --fbds-state-layer-high-hover: rgb(#fff / 10%);
+  --fbds-state-layer-high-press: rgb(#fff / 16%);
 }
