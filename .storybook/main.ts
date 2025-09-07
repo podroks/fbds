@@ -9,5 +9,6 @@ const config: StorybookConfig = {
     measure: false,
     outline: false,
   },
+  staticDirs: ["../public"],
 }
 export default config
