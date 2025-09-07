@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
 };
 export default meta;
 
-const Template: StoryFn<typeof Button> = args => ({
+const Template: StoryFn<typeof Button> = (args) => ({
   components: { Button },
   setup() {
     return { args };
