@@ -1,4 +1,4 @@
-import type { Theme } from '@/constants/atoms/fbds-button';
+import type { Theme } from '@/constants/theme';
 
 export function getContrast(theme: Theme) {
   // Récupère la couleur CSS de la variable --color-fbds-${props.theme}
