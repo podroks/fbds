@@ -1,20 +1,21 @@
 @import 'tailwindcss';
 @import '@/assets/styles/color.css';
+@import '@/assets/styles/safeList.css';
 
 @theme static {
   --color-fbds-base-surface: var(--fbds-base-surface);
   --color-fbds-on-base-surface-low: var(--fbds-on-base-surface-low);
   --color-fbds-on-base-surface-medium: var(--fbds-on-base-surface-medium);
   --color-fbds-on-base-surface-high: var(--fbds-on-base-surface-high);
-  --color-fbds-state-layer-base-surface-hover: var(--fbds-state-layer-surface-hover);
-  --color-fbds-state-layer-base-surface-press: var(--fbds-state-layer-surface-press);
+  --color-fbds-state-layer-base-surface-hover: var(--fbds-state-layer-base-surface-hover);
+  --color-fbds-state-layer-base-surface-press: var(--fbds-state-layer-base-surface-press);
 
   --color-fbds-base-surface-inverted: var(--fbds-base-surface-inverted);
   --color-fbds-on-base-surface-inverted-low: var(--fbds-on-base-surface-inverted-low);
   --color-fbds-on-base-surface-inverted-medium: var(--fbds-on-base-surface-inverted-medium);
   --color-fbds-on-base-surface-inverted-high: var(--fbds-on-base-surface-inverted-high);
   --color-fbds-state-layer-base-surface-inverted-hover: var(
-    --fbds-state-layer-surface-inverted-hover
+    --fbds-state-layer-base-surface-inverted-hover
   );
   --color-fbds-state-layer-base-surface-inverted-press: var(
     --fbds-state-layer-surface-inverted-press
@@ -34,28 +35,28 @@
 
   --color-fbds-base-primary: var(--fbds-base-primary);
   --color-fbds-on-base-primary: var(--fbds-on-base-primary);
-  --color-fbds-state-layer-base-primary-hover: var(--fbds-state-layer-primary-hover);
-  --color-fbds-state-layer-base-primary-press: var(--fbds-state-layer-primary-press);
+  --color-fbds-state-layer-base-primary-hover: var(--fbds-state-layer-base-primary-hover);
+  --color-fbds-state-layer-base-primary-press: var(--fbds-state-layer-base-primary-press);
 
   --color-fbds-base-alert: var(--fbds-base-alert);
   --color-fbds-on-base-alert: var(--fbds-on-base-alert);
-  --color-fbds-state-layer-base-alert-hover: var(--fbds-state-layer-alert-hover);
-  --color-fbds-state-layer-base-alert-press: var(--fbds-state-layer-alert-press);
+  --color-fbds-state-layer-base-alert-hover: var(--fbds-state-layer-base-alert-hover);
+  --color-fbds-state-layer-base-alert-press: var(--fbds-state-layer-base-alert-press);
 
   --color-fbds-base-warning: var(--fbds-base-warning);
   --color-fbds-on-base-warning: var(--fbds-on-base-warning);
-  --color-fbds-state-layer-base-warning-hover: var(--fbds-state-layer-warning-hover);
-  --color-fbds-state-layer-base-warning-press: var(--fbds-state-layer-warning-press);
+  --color-fbds-state-layer-base-warning-hover: var(--fbds-state-layer-base-warning-hover);
+  --color-fbds-state-layer-base-warning-press: var(--fbds-state-layer-base-warning-press);
 
   --color-fbds-base-success: var(--fbds-base-success);
   --color-fbds-on-base-success: var(--fbds-on-base-success);
-  --color-fbds-state-layer-base-success-hover: var(--fbds-state-layer-success-hover);
-  --color-fbds-state-layer-base-success-press: var(--fbds-state-layer-success-press);
+  --color-fbds-state-layer-base-success-hover: var(--fbds-state-layer-base-success-hover);
+  --color-fbds-state-layer-base-success-press: var(--fbds-state-layer-base-success-press);
 
   --color-fbds-base-info: var(--fbds-base-info);
   --color-fbds-on-base-info: var(--fbds-on-base-info);
-  --color-fbds-state-layer-base-info-hover: var(--fbds-state-layer-info-hover);
-  --color-fbds-state-layer-base-info-press: var(--fbds-state-layer-info-press);
+  --color-fbds-state-layer-base-info-hover: var(--fbds-state-layer-base-info-hover);
+  --color-fbds-state-layer-base-info-press: var(--fbds-state-layer-base-info-press);
 
   --color-fbds-container-primary: var(--fbds-container-primary);
   --color-fbds-on-container-primary: var(--fbds-on-container-primary);

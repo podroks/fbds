@@ -1,8 +1,8 @@
 import type { App } from 'vue';
 
-import { fbdsFontAwesomePlugin } from '@/plugins/FbdsFontAwesomePlugin';
+import { fbdsFontAwesomePlugin } from '@/plugins/fbds-font-awesome.plugin';
 
-import { toKebabCase } from '@/utils/cases';
+import { toKebabCase } from '@/utils/case.util';
 
 import { components } from '@/components';
 

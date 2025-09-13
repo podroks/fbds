@@ -1,25 +1,17 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue';
 
+import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
 import { Positioning } from '@/constants/positioning';
 
 import { useFloating } from '@/composables/useFloating';
 
-const props = withDefaults(
-  defineProps<{
-    trigger: HTMLElement | { el: HTMLElement | null } | string | null;
-    container?: HTMLElement | { el: HTMLElement | null } | string | null;
-    positioning?: Positioning;
-    offset?: number;
-    containerOffset?: number;
-  }>(),
-  {
-    positioning: Positioning.Right,
-    container: null,
-    offset: 8,
-    containerOffset: 8,
-  },
-);
+const props = withDefaults(defineProps<TooltipProps>(), {
+  positioning: Positioning.Right,
+  container: null,
+  offset: 8,
+  containerOffset: 8,
+});
 
 defineSlots<{ default?(): unknown }>();
 

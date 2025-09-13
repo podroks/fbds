@@ -2,6 +2,4 @@ import '@/assets/styles/main.css';
 
 export * from './components';
 
-export { default as FbdsPlugin } from './plugins/FbdsPlugin';
-
-export * from './types';
+export { default as FbdsPlugin } from './plugins/fbds.plugin';

@@ -1,7 +1,7 @@
 import { setup } from '@storybook/vue3-vite';
-import type { Preview } from '@storybook/vue3'
+import type { Preview, StoryContext } from '@storybook/vue3'
 import { watch } from 'vue';
-import { fbdsFontAwesomePlugin } from '../src/plugins/FbdsFontAwesomePlugin';
+import { fbdsFontAwesomePlugin } from '../src/plugins/fbds-font-awesome.plugin';
 import '../src/assets/styles/main.css'
 import '../src/assets/styles/main.scss'
 import './preview.scss'
@@ -37,7 +37,7 @@ const preview: Preview = {
 }
 
 export const decorators = [
-  (story, context) => {
+  (story: () => any, context: StoryContext) => {
     if (!context.globals.theme && typeof window !== 'undefined') {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
