@@ -1,24 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Contrast } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
 import { Theme } from '@/constants/theme';
 
-import FbdsButton from '@/components/atoms/button/FbdsButton.vue';
+import FbdsTag from '@/components/atoms/tag/FbdsTag.vue';
 
 const meta = {
-  title: 'FBDS/Atomes/Button',
-  component: FbdsButton,
+  title: 'FBDS/Atomes/Tag',
+  component: FbdsTag,
   tags: ['!dev'],
   argTypes: {
-    contrast: {
-      control: 'select',
-      options: Object.values(Contrast),
-    },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
     label: {
       control: 'text',
     },
@@ -27,8 +18,17 @@ const meta = {
       options: Object.keys(Icon),
       mapping: Icon,
     },
-    disabled: {
+    rightIcon: {
+      control: 'select',
+      options: Object.keys(Icon),
+      mapping: Icon,
+    },
+    interactif: {
       control: 'boolean',
+    },
+    theme: {
+      control: 'select',
+      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
     },
     tooltip: {
       control: 'text',
@@ -38,20 +38,20 @@ const meta = {
     },
   },
   args: {
-    contrast: Contrast.Primary,
-    theme: Theme.BasePrimary,
-    label: 'Button',
+    label: 'libellé tag',
     icon: undefined,
-    disabled: false,
-    tooltip: 'Tooltip',
+    rightIcon: undefined,
+    interactif: false,
+    theme: Theme.BasePrimary,
+    tooltip: undefined,
     tooltipOptions: {},
   },
   render: (args) => ({
-    components: { FbdsButton },
+    components: { FbdsTag },
     setup: () => ({ args }),
-    template: '<FbdsButton v-bind="args"/>',
+    template: '<FbdsTag v-bind="args"/>',
   }),
-} satisfies Meta<typeof FbdsButton>;
+} satisfies Meta<typeof FbdsTag>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

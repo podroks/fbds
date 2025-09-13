@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
 
-import { Contrast, OnTheme, StateLayerDefault, StateLayerTheme, Theme } from '@/constants/atoms/fbds-button';
+import { Contrast } from '@/constants/atoms/fbds-button';
 import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
+import { OnTheme, StateLayerDefault, StateLayerTheme, Theme } from '@/constants/theme';
 
 import { useColorTheme } from '@/composables/useColorTheme';
 import { getContrast } from '@/utils/contrast.util';
