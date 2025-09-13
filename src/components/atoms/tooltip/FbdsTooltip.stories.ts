@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 
-import { Icons } from '@/constants/icons';
+import { Icon } from '@/constants/icon';
 import { Positioning } from '@/constants/positioning';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue'; // TODO: order subatomes => atomes . Ou pas .
@@ -33,12 +33,12 @@ const meta = {
     components: { FbdsIcon, FbdsTooltip },
     setup() {
       const trigger = ref(null);
-      return { args, Icons, trigger };
+      return { args, Icon, trigger };
     },
     template: `
       <div class="flex items-center justify-center">
         <div ref="trigger" class="inline-block p-2 bg-fbds-base-primary cursor-pointer rounded-sm">
-          <FbdsIcon :icon="Icons.fasHandPointer" size="size-6" class="text-fbds-on-base-primary"/>
+          <FbdsIcon :icon="Icon.fasHandPointer" size="size-6" class="text-fbds-on-base-primary"/>
         </div>
       </div>
       <FbdsTooltip v-bind="args" :trigger="trigger">

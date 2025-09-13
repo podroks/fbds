@@ -9,7 +9,7 @@ import {
 
 import FbdsIconFb from '@/components/subatoms/icon/custom/FbdsIconFb.vue';
 
-export const Icons = {
+export const Icon = {
   fabFigma,
   facFb: FbdsIconFb,
   farSquare,
@@ -18,3 +18,5 @@ export const Icons = {
   fasThumbsDown,
   fasThumbsUp,
 } as const;
+
+export type Icon = (typeof Icon)[keyof typeof Icon];

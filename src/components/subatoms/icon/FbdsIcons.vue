@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icons } from '@/constants/icons';
+import { Icon } from '@/constants/icon';
 
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
@@ -23,7 +23,7 @@ const group = [
 
       <div class="flex flex-wrap gap-4">
         <FbdsIcon
-          v-for="[key, icon] in Object.entries(Icons).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
+          v-for="[key, icon] in Object.entries(Icon).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
           :key
           :icon
         />

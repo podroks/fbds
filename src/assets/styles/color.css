@@ -110,10 +110,10 @@
 
   --fbds-scrollbar: #7272727f;
 
-  --fbds-state-layer-low-hover: rgb(#fff / 10%);
-  --fbds-state-layer-low-press: rgb(#fff / 16%);
-  --fbds-state-layer-high-hover: rgb(#000 / 10%);
-  --fbds-state-layer-high-press: rgb(#000 / 16%);
+  --fbds-state-layer-low-hover: rgb(from #fff r g b / 10%);
+  --fbds-state-layer-low-press: rgb(from #fff r g b / 16%);
+  --fbds-state-layer-high-hover: rgb(from #000 r g b / 10%);
+  --fbds-state-layer-high-press: rgb(from #000 r g b / 16%);
 }
 
 [theme='dark'] {
@@ -228,8 +228,8 @@
 
   --fbds-scrollbar: #8c8c8c7f;
 
-  --fbds-state-layer-low-hover: rgb(#000 / 10%);
-  --fbds-state-layer-low-press: rgb(#000 / 16%);
-  --fbds-state-layer-high-hover: rgb(#fff / 10%);
-  --fbds-state-layer-high-press: rgb(#fff / 16%);
+  --fbds-state-layer-low-hover: rgb(from #000 r g b / 10%);
+  --fbds-state-layer-low-press: rgb(from #000 r g b / 10%);
+  --fbds-state-layer-high-hover: rgb(from #fff r g b / 10%);
+  --fbds-state-layer-high-press: rgb(from #fff r g b / 10%);
 }
