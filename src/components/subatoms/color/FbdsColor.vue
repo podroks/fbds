@@ -3,7 +3,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 w-full">
     <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Base</h1>
     <FbdsColorCard
       label="Surface"

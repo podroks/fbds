@@ -12,7 +12,7 @@ const group = [
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 w-full">
     <template
       v-for="{ prefix, label } in group"
       :key="prefix"

@@ -108,14 +108,20 @@ body {
   box-shadow: var(--color-fbds-base-info) 0px -3px 0px 0px inset;
 }
 
-.sbdocs-preview :nth-child(2) > div:first-child {
+.sbdocs-preview > :nth-child(2) > div:first-child {
   border-top: solid 1px var(--color-fbds-border-low) !important;
 }
 
-.sbdocs-preview :nth-child(2) button {
+.sbdocs-preview > :nth-child(2) button {
   background-color: var(--color-fbds-surface-elevation-neutral-low) !important;
   color: var(--color-fbds-on-base-surface-medium) !important;
   border-color: var(--color-fbds-border-low) !important;
+}
+
+.innerZoomElementWrapper > div > div > div {
+  // width: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 /* -------------------------------- Controls -------------------------------- */
@@ -209,7 +215,7 @@ button[aria-label='Reset controls']:active {
           box-shadow: var(--color-fbds-border-low) 0px 0px 0px 1px inset !important;
         }
         & input[role='switch']:focus {
-          box-shadow: var(--color-fbds-base-info) 0px 0px 0px 1px inset !important;
+          box-shadow: var(--color-fbds-border-low) 0px 0px 0px 1px inset !important;
         }
         & input:not(:checked) ~ span:first-of-type {
           background-color: var(--color-fbds-surface-elevation-neutral-high) !important;
