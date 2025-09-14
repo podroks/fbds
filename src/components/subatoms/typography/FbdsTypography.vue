@@ -3,7 +3,7 @@ import FbdsTypographyCard from '@/components/subatoms/typography/FbdsTypographyC
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 w-full">
     <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Display</h1>
     <FbdsTypographyCard font="display-large" />
     <FbdsTypographyCard font="display-medium" />

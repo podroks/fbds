@@ -3,6 +3,8 @@ import { faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
 import {
   faHandPointer as fasHandPointer,
   faSquare as fasSquare,
+  faSquareCheck as fasSquareCheck,
+  faSquareMinus as fasSquareMinus,
   faThumbsDown as fasThumbsDown,
   faThumbsUp as fasThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +17,8 @@ export const Icon = {
   farSquare,
   fasHandPointer,
   fasSquare,
+  fasSquareCheck,
+  fasSquareMinus,
   fasThumbsDown,
   fasThumbsUp,
 } as const;
