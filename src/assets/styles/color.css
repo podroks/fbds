@@ -229,7 +229,7 @@
   --fbds-scrollbar: #8c8c8c7f;
 
   --fbds-state-layer-low-hover: rgb(from #000 r g b / 10%);
-  --fbds-state-layer-low-press: rgb(from #000 r g b / 10%);
+  --fbds-state-layer-low-press: rgb(from #000 r g b / 16%);
   --fbds-state-layer-high-hover: rgb(from #fff r g b / 10%);
-  --fbds-state-layer-high-press: rgb(from #fff r g b / 10%);
+  --fbds-state-layer-high-press: rgb(from #fff r g b / 16%);
 }
