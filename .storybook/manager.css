@@ -169,3 +169,8 @@ svg[type='story'] {
 [data-testid='tooltip'] button:hover {
   background: var(--fbds-state-layer-base-primary-hover) !important;
 }
+
+#sidebar-bottom-wrapper > div > div {
+  box-shadow: none !important;
+  border: none !important;
+}
