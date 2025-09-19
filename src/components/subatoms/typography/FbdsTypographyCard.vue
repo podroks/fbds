@@ -39,7 +39,10 @@ const fontProperties = computed<string>(() => {
         {{ fontWithoutPrefix }}
       </span>
     </div>
-    <aside class="basis-40 grow gap-2 flex flex-col overflow-hidden">
+    <aside
+      class="basis-40 grow gap-2 flex flex-col rounded-md"
+      :tabindex="1"
+    >
       <div
         ref="preview"
         class="rounded-md shadow-md border border-fbds-border-low overflow-hidden text-center"

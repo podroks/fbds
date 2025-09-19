@@ -1,0 +1,3 @@
+*:focus-visible {
+  @apply outline-2 outline-fbds-base-primary outline-offset-2;
+}

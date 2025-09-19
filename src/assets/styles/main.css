@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@/assets/styles/color.css';
+@import '@/assets/styles/accessibility.css';
 @import '@/assets/styles/safeList.css';
 
 @theme static {

@@ -72,7 +72,8 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
       <div
         v-for="(color, index) in [props.background, ...props.foregrounds]"
         :key="color"
-        class="basis-40 grow flex flex-col overflow-hidden"
+        class="basis-40 grow flex flex-col overflow-hidden rounded-md"
+        :tabindex="1"
       >
         <div class="relative h-10 mb-2 rounded-md shadow-md border border-fbds-border-low overflow-hidden">
           <div class="absolute h-full w-full -z-10 striped-diag" />
