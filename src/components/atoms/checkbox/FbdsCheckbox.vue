@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useTemplateRef } from 'vue';
+
+import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
 import { Icon } from '@/constants/icon';
 
+import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
 const checked = defineModel<boolean>('checked', { required: true });
@@ -10,13 +14,19 @@ const props = withDefaults(
     label?: string;
     undetermined?: boolean;
     disabled?: boolean;
+    tooltip?: TooltipProps['trigger'];
+    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
   }>(),
   {
     label: undefined,
     undetermined: false,
     disabled: false,
+    tooltip: undefined,
+    tooltipOptions: () => ({}),
   },
 );
+
+const trigger = useTemplateRef('trigger');
 
 function handleClick() {
   if (!props.disabled) {
@@ -27,6 +37,7 @@ function handleClick() {
 
 <template>
   <div
+    ref="trigger"
     class="flex flex-nowrap items-center gap-1 fbds-font-label-medium rounded-full"
     :class="disabled ? 'cursor-not-allowed text-fbds-on-base-disable' : 'cursor-pointer text-fbds-on-base-surface-high'"
     @click="handleClick"
@@ -71,5 +82,12 @@ function handleClick() {
     >
       {{ label }}
     </label>
+    <FbdsTooltip
+      v-if="tooltip"
+      :trigger
+      v-bind="tooltipOptions"
+    >
+      {{ tooltip }}
+    </FbdsTooltip>
   </div>
 </template>

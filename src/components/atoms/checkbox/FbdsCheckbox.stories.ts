@@ -23,6 +23,12 @@ const meta = {
     disabled: {
       control: 'boolean',
     },
+    tooltip: {
+      control: 'text',
+    },
+    tooltipOptions: {
+      control: 'object',
+    },
   },
   args: {
     checked: true,
@@ -30,6 +36,8 @@ const meta = {
     name: 'select',
     undetermined: false,
     disabled: false,
+    tooltip: 'Tooltip',
+    tooltipOptions: {},
   },
   render: (_) => {
     const [storyArgs, updateArgs] = useArgs();
