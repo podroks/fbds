@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
 
-import { Contrast } from '@/constants/atoms/fbds-button';
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
-import type { Icon } from '@/constants/icon';
+import { type ButtonProps, Contrast } from '@/constants/atoms/fbds-button';
 import { OnTheme, StateLayerDefault, StateLayerTheme, Theme } from '@/constants/theme';
 
 import { useColorTheme } from '@/composables/useColorTheme';
@@ -12,26 +10,15 @@ import { getContrast } from '@/utils/contrast.util';
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
-const props = withDefaults(
-  defineProps<{
-    contrast?: Contrast;
-    theme?: Exclude<Theme, 'base-disable'>;
-    label?: string;
-    icon?: Icon;
-    disabled?: boolean;
-    tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
-  }>(),
-  {
-    label: undefined,
-    icon: undefined,
-    contrast: Contrast.Primary,
-    theme: Theme.BasePrimary,
-    disabled: false,
-    tooltip: undefined,
-    tooltipOptions: () => ({}),
-  },
-);
+const props = withDefaults(defineProps<ButtonProps>(), {
+  label: undefined,
+  icon: undefined,
+  contrast: Contrast.Primary,
+  theme: Theme.BasePrimary,
+  disabled: false,
+  tooltip: undefined,
+  tooltipOptions: () => ({}),
+});
 
 const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
