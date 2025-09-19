@@ -85,7 +85,7 @@ function handleClick(event: MouseEvent) {
     @click="handleClick"
   >
     <div
-      class="relative z-1 flex flex-nowrap gap-2 py-2.5 px-3 rounded-[inherit]"
+      class="relative z-1 flex flex-nowrap gap-2 py-2.5 px-3 rounded-[inherit] fbds-state-layer"
       :class="stateLayerClass"
     >
       <FbdsIcon

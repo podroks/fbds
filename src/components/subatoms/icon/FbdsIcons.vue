@@ -26,6 +26,8 @@ const group = [
           v-for="[key, icon] in Object.entries(Icon).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
           :key
           :icon
+          class="rounded-xs"
+          :tabindex="1"
         />
       </div>
     </template>
