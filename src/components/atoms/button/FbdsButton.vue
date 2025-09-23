@@ -110,13 +110,13 @@ function handleClick(event: MouseEvent) {
     v-bind="componentProps"
     ref="trigger"
     class="fbds-font-label-large rounded-md group/button"
-    :class="[bgClass, textClass, outlineClass, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
+    :class="[bgClass, textClass, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
     :disabled
     @click="handleClick"
   >
     <div
       class="relative z-1 flex flex-nowrap gap-2 py-2.5 px-3 rounded-[inherit] fbds-state-layer"
-      :class="[stateLayerClass, !label && icon ? 'size-10' : 'py-2.5 px-3']"
+      :class="[stateLayerClass, outlineClass, !label && icon ? 'size-10' : 'py-2.5 px-3']"
     >
       <FbdsIcon
         v-if="icon"
@@ -125,6 +125,7 @@ function handleClick(event: MouseEvent) {
       {{ label }}
     </div>
     <FbdsTooltip
+      v-if="tooltip"
       :trigger
       v-bind="tooltipOptions"
     >
