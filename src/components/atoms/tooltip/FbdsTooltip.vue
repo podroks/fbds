@@ -74,7 +74,7 @@ function hideTooltip() {
     >
       <div
         v-if="tooltipVisible"
-        class="absolute top-0 left-0 h-full w-full pointer-events-none"
+        class="absolute top-0 left-0 h-full w-full pointer-events-none z-1000"
       >
         <div
           ref="tooltip"

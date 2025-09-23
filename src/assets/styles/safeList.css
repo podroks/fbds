@@ -23,3 +23,6 @@
 
 /* ---------------------------- Other state layer --------------------------- */
 @source inline("{group-{hover,active}/{button,tag}:,}bg-fbds-state-layer-{low,high}-{hover,press}");
+
+/* ------------------------------- line-clamp ------------------------------- */
+@source inline("line-clamp-{1..10..1}");
