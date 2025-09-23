@@ -43,7 +43,7 @@ function handleClick() {
   >
     <input
       class="absolute invisible pointer-events-none"
-      type="checkbox"
+      type="radio"
       :name
       :checked
     />
