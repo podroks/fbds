@@ -20,7 +20,7 @@ const props = withDefaults(
 );
 
 const truncateClass = computed(() => {
-  return `line-clamp-${Math.max(1, props.truncateAtLine)}`;
+  return `line-clamp-${props.truncateAtLine < 1 ? 'none' : props.truncateAtLine}`;
 });
 
 const textRef = ref<HTMLElement | null>(null);
