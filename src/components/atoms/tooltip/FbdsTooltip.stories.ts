@@ -38,7 +38,7 @@ const meta = {
     template: `
       <div class="flex items-center justify-center">
         <div ref="trigger" class="inline-block p-2 bg-fbds-base-primary cursor-pointer rounded-sm">
-          <FbdsIcon :icon="Icon.fasHandPointer" size="size-6" class="text-fbds-on-base-primary"/>
+          <FbdsIcon :icon="Icon.fasHandPointer" :size="6" class="text-fbds-on-base-primary"/>
         </div>
       </div>
       <FbdsTooltip v-bind="args" :trigger="trigger">

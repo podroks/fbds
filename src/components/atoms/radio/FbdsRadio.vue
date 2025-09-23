@@ -55,7 +55,7 @@ function handleClick() {
     >
       <FbdsIcon
         :icon="Icon.farCircle"
-        size="size-6"
+        :size="6"
       />
       <Transition
         enter-active-class="transition duration-150 ease-in-out"
@@ -68,7 +68,7 @@ function handleClick() {
         <FbdsIcon
           v-if="checked"
           :icon="Icon.fasCircleDot"
-          size="size-6"
+          :size="6"
           class="absolute top-1 left-1"
           :class="disabled ? 'text-fbds-on-base-disable' : 'text-fbds-base-primary'"
         />

@@ -98,7 +98,7 @@ function handleClick() {
       >
         <FbdsIcon
           :icon="checked ? icon : iconUnchecked"
-          size="size-5"
+          :size="5"
           :class="['transform transition-transform duration-150', checked ? 'translate-x-3' : 'translate-x-0']"
         />
       </div>

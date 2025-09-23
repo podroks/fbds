@@ -6,10 +6,12 @@ import type { Icon } from '@/constants/icon';
 const props = withDefaults(
   defineProps<{
     icon: Icon;
-    size?: `size-${number}`;
+    size?: number;
+    innerClass?: string;
   }>(),
   {
-    size: 'size-5',
+    size: 5,
+    innerClass: '',
   },
 );
 
@@ -25,17 +27,19 @@ defineExpose({ el });
   <div
     ref="el"
     class="flex items-center justify-center"
-    :class="size"
+    :class="`size-${size}`"
   >
     <component
       :is="icon"
       v-if="isVueComponent"
       class="size-4/5!"
+      :class="innerClass"
     />
     <font-awesome-icon
       v-else
       :icon
       class="size-4/5!"
+      :class="innerClass"
     />
   </div>
 </template>
