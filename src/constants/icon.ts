@@ -1,6 +1,7 @@
 import { faFigma as fabFigma } from '@fortawesome/free-brands-svg-icons';
-import { faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCircle as farCircle, faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
 import {
+  faCircleDot as fasCircleDot,
   faHandPointer as fasHandPointer,
   faSquare as fasSquare,
   faSquareCheck as fasSquareCheck,
@@ -14,7 +15,9 @@ import FbdsIconFb from '@/components/subatoms/icon/custom/FbdsIconFb.vue';
 export const Icon = {
   fabFigma,
   facFb: FbdsIconFb,
+  farCircle,
   farSquare,
+  fasCircleDot,
   fasHandPointer,
   fasSquare,
   fasSquareCheck,
