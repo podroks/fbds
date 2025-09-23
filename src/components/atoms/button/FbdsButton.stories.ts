@@ -30,6 +30,16 @@ const meta = {
     disabled: {
       control: 'boolean',
     },
+    href: {
+      control: 'text',
+    },
+    target: {
+      control: 'select',
+      options: ['_self', '_blank', '_parent', '_top'],
+    },
+    to: {
+      control: 'text',
+    },
     tooltip: {
       control: 'text',
     },
@@ -43,6 +53,9 @@ const meta = {
     label: 'Button',
     icon: undefined,
     disabled: false,
+    href: undefined,
+    target: '_blank',
+    to: undefined,
     tooltip: 'Tooltip',
     tooltipOptions: {},
   },

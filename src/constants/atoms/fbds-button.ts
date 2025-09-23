@@ -16,6 +16,9 @@ export type ButtonProps = {
   label?: string;
   icon?: Icon;
   disabled?: boolean;
+  href?: string;
+  target?: string;
+  to?: string;
   tooltip?: TooltipProps['trigger'];
   tooltipOptions?: Omit<TooltipProps, 'trigger'>;
 };

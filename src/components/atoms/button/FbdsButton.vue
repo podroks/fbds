@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue';
+import { computed, ref } from 'vue';
 
 import { type ButtonProps, Contrast } from '@/constants/atoms/fbds-button';
 import { OnTheme, StateLayerDefault, StateLayerTheme, Theme } from '@/constants/theme';
@@ -16,6 +16,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   contrast: Contrast.Primary,
   theme: Theme.BasePrimary,
   disabled: false,
+  href: undefined,
+  target: undefined,
+  to: undefined,
   tooltip: undefined,
   tooltipOptions: () => ({}),
 });
@@ -23,7 +26,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
 const { isDark } = useColorTheme();
-const trigger = useTemplateRef('trigger');
+const trigger = ref<HTMLElement | null>(null);
 
 const currentTheme = computed<Theme>(() => (props.disabled ? Theme.BaseDisable : props.theme));
 
@@ -69,6 +72,31 @@ const stateLayerClass = computed<string>(() => {
   return `group-hover/button:${stateLayerClass.hover} group-active/button:${stateLayerClass.press}`;
 });
 
+const component = computed(() => {
+  if (props.href) {
+    return 'a';
+  }
+  if (props.to) {
+    return 'router-link';
+  }
+  return 'button';
+});
+
+const componentProps = computed(() => {
+  if (props.href) {
+    return {
+      href: props.href,
+      target: props.target,
+    };
+  }
+  if (props.to) {
+    return {
+      to: props.to,
+    };
+  }
+  return {};
+});
+
 function handleClick(event: MouseEvent) {
   if (!props.disabled) {
     emit('click', event);
@@ -77,7 +105,9 @@ function handleClick(event: MouseEvent) {
 </script>
 
 <template>
-  <button
+  <component
+    :is="component"
+    v-bind="componentProps"
     ref="trigger"
     class="fbds-font-label-large rounded-md group/button"
     :class="[bgClass, textClass, outlineClass, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
@@ -86,7 +116,7 @@ function handleClick(event: MouseEvent) {
   >
     <div
       class="relative z-1 flex flex-nowrap gap-2 py-2.5 px-3 rounded-[inherit] fbds-state-layer"
-      :class="stateLayerClass"
+      :class="[stateLayerClass, !label && icon ? 'size-10' : 'py-2.5 px-3']"
     >
       <FbdsIcon
         v-if="icon"
@@ -95,11 +125,10 @@ function handleClick(event: MouseEvent) {
       {{ label }}
     </div>
     <FbdsTooltip
-      v-if="tooltip"
       :trigger
       v-bind="tooltipOptions"
     >
       {{ tooltip }}
     </FbdsTooltip>
-  </button>
+  </component>
 </template>
