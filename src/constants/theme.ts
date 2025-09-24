@@ -127,3 +127,14 @@ export const StateLayerDefault = {
 } as const;
 
 export type StateLayerDefault = (typeof StateLayerDefault)[keyof typeof StateLayerDefault];
+
+export const StatusTheme = {
+  Neutral: 'base-surface-inverted',
+  Success: 'base-success',
+  Alert: 'base-alert',
+  Warning: 'base-warning',
+  Info: 'base-info',
+  Disable: 'base-disable',
+} as const;
+
+export type StatusTheme = (typeof StatusTheme)[keyof typeof StatusTheme];
