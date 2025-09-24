@@ -105,7 +105,7 @@ $font-weights: (
 
 .fbds-font-label-large {
   font-family: var(--fbds-font-family);
-  font-weight: medium;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
@@ -121,7 +121,7 @@ $font-weights: (
 
 .fbds-font-label-medium {
   font-family: var(--fbds-font-family);
-  font-weight: medium;
+  font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;

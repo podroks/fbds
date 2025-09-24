@@ -10,7 +10,9 @@ const props = withDefaults(
     text: string;
     truncateAtLine?: number;
     tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+    tooltipOptions?: Omit<TooltipProps, 'trigger'> & {
+      trigger?: HTMLElement | { el: HTMLElement | null } | string | null;
+    };
   }>(),
   {
     truncateAtLine: 1,
