@@ -1,6 +1,8 @@
 import { faFigma as fabFigma } from '@fortawesome/free-brands-svg-icons';
 import { faCircle as farCircle, faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
 import {
+  faCaretDown as fasCaretDown,
+  faCaretUp as fasCaretUp,
   faCircle as fasCircle,
   faCircleCheck as fasCircleCheck,
   faCircleDot as fasCircleDot,
@@ -23,6 +25,8 @@ export const Icon = {
   facSpinner: FbdsIconSpinner,
   farCircle,
   farSquare,
+  fasCaretDown,
+  fasCaretUp,
   fasCircle,
   fasCircleCheck,
   fasCircleDot,

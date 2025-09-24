@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import type { Icon } from '@/constants/icon';
+import { Icon } from '@/constants/icon';
 import { StatusTheme, type Theme } from '@/constants/theme';
 
 import FbdsInput from '@/components/molecules/input/FbdsInput.vue';
@@ -110,7 +110,7 @@ function handleClick(event: MouseEvent) {
         </template>
         <label
           :for="id"
-          class="flex flex-nowrap items-center gap-3 px-3 grow h-full"
+          class="group/input-number relative flex flex-nowrap items-center gap-1 px-3 grow h-full"
           :class="cursorClass"
           @mousedown.prevent
           @click="handleClick"
@@ -118,6 +118,7 @@ function handleClick(event: MouseEvent) {
           <FbdsIcon
             v-if="prependIcon"
             :icon="prependIcon"
+            class="mr-2"
             :class="prependIconTextClass"
           />
           <input
@@ -134,6 +135,20 @@ function handleClick(event: MouseEvent) {
             :max
             @mousedown.stop
           />
+          <div class="flex flex-col group-hover/input-number:visible invisible">
+            <FbdsIcon
+              :icon="Icon.fasCaretUp"
+              class="text-fbds-on-base-surface-low cursor-pointer px-1 pt-1.5 box-content hover:text-fbds-on-base-surface-medium active:text-fbds-on-base-surface-high"
+              :size="3"
+              @click="input?.stepUp()"
+            />
+            <FbdsIcon
+              :icon="Icon.fasCaretDown"
+              class="text-fbds-on-base-surface-low cursor-pointer px-1 pb-1.5 box-content hover:text-fbds-on-base-surface-medium active:text-fbds-on-base-surface-high"
+              :size="3"
+              @click="input?.stepDown()"
+            />
+          </div>
         </label>
         <template v-if="slots.append">
           <hr
@@ -146,3 +161,16 @@ function handleClick(event: MouseEvent) {
     </div>
   </FbdsInput>
 </template>
+
+<style scoped>
+input[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+</style>
