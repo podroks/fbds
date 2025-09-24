@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Contrast } from '@/constants/atoms/fbds-button';
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
 import { Theme } from '@/constants/theme';
 
@@ -12,8 +12,8 @@ type Segment = {
   label?: string;
   icon?: Icon;
   disabled?: boolean;
-  tooltip?: TooltipProps['trigger'];
-  tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+  tooltip?: string;
+  tooltipOptions?: TooltipPropsOptionnal;
 };
 
 const selected = defineModel<Segment['id']>('selected', { default: undefined });

@@ -7,3 +7,11 @@ export type TooltipProps = {
   offset?: number;
   containerOffset?: number;
 };
+
+export type TooltipPropsOptionnal = {
+  trigger?: TooltipProps['trigger'];
+  container?: TooltipProps['container'];
+  positioning?: TooltipProps['positioning'];
+  offset?: TooltipProps['offset'];
+  containerOffset?: TooltipProps['containerOffset'];
+};

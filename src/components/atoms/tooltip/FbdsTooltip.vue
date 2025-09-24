@@ -7,7 +7,7 @@ import { Positioning } from '@/constants/positioning';
 import { useFloating } from '@/composables/useFloating';
 
 const props = withDefaults(defineProps<TooltipProps>(), {
-  positioning: Positioning.Right,
+  positioning: Positioning.Top,
   container: null,
   offset: 8,
   containerOffset: 8,

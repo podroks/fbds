@@ -2,7 +2,6 @@
 import { computed, type CSSProperties, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 import type { Tab } from '@/constants/atoms/fbds-tabs';
-import { Positioning } from '@/constants/positioning';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -141,17 +140,13 @@ onBeforeUnmount(() => {
             :text="tab.label"
             :tooltip-options="{
               ...(tab.tooltipOptions ?? {}),
-              positioning: tab.tooltipOptions?.positioning ?? Positioning.Bottom,
               trigger: tab.tooltipOptions?.trigger ?? tabRefs[i],
             }"
           />
           <FbdsTooltip
             v-if="tab.tooltip"
             :trigger="tab.tooltipOptions?.trigger ?? tabRefs[i]!"
-            v-bind="{
-              ...(tab.tooltipOptions ?? {}),
-              positioning: tab.tooltipOptions?.positioning ?? Positioning.Bottom,
-            }"
+            v-bind="tab.tooltipOptions"
           >
             {{ tab.tooltip }}
           </FbdsTooltip>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 
@@ -9,14 +9,10 @@ const props = withDefaults(
   defineProps<{
     text: string;
     truncateAtLine?: number;
-    tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'> & {
-      trigger?: HTMLElement | { el: HTMLElement | null } | string | null;
-    };
+    tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     truncateAtLine: 1,
-    tooltip: undefined,
     tooltipOptions: () => ({}),
   },
 );

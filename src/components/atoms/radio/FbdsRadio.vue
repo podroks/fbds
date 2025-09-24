@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue';
 
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import { Icon } from '@/constants/icon';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
@@ -13,8 +13,8 @@ const props = withDefaults(
     name: string;
     label?: string;
     disabled?: boolean;
-    tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+    tooltip?: string;
+    tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     label: undefined,

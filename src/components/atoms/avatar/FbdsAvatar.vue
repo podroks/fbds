@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import { OnTheme, Theme } from '@/constants/theme';
 
 import { getContrastOfHex } from '@/utils/contrast.util';
@@ -15,8 +15,8 @@ const props = withDefaults(
     color?: string;
     src?: string;
     alt?: string;
-    tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+    tooltip?: string;
+    tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     theme: Theme.BasePrimary,

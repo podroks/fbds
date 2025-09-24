@@ -1,4 +1,4 @@
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
 import type { Theme } from '@/constants/theme';
 
@@ -19,6 +19,6 @@ export type ButtonProps = {
   href?: string;
   target?: string;
   to?: string;
-  tooltip?: TooltipProps['trigger'];
-  tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+  tooltip?: string;
+  tooltipOptions?: TooltipPropsOptionnal;
 };

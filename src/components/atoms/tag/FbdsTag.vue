@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
 
-import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
+import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
 import { OnTheme, StateLayerDefault, Theme } from '@/constants/theme';
 
@@ -18,8 +18,8 @@ const props = withDefaults(
     rightIcon?: Icon;
     interactif?: boolean;
     theme?: Exclude<Theme, 'base-disable'>;
-    tooltip?: TooltipProps['trigger'];
-    tooltipOptions?: Omit<TooltipProps, 'trigger'>;
+    tooltip?: string;
+    tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     icon: undefined,

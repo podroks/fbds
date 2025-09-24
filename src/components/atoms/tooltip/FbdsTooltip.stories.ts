@@ -55,7 +55,7 @@ export const Default: Story = {
   args: {
     trigger: null,
     container: null,
-    positioning: Positioning.TopRight,
+    positioning: Positioning.Top,
     offset: 8,
     containerOffset: 8,
   },
