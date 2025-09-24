@@ -7,7 +7,7 @@ import { StatusTheme, type Theme } from '@/constants/theme';
 import FbdsInput from '@/components/molecules/input/FbdsInput.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
-const value = defineModel<string>('value', { default: '' });
+const value = defineModel<number | undefined>('value', { default: undefined });
 
 const props = withDefaults(
   defineProps<{
@@ -19,20 +19,22 @@ const props = withDefaults(
       value?: string;
       theme?: StatusTheme;
     };
+    step?: number;
+    min?: number;
+    max?: number;
     disabled?: boolean;
     prependIcon?: Icon;
     prependIconTheme?: Exclude<Theme, 'base-disable'>;
-    appendIcon?: Icon;
-    appendIconTheme?: Exclude<Theme, 'base-disable'>;
   }>(),
   {
     placeholder: '',
     status: undefined,
+    step: 1,
+    min: undefined,
+    max: undefined,
     disabled: false,
     prependIcon: undefined,
     prependIconTheme: undefined,
-    appendIcon: undefined,
-    appendIconTheme: undefined,
   },
 );
 
@@ -76,13 +78,6 @@ const prependIconTextClass = computed<string | undefined>(() => {
     return 'text-fbds-on-base-disable';
   }
   return props.prependIconTheme ? `text-fbds-${props.prependIconTheme}` : undefined;
-});
-
-const appendIconTextClass = computed<string | undefined>(() => {
-  if (props.disabled) {
-    return 'text-fbds-on-base-disable';
-  }
-  return props.appendIconTheme ? `text-fbds-${props.appendIconTheme}` : undefined;
 });
 
 function handleClick(event: MouseEvent) {
@@ -129,17 +124,15 @@ function handleClick(event: MouseEvent) {
             :id
             ref="input"
             v-model="value"
-            type="text"
+            type="number"
             class="grow focus-visible:outline-none w-10"
             :class="[placeholderClass, cursorClass]"
             :placeholder
             :disabled
+            :step
+            :min
+            :max
             @mousedown.stop
-          />
-          <FbdsIcon
-            v-if="appendIcon"
-            :icon="appendIcon"
-            :class="appendIconTextClass"
           />
         </label>
         <template v-if="slots.append">
