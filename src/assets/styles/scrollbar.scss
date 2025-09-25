@@ -19,6 +19,7 @@
   }
   &::-webkit-scrollbar-thumb:hover {
     border-width: 1.5px;
+    cursor: default;
   }
 
   &.small {
