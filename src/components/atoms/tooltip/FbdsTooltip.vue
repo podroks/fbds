@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   container: null,
   offset: 8,
   containerOffset: 8,
+  alwaysShow: false,
+  class: '',
 });
 
 defineSlots<{ default?(): unknown }>();
@@ -34,7 +36,7 @@ const tooltipVisible = ref<boolean>(false);
 watch(
   () => triggerEl.value,
   (el, _, onCleanup) => {
-    if (!el) return;
+    if (!el || props.alwaysShow) return;
 
     el.addEventListener('mouseenter', showTooltip);
     el.addEventListener('mouseleave', hideTooltip);
@@ -60,6 +62,10 @@ function showTooltip() {
 function hideTooltip() {
   tooltipVisible.value = false;
 }
+
+defineExpose({
+  updatePosition: updateAllRect,
+});
 </script>
 
 <template>
@@ -73,12 +79,13 @@ function hideTooltip() {
       leave-active-class="transition-opacity delay-0 duration-150"
     >
       <div
-        v-if="tooltipVisible"
+        v-if="alwaysShow || tooltipVisible"
         class="absolute top-0 left-0 h-full w-full pointer-events-none z-1000"
       >
         <div
           ref="tooltip"
           class="absolute bg-fbds-base-surface-inverted text-fbds-on-base-surface-inverted-high rounded-sm p-2 fbds-font-label-large overflow-hidden break-words"
+          :class="props.class"
           :style="{ top, left, width, height, maxHeight, maxWidth }"
         >
           <slot />
