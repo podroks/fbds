@@ -1,8 +1,15 @@
 import { computed, ref, type Ref, watch } from 'vue';
 
-import { Positioning, PositioningFull } from '@/constants/positioning';
+import { Positioning, PrimaryPositioning, SecondaryPositioning } from '@/constants/positioning';
 
 import { useBoundingRectObserver } from '@/composables/useBoundingRectObserver';
+
+const flipMap: Record<PrimaryPositioning, PrimaryPositioning> = {
+  [PrimaryPositioning.Top]: PrimaryPositioning.Bottom,
+  [PrimaryPositioning.Bottom]: PrimaryPositioning.Top,
+  [PrimaryPositioning.Left]: PrimaryPositioning.Right,
+  [PrimaryPositioning.Right]: PrimaryPositioning.Left,
+} as Record<PrimaryPositioning, PrimaryPositioning>;
 
 export function useFloating(
   floating: Ref<HTMLElement | { el: HTMLElement | null } | string | null>,
@@ -77,121 +84,136 @@ export function useFloating(
   }
 
   /* ----------------------------- Positioning ----------------------------- */
-  const adjustedPositioning = computed(() => {
+  function startWith(pos: Positioning, prefix: SecondaryPositioning) {
+    return pos.startsWith(prefix);
+  }
+
+  function endWith(pos: Positioning, suffix: SecondaryPositioning) {
+    return pos.includes('-') && pos.endsWith(suffix);
+  }
+
+  function parsePositioning(position: Positioning): [PrimaryPositioning, SecondaryPositioning | null] {
+    const primary = position.split('-')[0] as PrimaryPositioning;
+    const secondary = position.includes('-') ? (position.split('-')[1] as SecondaryPositioning) : null;
+    return [primary, secondary];
+  }
+
+  function concatPositioning(primary: PrimaryPositioning, secondary: SecondaryPositioning | null): Positioning {
+    return (secondary ? `${primary}-${secondary}` : primary) as Positioning;
+  }
+
+  function flipPrimary(position: Positioning): Positioning {
+    const [primary, secondary] = parsePositioning(position);
+    const flipped = flipMap[primary];
+    return concatPositioning(flipped, secondary);
+  }
+
+  function flipSecondary(position: Positioning): Positioning {
+    const [primary, secondary] = parsePositioning(position);
+    if (secondary && secondary !== SecondaryPositioning.Full) {
+      const flipped = flipMap[secondary];
+      return concatPositioning(primary, flipped);
+    }
+    return position;
+  }
+
+  const adjustedPositioning = computed<Positioning>(() => {
     if (!triggerRect.value || !floatingRect.value || !containerRect.value) {
       return positioning.value;
     }
 
-    const cLeft = Math.max(containerRect.value.left, 0) + containerOffset.value;
-    const cRight = Math.min(containerRect.value.right, window.innerWidth) - containerOffset.value;
-    const cTop = Math.max(containerRect.value.top, 0) + containerOffset.value;
-    const cBottom = Math.min(containerRect.value.bottom, window.innerHeight) - containerOffset.value;
+    // === Container bounds ajustés ===
+    const offset = containerOffset.value;
+    const cLeft = Math.max(containerRect.value.left, 0) + offset;
+    const cRight = Math.min(containerRect.value.right, window.innerWidth) - offset;
+    const cTop = Math.max(containerRect.value.top, 0) + offset;
+    const cBottom = Math.min(containerRect.value.bottom, window.innerHeight) - offset;
+
+    // === Dimensions des éléments ===
     const { x: tX, y: tY, width: tW, height: tH } = triggerRect.value;
-    const fW = floatingEl.value?.scrollWidth ?? floatingRect.value.width;
+    const fW = Math.max(floatingEl.value?.scrollWidth ?? 0, floatingRect.value.width);
     const fH = floatingEl.value?.scrollHeight ?? floatingRect.value.height;
+    const triggerGap = triggerOffset.value;
 
-    function fits(position: Positioning) {
-      let top = 0,
-        left = 0;
-      if (position.startsWith(Positioning.Top)) {
-        top = tY - fH - triggerOffset.value;
-        left = tX + tW / 2 - fW / 2;
-      } else if (position.startsWith(Positioning.Bottom)) {
-        top = tY + tH + triggerOffset.value;
-        left = tX + tW / 2 - fW / 2;
-      } else if (position.startsWith(Positioning.Left)) {
-        top = tY + tH / 2 - fH / 2;
-        left = tX - fW - triggerOffset.value;
-      } else if (position.startsWith(Positioning.Right)) {
-        top = tY + tH / 2 - fH / 2;
-        left = tX + tW + triggerOffset.value;
-      } else {
-        // Default: center
-        top = tY + tH / 2 - fH / 2;
-        left = tX + tW / 2 - fW / 2;
-      }
+    // === Position initiale ===
+    let [primary, secondary] = parsePositioning(positioning.value);
 
-      if (position.startsWith(Positioning.Top) || position.startsWith(Positioning.Bottom)) {
-        // Retourne le pourcentage de fit vertical (0 à 1)
-        const visibleTop = Math.max(top, cTop);
-        const visibleBottom = Math.min(top + fH, cBottom);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        return visibleHeight / fH;
-      }
-      // Retourne le pourcentage de fit horizontal (0 à 1)
-      const visibleLeft = Math.max(left, cLeft);
-      const visibleRight = Math.min(left + fW, cRight);
-      const visibleWidth = Math.max(0, visibleRight - visibleLeft);
-      return visibleWidth / fW;
+    // === Ajustement du secondaire selon la visibilité dans le conteneur ===
+    const isVert = (p: PrimaryPositioning | SecondaryPositioning) => p === Positioning.Top || p === Positioning.Bottom;
+    const isHoriz = (p: PrimaryPositioning | SecondaryPositioning) => p === Positioning.Left || p === Positioning.Right;
+
+    if (cBottom < tY && isVert(primary)) primary = PrimaryPositioning.Top;
+    else if (cTop > tY + tH && isVert(primary)) primary = PrimaryPositioning.Bottom;
+    else if (cRight < tX && isHoriz(primary)) primary = PrimaryPositioning.Left;
+    else if (cLeft > tX + tW && isHoriz(primary)) primary = PrimaryPositioning.Right;
+
+    if (secondary) {
+      if (cBottom < tY && isVert(secondary)) secondary = SecondaryPositioning.Bottom;
+      else if (cTop > tY + tH && isVert(secondary)) secondary = SecondaryPositioning.Top;
+      else if (cRight < tX && isHoriz(secondary)) secondary = SecondaryPositioning.Right;
+      else if (cLeft > tX + tW && isHoriz(secondary)) secondary = SecondaryPositioning.Left;
     }
 
-    const subPoisitionning = positioning.value.includes('-') ? `-${positioning.value.split('-')[1]}` : '';
-    // Container plus haut que le trigger
-    if (
-      cBottom < tY &&
-      (positioning.value.startsWith(Positioning.Top) || positioning.value.startsWith(Positioning.Bottom))
-    ) {
-      return Positioning.Top + subPoisitionning;
+    const tmpPositioning = concatPositioning(primary, secondary);
+
+    // === Fonction d’évaluation de fit (0 à 1) ===
+    function fits(position: Positioning): [number, number] {
+      // Position de base centrée
+      let top = tY + tH / 2 - fH / 2;
+      let left = tX + tW / 2 - fW / 2;
+
+      // Ajustement selon la direction primaire
+      if (startWith(position, Positioning.Top)) top = tY - fH - triggerGap;
+      else if (startWith(position, Positioning.Bottom)) top = tY + tH + triggerGap;
+      else if (startWith(position, Positioning.Left)) left = tX - fW - triggerGap;
+      else if (startWith(position, Positioning.Right)) left = tX + tW + triggerGap;
+
+      // Ajustement selon l’alignement secondaire
+      if (endWith(position, Positioning.Left)) left = tX;
+      else if (endWith(position, Positioning.Right)) left = tX + tW - fW;
+      else if (endWith(position, Positioning.Top)) top = tY;
+      else if (endWith(position, Positioning.Bottom)) top = tY + tH - fH;
+
+      // Calcul de la partie visible
+      const visibleHeight = Math.max(0, Math.min(top + fH, cBottom) - Math.max(top, cTop));
+      const visibleWidth = Math.max(0, Math.min(left + fW, cRight) - Math.max(left, cLeft));
+
+      const fitV = visibleHeight / fH;
+      const fitH = visibleWidth / fW;
+
+      const fitPrimary = startWith(position, Positioning.Top) || startWith(position, Positioning.Bottom) ? fitV : fitH;
+      const fitSecondary =
+        endWith(position, Positioning.Top) || endWith(position, Positioning.Bottom)
+          ? fitV
+          : endWith(position, Positioning.Left) || endWith(position, Positioning.Right)
+            ? fitH
+            : 1;
+
+      return [fitPrimary, fitSecondary];
     }
 
-    // Container plus bas que le trigger
-    if (
-      cTop > tY + tH &&
-      (positioning.value.startsWith(Positioning.Top) || positioning.value.startsWith(Positioning.Bottom))
-    ) {
-      return Positioning.Bottom + subPoisitionning;
-    }
+    // === Ajustements dynamiques ===
+    const [fitPrimary, fitSecondary] = fits(tmpPositioning);
 
-    // Container plus a gauche que le trigger
-    if (
-      cRight < tX &&
-      (positioning.value.startsWith(Positioning.Left) || positioning.value.startsWith(Positioning.Right))
-    ) {
-      return Positioning.Left + subPoisitionning;
-    }
-
-    // Container plus a droite que le trigger
-    if (
-      cLeft > tX + tW &&
-      (positioning.value.startsWith(Positioning.Left) || positioning.value.startsWith(Positioning.Right))
-    ) {
-      return Positioning.Right + subPoisitionning;
-    }
-
-    const defaultFit = fits(positioning.value);
-    if (defaultFit === 1) {
-      return positioning.value;
-    }
-
-    const flipMap: Record<Positioning, Positioning> = {
-      [Positioning.Top]: Positioning.Bottom,
-      [Positioning.TopFull]: Positioning.BottomFull,
-      [Positioning.TopLeft]: Positioning.BottomLeft,
-      [Positioning.TopRight]: Positioning.BottomRight,
-      [Positioning.Bottom]: Positioning.Top,
-      [Positioning.BottomFull]: Positioning.TopFull,
-      [Positioning.BottomLeft]: Positioning.TopLeft,
-      [Positioning.BottomRight]: Positioning.TopRight,
-      [Positioning.Left]: Positioning.Right,
-      [Positioning.LeftFull]: Positioning.RightFull,
-      [Positioning.LeftTop]: Positioning.RightTop,
-      [Positioning.LeftBottom]: Positioning.RightBottom,
-      [Positioning.Right]: Positioning.Left,
-      [Positioning.RightFull]: Positioning.LeftFull,
-      [Positioning.RightTop]: Positioning.LeftTop,
-      [Positioning.RightBottom]: Positioning.LeftBottom,
-    } as Record<string, Positioning>;
-
-    const flipped = flipMap[positioning.value as Positioning];
-    if (flipped) {
-      const adjustedFit = fits(flipped);
-      if (adjustedFit > defaultFit) {
-        return flipped;
+    // Flip primaire si nécessaire
+    if (fitPrimary < 1) {
+      const flipped = flipPrimary(tmpPositioning);
+      if (flipped !== tmpPositioning) {
+        const [newFit] = fits(flipped);
+        if (newFit > fitPrimary) [primary] = parsePositioning(flipped);
       }
     }
 
-    // Fallback: return original
-    return positioning.value;
+    // Flip secondaire si nécessaire
+    if (fitSecondary < 1) {
+      const flipped = flipSecondary(tmpPositioning);
+      if (flipped !== tmpPositioning) {
+        const [, newFit] = fits(flipped);
+        if (newFit > fitSecondary) [, secondary] = parsePositioning(flipped);
+      }
+    }
+
+    return concatPositioning(primary, secondary);
   });
 
   const maxWidth = computed<`${number}px` | 'unset'>(() => {
@@ -203,24 +225,24 @@ export function useFloating(
     const { x: tX, width: tW } = triggerRect.value;
 
     if (
-      adjustedPositioning.value.startsWith(Positioning.Top) ||
-      adjustedPositioning.value.startsWith(Positioning.Bottom)
+      startWith(adjustedPositioning.value, Positioning.Top) ||
+      startWith(adjustedPositioning.value, Positioning.Bottom)
     ) {
-      if (adjustedPositioning.value.endsWith(Positioning.Left)) {
-        return `${cW - tX - containerOffset.value}px`;
+      if (endWith(adjustedPositioning.value, Positioning.Left)) {
+        return `${Math.max(0, Math.min(cW - containerOffset.value * 2, cW + cX - tX - containerOffset.value))}px`;
       }
-      if (adjustedPositioning.value.endsWith(Positioning.Right)) {
-        return `${tX + tW - cX - containerOffset.value}px`;
+      if (endWith(adjustedPositioning.value, Positioning.Right)) {
+        return `${Math.max(0, Math.min(cW - containerOffset.value * 2, tX + tW - cX - containerOffset.value))}px`;
       }
-      return `${cW - 2 * containerOffset.value}px`;
+      return `${Math.max(0, cW - 2 * containerOffset.value)}px`;
     }
 
-    if (adjustedPositioning.value.startsWith(Positioning.Left)) {
-      return `${Math.min(cW, tX - cX) - 2 * containerOffset.value}px`;
+    if (startWith(adjustedPositioning.value, Positioning.Left)) {
+      return `${Math.max(0, Math.min(cW, tX - cX) - 2 * containerOffset.value)}px`;
     }
 
-    if (adjustedPositioning.value.startsWith(Positioning.Right)) {
-      return `${Math.min(cW, cX + cW - tX - tW) - 2 * containerOffset.value}px`;
+    if (startWith(adjustedPositioning.value, Positioning.Right)) {
+      return `${Math.max(0, Math.min(cW, cX + cW - tX - tW) - 2 * containerOffset.value)}px`;
     }
 
     return 'unset';
@@ -235,24 +257,24 @@ export function useFloating(
     const { y: tY, height: tH } = triggerRect.value;
 
     if (
-      adjustedPositioning.value.startsWith(Positioning.Left) ||
-      adjustedPositioning.value.startsWith(Positioning.Right)
+      startWith(adjustedPositioning.value, Positioning.Left) ||
+      startWith(adjustedPositioning.value, Positioning.Right)
     ) {
-      if (adjustedPositioning.value.endsWith(Positioning.Top)) {
-        return `${cH - tY - containerOffset.value}px`;
+      if (endWith(adjustedPositioning.value, Positioning.Top)) {
+        return `${Math.max(0, Math.min(cH - containerOffset.value * 2, cH + cY - tY - containerOffset.value))}px`;
       }
-      if (adjustedPositioning.value.endsWith(Positioning.Bottom)) {
-        return `${tY + tH - cY - containerOffset.value}px`;
+      if (endWith(adjustedPositioning.value, Positioning.Bottom)) {
+        return `${Math.max(0, Math.min(cH - containerOffset.value * 2, tY + tH - cY - containerOffset.value))}px`;
       }
-      return `${cH - 2 * containerOffset.value}px`;
+      return `${Math.max(0, cH - 2 * containerOffset.value)}px`;
     }
 
-    if (adjustedPositioning.value.startsWith(Positioning.Top)) {
-      return `${Math.min(cH, tY - cY) - 2 * containerOffset.value}px`;
+    if (startWith(adjustedPositioning.value, Positioning.Top)) {
+      return `${Math.max(0, Math.min(cH, tY - cY) - 2 * containerOffset.value)}px`;
     }
 
-    if (adjustedPositioning.value.startsWith(Positioning.Bottom)) {
-      return `${Math.min(cH, cY + cH - tY - tH) - 2 * containerOffset.value}px`;
+    if (startWith(adjustedPositioning.value, Positioning.Bottom)) {
+      return `${Math.max(0, Math.min(cH, cY + cH - tY - tH) - 2 * containerOffset.value)}px`;
     }
 
     return 'unset';
@@ -264,9 +286,9 @@ export function useFloating(
     }
 
     if (
-      adjustedPositioning.value.endsWith(PositioningFull) &&
-      (adjustedPositioning.value.startsWith(Positioning.Top) ||
-        adjustedPositioning.value.startsWith(Positioning.Bottom))
+      endWith(adjustedPositioning.value, SecondaryPositioning.Full) &&
+      (startWith(adjustedPositioning.value, Positioning.Top) ||
+        startWith(adjustedPositioning.value, Positioning.Bottom))
     ) {
       return `${triggerRect.value.width}px`;
     }
@@ -279,9 +301,9 @@ export function useFloating(
     }
 
     if (
-      adjustedPositioning.value.endsWith(PositioningFull) &&
-      (adjustedPositioning.value.startsWith(Positioning.Left) ||
-        adjustedPositioning.value.startsWith(Positioning.Right))
+      endWith(adjustedPositioning.value, SecondaryPositioning.Full) &&
+      (startWith(adjustedPositioning.value, Positioning.Left) ||
+        startWith(adjustedPositioning.value, Positioning.Right))
     ) {
       return `${triggerRect.value.height}px`;
     }
@@ -295,16 +317,16 @@ export function useFloating(
 
     let t = 0;
     // Top positioning
-    if (adjustedPositioning.value.startsWith(Positioning.Top)) {
+    if (startWith(adjustedPositioning.value, Positioning.Top)) {
       t = triggerRect.value.y - floatingRect.value.height - triggerOffset.value;
-    } else if (adjustedPositioning.value.startsWith(Positioning.Bottom)) {
+    } else if (startWith(adjustedPositioning.value, Positioning.Bottom)) {
       t = triggerRect.value.y + triggerRect.value.height + triggerOffset.value;
     } else if (
-      adjustedPositioning.value.endsWith(Positioning.Top) ||
-      adjustedPositioning.value.endsWith(PositioningFull)
+      endWith(adjustedPositioning.value, Positioning.Top) ||
+      endWith(adjustedPositioning.value, SecondaryPositioning.Full)
     ) {
       t = triggerRect.value.y;
-    } else if (adjustedPositioning.value.endsWith(Positioning.Bottom)) {
+    } else if (endWith(adjustedPositioning.value, Positioning.Bottom)) {
       t = triggerRect.value.y + triggerRect.value.height - floatingRect.value.height;
     } else {
       t = triggerRect.value.y + triggerRect.value.height / 2 - floatingRect.value.height / 2;
@@ -323,16 +345,16 @@ export function useFloating(
     }
 
     let l = 0;
-    if (adjustedPositioning.value.startsWith(Positioning.Left)) {
+    if (startWith(adjustedPositioning.value, Positioning.Left)) {
       l = triggerRect.value.x - floatingRect.value.width - triggerOffset.value;
-    } else if (adjustedPositioning.value.startsWith(Positioning.Right)) {
+    } else if (startWith(adjustedPositioning.value, Positioning.Right)) {
       l = triggerRect.value.x + triggerRect.value.width + triggerOffset.value;
     } else if (
-      adjustedPositioning.value.endsWith(Positioning.Left) ||
-      adjustedPositioning.value.endsWith(PositioningFull)
+      endWith(adjustedPositioning.value, Positioning.Left) ||
+      endWith(adjustedPositioning.value, SecondaryPositioning.Full)
     ) {
       l = triggerRect.value.x;
-    } else if (adjustedPositioning.value.endsWith(Positioning.Right)) {
+    } else if (endWith(adjustedPositioning.value, Positioning.Right)) {
       l = triggerRect.value.x + triggerRect.value.width - floatingRect.value.width;
     } else {
       l = triggerRect.value.x + triggerRect.value.width / 2 - floatingRect.value.width / 2;
@@ -344,5 +366,20 @@ export function useFloating(
     return `${l}px`;
   });
 
-  return { top, left, height, width, maxHeight, maxWidth, floatingEl, triggerEl, containerEl, updateAllRect };
+  return {
+    top,
+    left,
+    height,
+    width,
+    maxHeight,
+    maxWidth,
+    floatingEl,
+    triggerEl,
+    containerEl,
+    containerRect,
+    triggerRect,
+    floatingRect,
+    adjustedPositioning,
+    updateAllRect,
+  };
 }

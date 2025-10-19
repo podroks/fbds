@@ -28,6 +28,21 @@ const meta = {
     containerOffset: {
       control: 'number',
     },
+    persistent: {
+      control: 'boolean',
+    },
+    followTrigger: {
+      control: 'boolean',
+    },
+  },
+  args: {
+    trigger: null,
+    container: null,
+    positioning: Positioning.Top,
+    offset: 8,
+    containerOffset: 8,
+    persistent: false,
+    followTrigger: false,
   },
   render: (args) => ({
     components: { FbdsIcon, FbdsTooltip },
@@ -51,12 +66,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    trigger: null,
-    container: null,
-    positioning: Positioning.Top,
-    offset: 8,
-    containerOffset: 8,
-  },
-};
+export const Default: Story = {};
