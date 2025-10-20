@@ -5,12 +5,12 @@
 /* ---------------------------------- Base ---------------------------------- */
 @source inline("{bg,text,border,outline}-fbds-base-{surface,surface-inverted,primary,alert,warning,success,info,disable}");
 @source inline("text-fbds-on-base-{surface-low,surface-medium,surface-high,surface-inverted-low,surface-inverted-medium,surface-inverted-high,primary,alert,warning,success,info,disable}");
-@source inline("{group-{hover,active}/{button,tag}:,}bg-fbds-state-layer-base-{surface,surface-inverted,primary,alert,warning,success,info}-{hover,press}");
+@source inline("{group-{hover,active}{/{button,tag,dropmenu},}:,{hover,active}:,}bg-fbds-state-layer-base-{surface,surface-inverted,primary,alert,warning,success,info}-{hover,press}");
 
 /* -------------------------------- Container ------------------------------- */
 @source inline("{bg,text,border,outline}-fbds-container-{primary,alert,warning,success,info,accent-1,accent-2,accent-3,accent-4}");
 @source inline("text-fbds-on-container-{primary,alert,warning,success,info,accent-1,accent-2,accent-3,accent-4}");
-@source inline("{group-{hover,active}/{button,tag}:,}bg-fbds-state-layer-container-{primary,alert,warning,success,info,accent-1,accent-2,accent-3,accent-4}-{hover,press}");
+@source inline("{group-{hover,active}{/{button,tag,dropmenu},}:,{hover,active}:,}bg-fbds-state-layer-container-{primary,alert,warning,success,info,accent-1,accent-2,accent-3,accent-4}-{hover,press}");
 
 /* -------------------------------- Elevation ------------------------------- */
 @source inline("bg-fbds-surface-elevation-{neutral,primary}-{lowest,low,medium,high,highest}");
@@ -22,7 +22,7 @@
 @source inline("bg-fbds-overlay");
 
 /* ---------------------------- Other state layer --------------------------- */
-@source inline("{group-{hover,active}/{button,tag}:,}bg-fbds-state-layer-{low,high}-{hover,press}");
+@source inline("{group-{hover,active}{/{button,tag,dropmenu},}:,{hover,active}:,}bg-fbds-state-layer-{low,high}-{hover,press}");
 
 /* ------------------------------- line-clamp ------------------------------- */
 @source inline("line-clamp-{1..10..1}");
