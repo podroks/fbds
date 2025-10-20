@@ -3,6 +3,7 @@ import { useTemplateRef } from 'vue';
 
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import { Icon } from '@/constants/icon';
+import { Theme } from '@/constants/theme';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -13,12 +14,14 @@ const props = withDefaults(
     name: string;
     label?: string;
     disabled?: boolean;
+    theme?: Theme;
     tooltip?: string;
     tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     label: undefined,
     disabled: false,
+    theme: Theme.BasePrimary,
     tooltip: undefined,
     tooltipOptions: () => ({}),
   },
@@ -48,15 +51,24 @@ function handleClick() {
       :checked
     />
     <div
-      class="relative rounded-full p-1"
-      :class="{
-        'hover:bg-fbds-state-layer-base-primary-hover active:bg-fbds-state-layer-base-primary-press': !disabled,
-      }"
+      class="relative rounded-full p-1 size-8"
+      :class="disabled ? '' : `hover:bg-fbds-state-layer-${theme}-hover active:bg-fbds-state-layer-${theme}-press`"
     >
-      <FbdsIcon
-        :icon="Icon.farCircle"
-        :size="6"
-      />
+      <Transition
+        enter-active-class="transition duration-0"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition delay-150 duration-0"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <FbdsIcon
+          v-if="!checked"
+          class="absolute"
+          :icon="Icon.farCircle"
+          :size="6"
+        />
+      </Transition>
       <Transition
         enter-active-class="transition duration-150 ease-in-out"
         enter-from-class="opacity-0 scale-50"
@@ -67,10 +79,10 @@ function handleClick() {
       >
         <FbdsIcon
           v-if="checked"
+          class="absolute"
+          :class="disabled ? 'text-fbds-on-base-disable' : `text-fbds-${theme}`"
           :icon="Icon.fasCircleDot"
           :size="6"
-          class="absolute top-1 left-1"
-          :class="disabled ? 'text-fbds-on-base-disable' : 'text-fbds-base-primary'"
         />
       </Transition>
     </div>
