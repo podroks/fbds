@@ -318,7 +318,7 @@ function handleClick(event: MouseEvent) {
         ref="tooltip"
         :trigger
         :positioning="Positioning.Top"
-        :always-show="isDragging || showTooltipFromKeypress"
+        :persistant="isDragging || showTooltipFromKeypress"
         class="bg-fbds-base-primary! text-fbds-on-base-primary!"
       >
         {{ tmpValue ?? min }}

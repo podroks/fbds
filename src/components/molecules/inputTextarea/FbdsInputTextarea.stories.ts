@@ -54,7 +54,7 @@ const meta = {
     placeholder: 'Saisir du texte ici ...',
     status: { label: 'Libellé du statut', value: 'Valeur du statut', theme: StatusTheme.Neutral },
     rows: 1,
-    resizable: false,
+    resizable: true,
     disabled: false,
     prependIcon: undefined,
     prependIconTheme: undefined,

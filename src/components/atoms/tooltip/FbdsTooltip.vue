@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   offset: 8,
   containerOffset: 8,
   class: '',
+  persistant: false,
 });
 
 defineSlots<{ default?(): unknown }>();
@@ -79,7 +80,7 @@ defineExpose({
       leave-active-class="transition-opacity delay-0 duration-150"
     >
       <div
-        v-if="tooltipVisible"
+        v-if="persistant || tooltipVisible"
         class="absolute top-0 left-0 h-full w-full pointer-events-none z-1000"
       >
         <div

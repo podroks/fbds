@@ -6,6 +6,7 @@ export type TooltipProps = {
   positioning?: Positioning;
   offset?: number;
   containerOffset?: number;
+  persistant?: boolean;
   class?: string;
 };
 
