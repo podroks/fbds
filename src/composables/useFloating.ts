@@ -373,13 +373,7 @@ export function useFloating(
     width,
     maxHeight,
     maxWidth,
-    floatingEl,
     triggerEl,
-    containerEl,
-    containerRect,
-    triggerRect,
-    floatingRect,
-    adjustedPositioning,
     updateAllRect,
   };
 }

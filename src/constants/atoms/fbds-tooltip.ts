@@ -6,8 +6,6 @@ export type TooltipProps = {
   positioning?: Positioning;
   offset?: number;
   containerOffset?: number;
-  persistent?: boolean;
-  followTrigger?: boolean;
   class?: string;
 };
 

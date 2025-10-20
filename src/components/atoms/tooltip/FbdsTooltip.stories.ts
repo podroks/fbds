@@ -28,12 +28,6 @@ const meta = {
     containerOffset: {
       control: 'number',
     },
-    persistent: {
-      control: 'boolean',
-    },
-    followTrigger: {
-      control: 'boolean',
-    },
   },
   args: {
     trigger: null,
@@ -41,8 +35,6 @@ const meta = {
     positioning: Positioning.Top,
     offset: 8,
     containerOffset: 8,
-    persistent: false,
-    followTrigger: false,
   },
   render: (args) => ({
     components: { FbdsIcon, FbdsTooltip },

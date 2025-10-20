@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 
 import type { TooltipProps } from '@/constants/atoms/fbds-tooltip';
 import { Positioning } from '@/constants/positioning';
@@ -11,8 +11,6 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   container: null,
   offset: 8,
   containerOffset: 8,
-  persistent: false,
-  followTrigger: false,
   class: '',
 });
 
@@ -37,7 +35,7 @@ const tooltipVisible = ref<boolean>(false);
 watch(
   () => triggerEl.value,
   (el, _, onCleanup) => {
-    if (!el || props.persistent) return;
+    if (!el) return;
 
     el.addEventListener('mouseenter', showTooltip);
     el.addEventListener('mouseleave', hideTooltip);
@@ -65,63 +63,6 @@ function hideTooltip() {
 }
 /* ------------------------ /Gestion de la visibilité ----------------------- */
 
-/* ----------------------- Réactivité - positionnement ---------------------- */
-let mutationObserver: MutationObserver | null = null;
-let resizeObserver: ResizeObserver | null = null;
-
-function addObservers() {
-  const el = triggerEl.value;
-  if (!el) return;
-  console.log('Add observers to', el);
-  // Observe DOM mutations
-  mutationObserver = new MutationObserver(updateAllRect);
-  mutationObserver.observe(el, {
-    attributes: true,
-    childList: true,
-    subtree: true,
-  });
-  // Observe size/position changes
-  resizeObserver = new ResizeObserver(updateAllRect);
-  resizeObserver.observe(el);
-  // Listen to window scroll/resize
-  window.addEventListener('scroll', updateAllRect, true);
-  window.addEventListener('resize', updateAllRect);
-}
-
-function removeObservers() {
-  if (mutationObserver) {
-    mutationObserver.disconnect();
-    mutationObserver = null;
-  }
-  if (resizeObserver) {
-    resizeObserver.disconnect();
-    resizeObserver = null;
-  }
-  window.removeEventListener('scroll', updateAllRect, true);
-  window.removeEventListener('resize', updateAllRect);
-}
-
-watch(
-  [() => props.persistent, () => props.followTrigger, () => triggerEl.value],
-  ([persistent, follow, el], _, onCleanup) => {
-    if (!persistent || !follow) {
-      removeObservers();
-      return;
-    }
-    if (!el) return;
-    nextTick(addObservers);
-    onCleanup(() => {
-      removeObservers();
-    });
-  },
-  { immediate: true },
-);
-
-onUnmounted(() => {
-  removeObservers();
-});
-/* ---------------------- /Réactivité - positionnement ---------------------- */
-
 defineExpose({
   updatePosition: updateAllRect,
 });
@@ -138,7 +79,7 @@ defineExpose({
       leave-active-class="transition-opacity delay-0 duration-150"
     >
       <div
-        v-if="persistent || tooltipVisible"
+        v-if="tooltipVisible"
         class="absolute top-0 left-0 h-full w-full pointer-events-none z-1000"
       >
         <div

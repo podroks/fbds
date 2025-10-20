@@ -102,6 +102,10 @@ function handleClick(event: MouseEvent) {
     emit('click', event);
   }
 }
+
+defineExpose({
+  el: trigger,
+});
 </script>
 
 <template>
