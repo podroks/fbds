@@ -28,7 +28,7 @@ const meta = {
     ],
     showContent: false,
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsTabs },

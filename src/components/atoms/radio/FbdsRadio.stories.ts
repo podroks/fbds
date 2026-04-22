@@ -42,7 +42,7 @@ const meta = {
     tooltip: 'Tooltip',
     tooltipOptions: {},
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsRadio },

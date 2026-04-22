@@ -78,7 +78,7 @@ const meta = {
     appendIcon: undefined,
     appendIconTheme: undefined,
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsInputRange, FbdsButton },

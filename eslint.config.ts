@@ -4,71 +4,8 @@ import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescri
 import { Linter } from 'eslint';
 import { globalIgnores } from 'eslint/config';
 import configPrettier from 'eslint-config-prettier';
-import pluginImport from 'eslint-plugin-import';
-import noRelPath from 'eslint-plugin-no-relative-import-paths';
-import pluginOxlint from 'eslint-plugin-oxlint';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginVue from 'eslint-plugin-vue';
-
-const importOrderConfig: Linter.Config = {
-  files: ['**/*.{ts,vue}'], // ✅ obligatoire pour flat config
-  plugins: { import: pluginImport },
-  rules: {
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: true,
-        ignoreDeclarationSort: true,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: false,
-      },
-    ],
-    'import/order': [
-      'error',
-      {
-        groups: [['builtin', 'external', 'type'], 'internal', ['parent', 'sibling', 'index'], 'object'],
-        pathGroups: [
-          { pattern: '@/assets{,/**}', group: 'internal', position: 'before' },
-          { pattern: '@/plugins{,/**}', group: 'internal', position: 'before' },
-          { pattern: '@/stories{,/**}', group: 'internal', position: 'before' },
-          { pattern: '@/{constants,types}{,/**}', group: 'internal', position: 'before' },
-          { pattern: '@/{composables,utils}{,/**}', group: 'internal', position: 'before' },
-          { pattern: '@/components{,/**}', group: 'internal', position: 'before' },
-        ],
-        pathGroupsExcludedImportTypes: ['builtin', 'external'],
-        alphabetize: { order: 'asc', caseInsensitive: true },
-        'newlines-between': 'always',
-      },
-    ],
-  },
-  settings: {
-    'import/resolver': {
-      node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'] },
-      typescript: {
-        alwaysTryTypes: true,
-        project: './tsconfig.app.json',
-      },
-    },
-  },
-};
-
-const noRelativeImportPathsConfig: Linter.Config = {
-  files: ['**/*.{ts,vue}'],
-  plugins: {
-    'no-relative-import-paths': noRelPath,
-  },
-  rules: {
-    'no-relative-import-paths/no-relative-import-paths': [
-      'error',
-      {
-        rootDir: 'src',
-        prefix: '@',
-        allowSameFolder: false,
-      },
-    ],
-  },
-};
-
 const stylisticConfigCustomized: Linter.Config = {
   files: ['**/*.{js,ts,vue}'],
   plugins: {
@@ -149,7 +86,6 @@ export default defineConfigWithVueTs(
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-  ...pluginOxlint.configs['flat/recommended'],
 
   // 👇 Plugins global de style
   stylistic.configs.recommended,
@@ -157,7 +93,5 @@ export default defineConfigWithVueTs(
   configPrettier, // 👈 désactive les règles stylistic en conflit avec Prettier
 
   // 👇 plugin alternatif
-  noRelativeImportPathsConfig,
-  importOrderConfig,
   prettierConfig,
 );

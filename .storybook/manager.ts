@@ -1,6 +1,3 @@
-import '../src/assets/styles/color.css';
-import './manager.css';
-
 import { addons } from 'storybook/manager-api';
 import { darkTheme, lightTheme } from './FbdsTheme';
 

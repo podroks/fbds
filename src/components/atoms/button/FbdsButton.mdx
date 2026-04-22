@@ -1,11 +1,11 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
  
-import FbdsButtonMeta, { Default } from './FbdsButton.stories';
+import * as FbdsButtonMeta from './FbdsButton.stories';
  
 <Meta of={FbdsButtonMeta} />
  
 # Button
 
-<Canvas of={Default} />
+<Canvas of={FbdsButtonMeta.Default} />
 
-<Controls />
+<Controls of={FbdsButtonMeta.Default} />

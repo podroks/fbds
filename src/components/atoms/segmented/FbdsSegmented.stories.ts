@@ -25,7 +25,7 @@ const meta = {
     ],
     selected: undefined,
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsSegmented },

@@ -59,7 +59,7 @@ const meta = {
     prependIcon: undefined,
     prependIconTheme: undefined,
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsInputTextarea, FbdsButton },

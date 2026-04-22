@@ -97,7 +97,7 @@ const meta = {
     offset: 8,
     containerOffset: 8,
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsButton, FbdsDropDownMenu },
@@ -127,7 +127,7 @@ export const WithCheckbox: Story = {
       { label: 'Option 4', value: '4', icon: Icon.fasSquare },
     ],
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsButton, FbdsCheckbox, FbdsDropDownMenu },
@@ -167,7 +167,7 @@ export const WithTheme: Story = {
       { label: 'Option 4', value: '4', icon: Icon.fasSquare, theme: Theme.BasePrimary },
     ],
   },
-  render: (_) => {
+  render: () => {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsButton, FbdsDropDownMenu, FbdsRadio },
