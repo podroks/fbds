@@ -35,7 +35,7 @@ withDefaults(
     </div>
     <FbdsTruncableText
       v-if="text"
-      class="fbds-font-body-medium"
+      class="fbds-font-body"
       :text
       :truncate-at-line
     />

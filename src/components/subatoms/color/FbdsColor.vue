@@ -4,7 +4,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
 
 <template>
   <div class="flex flex-col gap-6 w-full">
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Surface</h1>
+    <h1 class="fbds-font-heading-lg border-b border-fbds-border">Surface</h1>
     <FbdsColorCard
       label="Background"
       background="bg-fbds-background"
@@ -12,15 +12,23 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
     <FbdsColorCard
       label="Surface"
       background="bg-fbds-surface"
-      :foregrounds="['bg-fbds-on-surface-contrast-low', 'bg-fbds-on-surface-contrast-medium', 'bg-fbds-on-surface-contrast-high']"
+      :foregrounds="[
+        'bg-fbds-on-surface-contrast-low',
+        'bg-fbds-on-surface-contrast-medium',
+        'bg-fbds-on-surface-contrast-high',
+      ]"
     />
     <FbdsColorCard
       label="Surface 1"
       background="bg-fbds-surface-1"
-      :foregrounds="['bg-fbds-on-surface-contrast-low', 'bg-fbds-on-surface-contrast-medium', 'bg-fbds-on-surface-contrast-high']"
+      :foregrounds="[
+        'bg-fbds-on-surface-contrast-low',
+        'bg-fbds-on-surface-contrast-medium',
+        'bg-fbds-on-surface-contrast-high',
+      ]"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Base</h1>
+    <h1 class="fbds-font-heading-lg border-b border-fbds-border">Base</h1>
     <FbdsColorCard
       label="Primary"
       background="bg-fbds-primary"
@@ -52,7 +60,7 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-disable']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Container</h1>
+    <h1 class="fbds-font-heading-lg border-b border-fbds-border">Container</h1>
     <FbdsColorCard
       label="Primary"
       background="bg-fbds-container-primary"
@@ -99,13 +107,13 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-container-accent-4']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Border</h1>
+    <h1 class="fbds-font-heading-lg border-b border-fbds-border">Border</h1>
     <FbdsColorCard
       label="Border"
       background="bg-fbds-border"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Overlay</h1>
+    <h1 class="fbds-font-heading-lg border-b border-fbds-border">Overlay</h1>
     <FbdsColorCard
       label="-"
       background="bg-fbds-overlay"

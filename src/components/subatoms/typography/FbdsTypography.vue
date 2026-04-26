@@ -4,30 +4,33 @@ import FbdsTypographyCard from '@/components/subatoms/typography/FbdsTypographyC
 
 <template>
   <div class="flex flex-col gap-6 w-full">
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Display</h1>
-    <FbdsTypographyCard font="display-large" />
-    <FbdsTypographyCard font="display-medium" />
-    <FbdsTypographyCard font="display-small" />
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Heading</h1>
+    <FbdsTypographyCard font="heading-xl" />
+    <FbdsTypographyCard font="heading-lg" />
+    <FbdsTypographyCard font="heading-md" />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Headline</h1>
-    <FbdsTypographyCard font="headline-large" />
-    <FbdsTypographyCard font="headline-medium" />
-    <FbdsTypographyCard font="headline-small" />
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Button</h1>
+    <FbdsTypographyCard font="button" />
+    <FbdsTypographyCard font="button-sm" />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Title</h1>
-    <FbdsTypographyCard font="title-large" />
-    <FbdsTypographyCard font="title-medium" />
-    <FbdsTypographyCard font="title-small" />
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Link</h1>
+    <FbdsTypographyCard font="link" />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Label</h1>
-    <FbdsTypographyCard font="label-large-prominent" />
-    <FbdsTypographyCard font="label-large" />
-    <FbdsTypographyCard font="label-medium-prominent" />
-    <FbdsTypographyCard font="label-medium" />
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Label</h1>
+    <FbdsTypographyCard font="label-prominent" />
+    <FbdsTypographyCard font="label" />
+    <FbdsTypographyCard font="label-subtle" />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border">Body</h1>
-    <FbdsTypographyCard font="body-large" />
-    <FbdsTypographyCard font="body-medium" />
-    <FbdsTypographyCard font="body-small" />
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Body</h1>
+    <FbdsTypographyCard font="body-prominent" />
+    <FbdsTypographyCard font="body" />
+
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Overline</h1>
+    <FbdsTypographyCard font="overline" />
+    <FbdsTypographyCard font="overline-dense" />
+
+    <h1 class="fbds-font-heading-md border-b border-fbds-border">Caption</h1>
+    <FbdsTypographyCard font="caption-prominent" />
+    <FbdsTypographyCard font="caption" />
   </div>
 </template>

@@ -82,7 +82,7 @@ function handleClick() {
 <template>
   <div
     ref="trigger"
-    class="flex flex-nowrap items-center gap-1 fbds-font-label-medium rounded-full"
+    class="flex flex-nowrap items-center gap-1 fbds-font-label rounded-full"
     :class="disabled ? 'cursor-not-allowed text-fbds-on-base-disable' : 'cursor-pointer text-fbds-on-base-surface-high'"
     :tabindex="1"
     @click="handleClick"

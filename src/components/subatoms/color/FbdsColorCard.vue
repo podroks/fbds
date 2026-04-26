@@ -64,7 +64,7 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
 <template>
   <div class="flex flex-wrap gap-3">
     <div class="basis-40 shrink-0">
-      <span class="fbds-font-label-large-prominent text-fbds-on-base-surface-high">
+      <span class="fbds-font-label-prominent text-fbds-on-base-surface-high">
         {{ props.label }}
       </span>
     </div>
@@ -84,18 +84,18 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
           />
         </div>
 
-        <span class="w-full px-3 text-center fbds-font-label-medium-prominent text-fbds-on-surface-contrast-low truncate">
+        <span class="w-full px-3 text-center fbds-font-caption-prominent text-fbds-on-surface-contrast-low truncate">
           {{ getClassWithoutPrefix(color) }}
         </span>
         <span
           v-if="hex[color]"
-          class="w-full px-3 text-center fbds-font-label-large text-fbds-on-surface-contrast-medium uppercase"
+          class="w-full px-3 text-center fbds-font-label text-fbds-on-surface-contrast-medium uppercase"
         >
           {{ hex[color] }}
         </span>
         <span
           v-if="index > 0 && hex[color] && hex[props.background]"
-          class="self-center rounded-full px-2 text-center fbds-font-label-medium border"
+          class="self-center rounded-full px-2 text-center fbds-font-caption border"
           :class="
             checkRGAA(hex[props.background], hex[color]).normalText
               ? 'text-fbds-success border-fbds-success'

@@ -99,7 +99,7 @@ function handleClick(event: MouseEvent) {
     :status
   >
     <div
-      class="min-h-10 w-full rounded-md fbds-font-body-medium"
+      class="min-h-10 w-full rounded-md fbds-font-label"
       :class="[outlineClass, bgClass, textClass, cursorClass]"
     >
       <div

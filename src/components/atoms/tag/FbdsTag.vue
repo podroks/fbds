@@ -72,7 +72,7 @@ function handleClick(event: MouseEvent) {
   <component
     :is="interactif ? 'button' : 'div'"
     ref="trigger"
-    class="group/tag rounded-full w-fit fbds-font-label-large"
+    class="group/tag rounded-full w-fit fbds-font-label"
     :class="[bgClass, textClass, { 'cursor-pointer': interactif }]"
     @click="handleClick"
   >

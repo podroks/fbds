@@ -56,7 +56,7 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
 /* ------------------------------ Style Classes ----------------------------- */
 const inputRangeClasses = computed(() => [
-  'h-10 w-full rounded-md fbds-font-body-medium',
+  'h-10 w-full rounded-md fbds-font-label',
   outlineClass.value,
   bgClass.value,
   textClass.value,
@@ -100,9 +100,7 @@ const barFillClass = computed(() => (props.disabled ? 'bg-fbds-on-disable' : 'bg
 const pinClass = computed(() =>
   [
     'absolute -top-1.5 size-4 rounded-full border-2 box-content',
-    props.disabled
-      ? 'bg-fbds-on-disable border-fbds-disable'
-      : 'bg-fbds-primary border-fbds-surface',
+    props.disabled ? 'bg-fbds-on-disable border-fbds-disable' : 'bg-fbds-primary border-fbds-surface',
   ].join(' '),
 );
 

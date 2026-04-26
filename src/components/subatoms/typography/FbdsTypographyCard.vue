@@ -35,7 +35,7 @@ const fontProperties = computed<string>(() => {
 <template>
   <div class="flex flex-wrap gap-3">
     <div class="basis-40 shrink-0">
-      <span class="fbds-font-label-large-prominent text-fbds-on-base-surface-high">
+      <span class="fbds-font-label-prominent text-fbds-on-base-surface-high">
         {{ fontWithoutPrefix }}
       </span>
     </div>
@@ -51,7 +51,7 @@ const fontProperties = computed<string>(() => {
         {{ font }}
       </div>
 
-      <span class="w-full px-3 text-center fbds-font-label-medium-prominent text-fbds-on-base-surface-low truncate">
+      <span class="w-full px-3 text-center fbds-font-caption-prominent text-fbds-on-base-surface-low truncate">
         {{ fontProperties }}
       </span>
     </aside>

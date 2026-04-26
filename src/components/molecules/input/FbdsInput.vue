@@ -21,13 +21,13 @@ withDefaults(
 <template>
   <div class="flex flex-col w-full gap-1">
     <FbdsTruncableText
-      class="fbds-font-title-small"
+      class="fbds-font-label-prominent"
       :text="title"
     />
     <slot />
     <div
       v-if="status"
-      class="flex flex-nowrap fbds-font-body-small"
+      class="flex flex-nowrap fbds-font-body"
       :class="`text-fbds-${status.theme ?? StatusTheme.Neutral}`"
     >
       <FbdsTruncableText

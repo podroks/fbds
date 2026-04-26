@@ -25,7 +25,7 @@ const meta = {
     setup: () => ({ args }),
     template: `
       <FbdsInput v-bind="args">
-        <div class="h-10 w-full bg-fbds-container-accent-1 rounded-md flex items-center justify-center fbds-font-label-large text-fbds-on-container-accent-1">
+        <div class="h-10 w-full bg-fbds-container-accent-1 rounded-md flex items-center justify-center fbds-font-label text-fbds-on-container-accent-1">
           Composant de saisie ici
         </div>
       </FbdsInput>

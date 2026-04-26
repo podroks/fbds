@@ -41,7 +41,7 @@ const label = computed(() => (props.value > props.max ? `+${props.max}` : `${Mat
   <div
     ref="trigger"
     class="rounded-full flex justify-center"
-    :class="[bgClass, textClass, pined ? 'size-2' : 'w-fit min-w-6 p-1 fbds-font-label-medium indent-[0.5px]']"
+    :class="[bgClass, textClass, pined ? 'size-2' : 'w-fit min-w-6 p-1 fbds-font-label indent-[0.5px]']"
   >
     {{ pined ? null : label }}
     <FbdsTooltip

@@ -66,7 +66,7 @@ const textStyle = computed<string>(() => {
     />
     <span
       v-else
-      class="fbds-font-label-large-prominent"
+      class="fbds-font-label-prominent"
     >
       {{ fallback }}
     </span>

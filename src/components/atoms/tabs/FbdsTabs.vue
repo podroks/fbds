@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
         v-for="(tab, i) in tabs"
         :key="tab.id"
         :ref="(el) => (tabRefs[i] = el as HTMLElement | null)"
-        class="group/tab rounded-t-md fbds-font-label-medium flex-1 overflow-hidden"
+        class="group/tab rounded-t-md fbds-font-label flex-1 overflow-hidden"
         :class="[cursorClass(tab), bgClass(tab), textClass(tab)]"
         :disabled="tab.disabled"
         @click="handleClick(tab)"

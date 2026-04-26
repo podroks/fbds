@@ -113,7 +113,7 @@ defineExpose({
     :is="component"
     v-bind="componentProps"
     ref="trigger"
-    class="fbds-font-label-large rounded-md group/button"
+    class="fbds-font-button rounded-md group/button"
     :class="[bgClass, textClass, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
     :disabled
     @click="handleClick"

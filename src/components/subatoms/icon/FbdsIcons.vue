@@ -17,7 +17,7 @@ const group = [
       v-for="{ prefix, label } in group"
       :key="prefix"
     >
-      <h1 class="fbds-font-title-large border-b border-fbds-border">
+      <h1 class="fbds-font-heading-lg border-b border-fbds-border">
         {{ label }}
       </h1>
 
