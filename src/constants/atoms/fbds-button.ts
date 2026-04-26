@@ -1,14 +1,14 @@
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
 
-export const Size = {
+export const ButtonSize = {
   Md: 'md',
   Sm: 'sm',
 } as const;
 
-export type Size = (typeof Size)[keyof typeof Size];
+export type ButtonSize = (typeof ButtonSize)[keyof typeof ButtonSize];
 
-export const Variant = {
+export const ButtonVariant = {
   Primary: 'primary',
   Secondary: 'secondary',
   Tertiary: 'tertiary',
@@ -18,11 +18,11 @@ export const Variant = {
   DangerSecondary: 'danger-secondary',
 } as const;
 
-export type Variant = (typeof Variant)[keyof typeof Variant];
+export type ButtonVariant = (typeof ButtonVariant)[keyof typeof ButtonVariant];
 
 export type ButtonProps = {
-  variant?: Variant;
-  size?: Size;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   label?: string;
   icon?: Icon;
   disabled?: boolean;

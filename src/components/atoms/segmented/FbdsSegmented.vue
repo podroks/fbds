@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Variant } from '@/constants/atoms/fbds-button';
+import { ButtonVariant } from '@/constants/atoms/fbds-button';
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
 
@@ -31,7 +31,7 @@ function handleClick(segment: Segment) {
     :key="segment.id"
     :label="segment.label"
     :icon="segment.icon"
-    :variant="selected === segment.id ? Variant.Primary : Variant.Secondary"
+    :variant="selected === segment.id ? ButtonVariant.Primary : ButtonVariant.Secondary"
     :disabled="segment.disabled"
     :tooltip="segment.tooltip"
     :tooltip-options="segment.tooltipOptions"

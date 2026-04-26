@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ButtonProps, Variant } from '@/constants/atoms/fbds-button';
+import { type ButtonProps, ButtonVariant } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
 
 import FbdsButton from '@/components/atoms/button/FbdsButton.vue';
@@ -42,7 +42,7 @@ withDefaults(
     <FbdsButton
       v-if="button"
       v-bind="button"
-      :variant="button?.variant || Variant.Secondary"
+      :variant="button?.variant || ButtonVariant.Secondary"
     />
   </div>
 </template>

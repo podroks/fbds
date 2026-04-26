@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import { type ButtonProps, Size, Variant } from '@/constants/atoms/fbds-button';
+import { type ButtonProps, ButtonSize, ButtonVariant } from '@/constants/atoms/fbds-button';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -9,8 +9,8 @@ import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: undefined,
   icon: undefined,
-  variant: Variant.Primary,
-  size: Size.Md,
+  variant: ButtonVariant.Primary,
+  size: ButtonSize.Md,
   disabled: false,
   href: undefined,
   target: undefined,
@@ -31,50 +31,50 @@ type VariantConfig = {
   stateLayerPress: string;
 };
 
-const variantConfigs: Record<Variant, VariantConfig> = {
-  [Variant.Primary]: {
+const variantConfigs: Record<ButtonVariant, VariantConfig> = {
+  [ButtonVariant.Primary]: {
     bg: 'bg-fbds-primary',
     text: 'text-fbds-on-primary',
     outline: '',
     stateLayerHover: 'bg-fbds-state-layer-low-hover',
     stateLayerPress: 'bg-fbds-state-layer-low-press',
   },
-  [Variant.Secondary]: {
+  [ButtonVariant.Secondary]: {
     bg: 'bg-transparent',
     text: 'text-fbds-on-surface-contrast-medium',
     outline: 'outline -outline-offset-1 outline-fbds-border',
     stateLayerHover: 'bg-fbds-state-layer-high-hover',
     stateLayerPress: 'bg-fbds-state-layer-high-press',
   },
-  [Variant.Tertiary]: {
+  [ButtonVariant.Tertiary]: {
     bg: 'bg-transparent',
     text: 'text-fbds-on-surface-contrast-medium',
     outline: '',
     stateLayerHover: 'bg-fbds-state-layer-high-hover',
     stateLayerPress: 'bg-fbds-state-layer-high-press',
   },
-  [Variant.Success]: {
+  [ButtonVariant.Success]: {
     bg: 'bg-fbds-success',
     text: 'text-fbds-on-success',
     outline: '',
     stateLayerHover: 'bg-fbds-state-layer-low-hover',
     stateLayerPress: 'bg-fbds-state-layer-low-press',
   },
-  [Variant.SuccessSecondary]: {
+  [ButtonVariant.SuccessSecondary]: {
     bg: 'bg-transparent',
     text: 'text-fbds-success',
     outline: 'outline -outline-offset-1 outline-fbds-success',
     stateLayerHover: 'bg-fbds-state-layer-success-hover',
     stateLayerPress: 'bg-fbds-state-layer-success-press',
   },
-  [Variant.Danger]: {
+  [ButtonVariant.Danger]: {
     bg: 'bg-fbds-alert',
     text: 'text-fbds-on-alert',
     outline: '',
     stateLayerHover: 'bg-fbds-state-layer-low-hover',
     stateLayerPress: 'bg-fbds-state-layer-low-press',
   },
-  [Variant.DangerSecondary]: {
+  [ButtonVariant.DangerSecondary]: {
     bg: 'bg-transparent',
     text: 'text-fbds-alert',
     outline: 'outline -outline-offset-1 outline-fbds-alert',
@@ -96,10 +96,10 @@ const config = computed<VariantConfig>(() => {
   return variantConfigs[props.variant];
 });
 
-const fontClass = computed<string>(() => (props.size === Size.Md ? 'fbds-font-button' : 'fbds-font-button-sm'));
+const fontClass = computed<string>(() => (props.size === ButtonSize.Md ? 'fbds-font-button' : 'fbds-font-button-sm'));
 
 const sizeClass = computed<string>(() => {
-  const isMd = props.size === Size.Md;
+  const isMd = props.size === ButtonSize.Md;
   if (!props.label && props.icon) {
     return isMd ? 'size-10 justify-center' : 'size-8 justify-center';
   }
