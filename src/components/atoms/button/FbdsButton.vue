@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import { type ButtonProps, Contrast } from '@/constants/atoms/fbds-button';
-import { OnTheme, StateLayerDefault, StateLayerTheme, Theme } from '@/constants/theme';
-
-import { useColorTheme } from '@/composables/useColorTheme';
-import { getContrast } from '@/utils/contrast.util';
+import { type ButtonProps, Variant } from '@/constants/atoms/fbds-button';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -13,8 +9,7 @@ import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: undefined,
   icon: undefined,
-  contrast: Contrast.Primary,
-  theme: Theme.BasePrimary,
+  variant: Variant.Primary,
   disabled: false,
   href: undefined,
   target: undefined,
@@ -25,75 +20,95 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
-const { isDark } = useColorTheme();
 const trigger = ref<HTMLElement | null>(null);
 
-const currentTheme = computed<Theme>(() => (props.disabled ? Theme.BaseDisable : props.theme));
+type VariantConfig = {
+  bg: string;
+  text: string;
+  outline: string;
+  stateLayerHover: string;
+  stateLayerPress: string;
+};
 
-const bgClass = computed<`bg-fbds-${Theme}` | 'bg-transparent'>(() => {
-  if (props.contrast === Contrast.Primary) {
-    return `bg-fbds-${currentTheme.value}`;
-  }
-  return 'bg-transparent';
-});
+const variantConfigs: Record<Variant, VariantConfig> = {
+  [Variant.Primary]: {
+    bg: 'bg-fbds-primary',
+    text: 'text-fbds-on-primary',
+    outline: '',
+    stateLayerHover: 'bg-fbds-state-layer-low-hover',
+    stateLayerPress: 'bg-fbds-state-layer-low-press',
+  },
+  [Variant.Secondary]: {
+    bg: 'bg-transparent',
+    text: 'text-fbds-on-surface-contrast-medium',
+    outline: 'outline -outline-offset-1 outline-fbds-border',
+    stateLayerHover: 'bg-fbds-state-layer-high-hover',
+    stateLayerPress: 'bg-fbds-state-layer-high-press',
+  },
+  [Variant.Tertiary]: {
+    bg: 'bg-transparent',
+    text: 'text-fbds-on-surface-contrast-medium',
+    outline: '',
+    stateLayerHover: 'bg-fbds-state-layer-high-hover',
+    stateLayerPress: 'bg-fbds-state-layer-high-press',
+  },
+  [Variant.Success]: {
+    bg: 'bg-fbds-success',
+    text: 'text-fbds-on-success',
+    outline: '',
+    stateLayerHover: 'bg-fbds-state-layer-low-hover',
+    stateLayerPress: 'bg-fbds-state-layer-low-press',
+  },
+  [Variant.SuccessSecondary]: {
+    bg: 'bg-transparent',
+    text: 'text-fbds-success',
+    outline: 'outline -outline-offset-1 outline-fbds-success',
+    stateLayerHover: 'bg-fbds-state-layer-success-hover',
+    stateLayerPress: 'bg-fbds-state-layer-success-press',
+  },
+  [Variant.Danger]: {
+    bg: 'bg-fbds-alert',
+    text: 'text-fbds-on-alert',
+    outline: '',
+    stateLayerHover: 'bg-fbds-state-layer-low-hover',
+    stateLayerPress: 'bg-fbds-state-layer-low-press',
+  },
+  [Variant.DangerSecondary]: {
+    bg: 'bg-transparent',
+    text: 'text-fbds-alert',
+    outline: 'outline -outline-offset-1 outline-fbds-alert',
+    stateLayerHover: 'bg-fbds-state-layer-alert-hover',
+    stateLayerPress: 'bg-fbds-state-layer-alert-press',
+  },
+};
 
-const textClass = computed<`text-fbds-${OnTheme | Theme}`>(() => {
-  if (props.contrast === Contrast.Primary) {
-    return `text-fbds-${OnTheme[currentTheme.value]}`;
+const config = computed<VariantConfig>(() => {
+  if (props.disabled) {
+    return {
+      bg: 'bg-fbds-disable',
+      text: 'text-fbds-on-disable',
+      outline: '',
+      stateLayerHover: '',
+      stateLayerPress: '',
+    };
   }
-  return `text-fbds-${currentTheme.value}`;
-});
-
-const outlineClass = computed<string>(() => {
-  if (props.contrast === Contrast.Tertiary) {
-    return '';
-  }
-  return `outline -outline-offset-1 outline-fbds-${currentTheme.value}`;
+  return variantConfigs[props.variant];
 });
 
 const stateLayerClass = computed<string>(() => {
-  if (props.disabled) {
-    return '';
-  }
-
-  let stateLayerClass: StateLayerTheme | StateLayerDefault;
-  if (props.contrast === Contrast.Primary) {
-    const contrast = getContrast(props.theme);
-
-    if (isDark.value) {
-      stateLayerClass = contrast < 128 ? StateLayerDefault.High : StateLayerDefault.Low;
-    } else {
-      stateLayerClass = contrast < 128 ? StateLayerDefault.Low : StateLayerDefault.High;
-    }
-  } else {
-    stateLayerClass = StateLayerTheme[props.theme];
-  }
-
-  return `group-hover/button:${stateLayerClass.hover} group-active/button:${stateLayerClass.press}`;
+  if (!config.value.stateLayerHover) return '';
+  return `group-hover/button:${config.value.stateLayerHover} group-active/button:${config.value.stateLayerPress}`;
 });
 
 const component = computed(() => {
-  if (props.href) {
-    return 'a';
-  }
-  if (props.to) {
-    return 'router-link';
-  }
+  if (props.href) return 'a';
+  if (props.to) return 'router-link';
   return 'button';
 });
 
 const componentProps = computed(() => {
-  if (props.href) {
-    return {
-      href: props.href,
-      target: props.target,
-    };
-  }
-  if (props.to) {
-    return {
-      to: props.to,
-    };
-  }
+  if (props.href) return { href: props.href, target: props.target };
+  if (props.to) return { to: props.to };
   return {};
 });
 
@@ -114,13 +129,13 @@ defineExpose({
     v-bind="componentProps"
     ref="trigger"
     class="fbds-font-button rounded-md group/button"
-    :class="[bgClass, textClass, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
+    :class="[config.bg, config.text, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
     :disabled
     @click="handleClick"
   >
     <div
-      class="relative z-1 flex flex-nowrap gap-2 py-2.5 px-3 rounded-[inherit] fbds-state-layer"
-      :class="[stateLayerClass, outlineClass, !label && icon ? 'size-10' : 'py-2.5 px-3']"
+      class="relative z-1 flex flex-nowrap gap-2 rounded-[inherit] fbds-state-layer"
+      :class="[stateLayerClass, config.outline, !label && icon ? 'size-10' : 'py-2.5 px-3']"
     >
       <FbdsIcon
         v-if="icon"

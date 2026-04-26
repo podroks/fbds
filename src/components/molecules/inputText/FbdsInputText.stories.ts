@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { useArgs } from 'storybook/internal/preview-api';
 
-import { Contrast } from '@/constants/atoms/fbds-button';
+import { Variant } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
 import { StatusTheme, Theme } from '@/constants/theme';
 
@@ -66,21 +66,21 @@ const meta = {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsInputText, FbdsButton },
-      setup: () => ({ storyArgs, Icon, Contrast, updateArgs }),
+      setup: () => ({ storyArgs, Icon, Variant, updateArgs }),
       template: `
         <FbdsInputText v-bind="storyArgs" @update:value="(v) => updateArgs({ value: v })">
           <template #prepend>
             <FbdsButton
               class="rounded-r-none"
               :icon="Icon.farSquare"
-              :contrast="Contrast.Tertiary"
+              :variant="Variant.Tertiary"
             />
           </template>
           <template #append>
             <FbdsButton
               class="rounded-l-none"
               :icon="Icon.farSquare"
-              :contrast="Contrast.Tertiary"
+              :variant="Variant.Tertiary"
             />
           </template>
         </FbdsInputText>

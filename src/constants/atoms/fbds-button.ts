@@ -1,18 +1,20 @@
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
-import type { Theme } from '@/constants/theme';
 
-export const Contrast = {
+export const Variant = {
   Primary: 'primary',
   Secondary: 'secondary',
   Tertiary: 'tertiary',
+  Success: 'success',
+  SuccessSecondary: 'success-secondary',
+  Danger: 'danger',
+  DangerSecondary: 'danger-secondary',
 } as const;
 
-export type Contrast = (typeof Contrast)[keyof typeof Contrast];
+export type Variant = (typeof Variant)[keyof typeof Variant];
 
 export type ButtonProps = {
-  contrast?: Contrast;
-  theme?: Exclude<Theme, 'base-disable'>;
+  variant?: Variant;
   label?: string;
   icon?: Icon;
   disabled?: boolean;

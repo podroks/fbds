@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { useArgs } from 'storybook/internal/preview-api';
 
-import { Contrast } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
 import { StatusTheme, Theme } from '@/constants/theme';
 
@@ -82,7 +81,7 @@ const meta = {
     const [storyArgs, updateArgs] = useArgs();
     return {
       components: { FbdsInputRange, FbdsButton },
-      setup: () => ({ storyArgs, Icon, Contrast, updateArgs }),
+      setup: () => ({ storyArgs, Icon, updateArgs }),
       template: `
         <FbdsInputRange v-bind="storyArgs" @update:value="(v) => { console.log(v); updateArgs({ value: v }) }" />
       `,

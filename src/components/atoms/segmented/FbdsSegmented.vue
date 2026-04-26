@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { Contrast } from '@/constants/atoms/fbds-button';
+import { Variant } from '@/constants/atoms/fbds-button';
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
 
 import FbdsButton from '@/components/atoms/button/FbdsButton.vue';
 
 type Segment = {
   id: string | number;
-  theme?: Exclude<Theme, 'base-disable'>;
   label?: string;
   icon?: Icon;
   disabled?: boolean;
@@ -33,8 +31,7 @@ function handleClick(segment: Segment) {
     :key="segment.id"
     :label="segment.label"
     :icon="segment.icon"
-    :contrast="selected === segment.id ? Contrast.Primary : Contrast.Secondary"
-    :theme="segment.theme || Theme.BasePrimary"
+    :variant="selected === segment.id ? Variant.Primary : Variant.Secondary"
     :disabled="segment.disabled"
     :tooltip="segment.tooltip"
     :tooltip-options="segment.tooltipOptions"

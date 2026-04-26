@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Contrast } from '@/constants/atoms/fbds-button';
+import { Variant } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
 
 import FbdsButton from '@/components/atoms/button/FbdsButton.vue';
 
@@ -11,13 +10,9 @@ const meta = {
   component: FbdsButton,
   tags: ['!dev'],
   argTypes: {
-    contrast: {
+    variant: {
       control: 'select',
-      options: Object.values(Contrast),
-    },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
+      options: Object.values(Variant),
     },
     label: {
       control: 'text',
@@ -48,8 +43,7 @@ const meta = {
     },
   },
   args: {
-    contrast: Contrast.Primary,
-    theme: Theme.BasePrimary,
+    variant: Variant.Primary,
     label: 'Button',
     icon: undefined,
     disabled: false,
