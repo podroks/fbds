@@ -85,7 +85,7 @@ defineExpose({
       >
         <div
           ref="tooltip"
-          class="absolute bg-fbds-base-surface-inverted text-fbds-on-base-surface-inverted-high rounded-sm p-2 fbds-font-label-large overflow-hidden break-words"
+          class="absolute bg-fbds-on-surface-contrast-high text-fbds-surface rounded-sm p-2 fbds-font-label-large overflow-hidden break-words"
           :class="props.class"
           :style="{ top, left, width, height, maxHeight, maxWidth }"
         >

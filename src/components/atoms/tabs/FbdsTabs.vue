@@ -23,19 +23,19 @@ const tabRefs = ref<(HTMLElement | null)[]>([]);
 
 function bgClass(tab: Tab): string {
   if (tab.disabled) {
-    return 'bg-fbds-base-disable';
+    return 'bg-fbds-disable';
   }
   return 'bg-transparent';
 }
 
 function textClass(tab: Tab): string {
   if (tab.disabled) {
-    return 'text-fbds-on-base-disable';
+    return 'text-fbds-on-disable';
   }
   if (selected.value === tab.id) {
-    return 'text-fbds-base-primary';
+    return 'text-fbds-primary';
   }
-  return 'text-fbds-on-base-surface-high';
+  return 'text-fbds-on-surface-contrast-high';
 }
 
 function cursorClass(tab: Tab): string {
@@ -155,7 +155,7 @@ onBeforeUnmount(() => {
       <div
         v-if="tabs.length"
         ref="indicator"
-        class="absolute h-1 bottom-0 bg-fbds-base-primary"
+        class="absolute h-1 bottom-0 bg-fbds-primary"
         :class="{ 'duration-150 transition-all': isIndicatorTransitionActive }"
         :style="indicatorStyle"
       />

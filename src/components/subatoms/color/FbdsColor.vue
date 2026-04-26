@@ -4,53 +4,55 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
 
 <template>
   <div class="flex flex-col gap-6 w-full">
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Base</h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border">Surface</h1>
+    <FbdsColorCard
+      label="Background"
+      background="bg-fbds-background"
+    />
     <FbdsColorCard
       label="Surface"
-      background="bg-fbds-base-surface"
-      :foregrounds="['bg-fbds-on-base-surface-low', 'bg-fbds-on-base-surface-medium', 'bg-fbds-on-base-surface-high']"
+      background="bg-fbds-surface"
+      :foregrounds="['bg-fbds-on-surface-contrast-low', 'bg-fbds-on-surface-contrast-medium', 'bg-fbds-on-surface-contrast-high']"
     />
     <FbdsColorCard
-      label="Surface inverted"
-      background="bg-fbds-base-surface-inverted"
-      :foregrounds="[
-        'bg-fbds-on-base-surface-inverted-low',
-        'bg-fbds-on-base-surface-inverted-medium',
-        'bg-fbds-on-base-surface-inverted-high',
-      ]"
+      label="Surface 1"
+      background="bg-fbds-surface-1"
+      :foregrounds="['bg-fbds-on-surface-contrast-low', 'bg-fbds-on-surface-contrast-medium', 'bg-fbds-on-surface-contrast-high']"
     />
+
+    <h1 class="fbds-font-title-large border-b border-fbds-border">Base</h1>
     <FbdsColorCard
       label="Primary"
-      background="bg-fbds-base-primary"
-      :foregrounds="['bg-fbds-on-base-primary']"
+      background="bg-fbds-primary"
+      :foregrounds="['bg-fbds-on-primary']"
     />
     <FbdsColorCard
       label="Alert"
-      background="bg-fbds-base-alert"
-      :foregrounds="['bg-fbds-on-base-alert']"
+      background="bg-fbds-alert"
+      :foregrounds="['bg-fbds-on-alert']"
     />
     <FbdsColorCard
       label="Warning"
-      background="bg-fbds-base-warning"
-      :foregrounds="['bg-fbds-on-base-warning']"
+      background="bg-fbds-warning"
+      :foregrounds="['bg-fbds-on-warning']"
     />
     <FbdsColorCard
       label="Success"
-      background="bg-fbds-base-success"
-      :foregrounds="['bg-fbds-on-base-success']"
+      background="bg-fbds-success"
+      :foregrounds="['bg-fbds-on-success']"
     />
     <FbdsColorCard
       label="Info"
-      background="bg-fbds-base-info"
-      :foregrounds="['bg-fbds-on-base-info']"
+      background="bg-fbds-info"
+      :foregrounds="['bg-fbds-on-info']"
     />
     <FbdsColorCard
       label="Disable"
-      background="bg-fbds-base-disable"
-      :foregrounds="['bg-fbds-on-base-disable']"
+      background="bg-fbds-disable"
+      :foregrounds="['bg-fbds-on-disable']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Container</h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border">Container</h1>
     <FbdsColorCard
       label="Primary"
       background="bg-fbds-container-primary"
@@ -97,64 +99,13 @@ import FbdsColorCard from '@/components/subatoms/color/FbdsColorCard.vue';
       :foregrounds="['bg-fbds-on-container-accent-4']"
     />
 
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Surface elevation</h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border">Border</h1>
     <FbdsColorCard
-      label="Neutral lowest"
-      background="bg-fbds-surface-elevation-neutral-lowest"
-    />
-    <FbdsColorCard
-      label="Neutral low"
-      background="bg-fbds-surface-elevation-neutral-low"
-    />
-    <FbdsColorCard
-      label="Neutral medium"
-      background="bg-fbds-surface-elevation-neutral-medium"
-    />
-    <FbdsColorCard
-      label="Neutral high"
-      background="bg-fbds-surface-elevation-neutral-high"
-    />
-    <FbdsColorCard
-      label="Neutral highest"
-      background="bg-fbds-surface-elevation-neutral-highest"
+      label="Border"
+      background="bg-fbds-border"
     />
 
-    <FbdsColorCard
-      label="Primary lowest"
-      background="bg-fbds-surface-elevation-primary-lowest"
-    />
-    <FbdsColorCard
-      label="Primary low"
-      background="bg-fbds-surface-elevation-primary-low"
-    />
-    <FbdsColorCard
-      label="Primary medium"
-      background="bg-fbds-surface-elevation-primary-medium"
-    />
-    <FbdsColorCard
-      label="Primary high"
-      background="bg-fbds-surface-elevation-primary-high"
-    />
-    <FbdsColorCard
-      label="Primary highest"
-      background="bg-fbds-surface-elevation-primary-highest"
-    />
-
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Border</h1>
-    <FbdsColorCard
-      label="Low"
-      background="bg-fbds-border-low"
-    />
-    <FbdsColorCard
-      label="Medium"
-      background="bg-fbds-border-medium"
-    />
-    <FbdsColorCard
-      label="High"
-      background="bg-fbds-border-high"
-    />
-
-    <h1 class="fbds-font-title-large border-b border-fbds-border-medium">Overlay</h1>
+    <h1 class="fbds-font-title-large border-b border-fbds-border">Overlay</h1>
     <FbdsColorCard
       label="-"
       background="bg-fbds-overlay"

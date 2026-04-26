@@ -72,7 +72,7 @@ function handleClick() {
           :icon="undetermined ? Icon.fasSquareMinus : Icon.fasSquareCheck"
           :size="6"
           class="absolute top-1 left-1"
-          :class="disabled ? 'text-fbds-on-base-disable' : 'text-fbds-base-primary'"
+          :class="disabled ? 'text-fbds-on-disable' : 'text-fbds-primary'"
         />
       </Transition>
     </div>

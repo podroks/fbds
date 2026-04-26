@@ -154,7 +154,7 @@ onClickOutside(dropDownMenu, () => (isOpen.value = false), { ignore: ['.drop-dow
       >
         <div
           ref="dropDownMenu"
-          class="drop-down-menu fbds-scrollbar small absolute bg-fbds-base-surface text-fbds-on-base-surface-high border border-fbds-border-low shadow-md rounded-md pointer-events-auto overflow-auto"
+          class="drop-down-menu fbds-scrollbar small absolute bg-fbds-surface text-fbds-on-surface-contrast-high border border-fbds-border shadow-md rounded-md pointer-events-auto overflow-auto"
           :style="{ top, left, width, height, maxHeight, maxWidth }"
         >
           <div
@@ -165,8 +165,8 @@ onClickOutside(dropDownMenu, () => (isOpen.value = false), { ignore: ['.drop-dow
             @click="handleClick(option)"
           >
             <div
-              class="absolute top-0 -left-2 h-full border-b border-fbds-border-low group-last/dropmenu:border-0"
-              :class="`group-hover/dropmenu:bg-fbds-state-layer-${option.theme ?? 'base-primary'}-hover group-active/dropmenu:bg-fbds-state-layer-${option.theme ?? 'base-primary'}-press`"
+              class="absolute top-0 -left-2 h-full border-b border-fbds-border group-last/dropmenu:border-0"
+              :class="`group-hover/dropmenu:bg-fbds-state-layer-${option.theme ?? 'primary'}-hover group-active/dropmenu:bg-fbds-state-layer-${option.theme ?? 'primary'}-press`"
               style="width: calc(100% + 16px)"
             />
             <div class="relative flex items-center gap-3 px-1 z-1">

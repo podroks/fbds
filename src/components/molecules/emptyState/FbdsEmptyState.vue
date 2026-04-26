@@ -26,7 +26,7 @@ withDefaults(
   <div class="flex flex-col items-center gap-4 p-3">
     <div
       v-if="icon"
-      class="size-14 bg-fbds-surface-elevation-neutral-medium text-fbds-on-base-surface-low rounded-full flex items-center justify-center"
+      class="size-14 bg-fbds-surface-1 text-fbds-on-surface-contrast-low rounded-full flex items-center justify-center"
     >
       <FbdsIcon
         :icon

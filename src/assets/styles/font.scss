@@ -1,3 +1,4 @@
+/* ------------------------------ HankenGrotesk ----------------------------- */
 $font-weights: (
   100: Thin,
   200: ExtraLight,
@@ -10,18 +11,32 @@ $font-weights: (
   900: Black,
 );
 
-@each $weight, $name in $font-weights {
+// @each $weight, $name in $font-weights {
+//   @font-face {
+//     font-family: 'HankenGrotesk';
+//     font-weight: $weight;
+//     src: url('@/assets/fonts/HankenGrotesk-#{$name}.ttf');
+//   }
+// }
+
+// :root {
+//   --fbds-font-family: 'Hanken Grotesk', sans-serif;
+// }
+
+/* ---------------------------------- Inter --------------------------------- */
+@each $weight in $font-weights {
   @font-face {
-    font-family: 'HankenGrotesk';
+    font-family: 'Inter';
     font-weight: $weight;
-    src: url('@/assets/fonts/HankenGrotesk-#{$name}.ttf');
+    src: url('@/assets/fonts/Inter-VariableFont.ttf');
   }
 }
 
-/* ------------------------------ Typographies ------------------------------ */
 :root {
-  --fbds-font-family: 'Hanken Grotesk', sans-serif;
+  --fbds-font-family: 'Inter', sans-serif;
 }
+
+/* ------------------------------ Typographies ------------------------------ */
 
 .fbds-font-display-large {
   font-family: var(--fbds-font-family);

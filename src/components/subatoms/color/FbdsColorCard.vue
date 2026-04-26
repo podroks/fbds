@@ -75,7 +75,7 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
         class="basis-40 grow flex flex-col overflow-hidden rounded-md"
         :tabindex="1"
       >
-        <div class="relative h-10 mb-2 rounded-md shadow-md border border-fbds-border-low overflow-hidden">
+        <div class="relative h-10 mb-2 rounded-md shadow-md border border-fbds-border overflow-hidden">
           <div class="absolute h-full w-full -z-10 striped-diag" />
           <div
             :ref="(el) => handlePreviewRef(el, color)"
@@ -84,12 +84,12 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
           />
         </div>
 
-        <span class="w-full px-3 text-center fbds-font-label-medium-prominent text-fbds-on-base-surface-low truncate">
+        <span class="w-full px-3 text-center fbds-font-label-medium-prominent text-fbds-on-surface-contrast-low truncate">
           {{ getClassWithoutPrefix(color) }}
         </span>
         <span
           v-if="hex[color]"
-          class="w-full px-3 text-center fbds-font-label-large text-fbds-on-base-surface-medium uppercase"
+          class="w-full px-3 text-center fbds-font-label-large text-fbds-on-surface-contrast-medium uppercase"
         >
           {{ hex[color] }}
         </span>
@@ -98,8 +98,8 @@ const checkRGAA = (h1: string | undefined, h2: string | undefined) => {
           class="self-center rounded-full px-2 text-center fbds-font-label-medium border"
           :class="
             checkRGAA(hex[props.background], hex[color]).normalText
-              ? 'text-fbds-base-success border-fbds-base-success'
-              : 'text-fbds-base-alert border-fbds-base-alert'
+              ? 'text-fbds-success border-fbds-success'
+              : 'text-fbds-alert border-fbds-alert'
           "
         >
           {{ checkRGAA(hex[props.background], hex[color]).ratio }}

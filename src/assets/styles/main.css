@@ -4,60 +4,41 @@
 @import '@/assets/styles/safeList.css';
 
 @theme static {
-  --color-fbds-base-surface: var(--fbds-base-surface);
-  --color-fbds-on-base-surface-low: var(--fbds-on-base-surface-low);
-  --color-fbds-on-base-surface-medium: var(--fbds-on-base-surface-medium);
-  --color-fbds-on-base-surface-high: var(--fbds-on-base-surface-high);
-  --color-fbds-state-layer-base-surface-hover: var(--fbds-state-layer-base-surface-hover);
-  --color-fbds-state-layer-base-surface-press: var(--fbds-state-layer-base-surface-press);
+  --color-fbds-background: var(--fbds-background);
 
-  --color-fbds-base-surface-inverted: var(--fbds-base-surface-inverted);
-  --color-fbds-on-base-surface-inverted-low: var(--fbds-on-base-surface-inverted-low);
-  --color-fbds-on-base-surface-inverted-medium: var(--fbds-on-base-surface-inverted-medium);
-  --color-fbds-on-base-surface-inverted-high: var(--fbds-on-base-surface-inverted-high);
-  --color-fbds-state-layer-base-surface-inverted-hover: var(
-    --fbds-state-layer-base-surface-inverted-hover
-  );
-  --color-fbds-state-layer-base-surface-inverted-press: var(
-    --fbds-state-layer-surface-inverted-press
-  );
+  --color-fbds-surface: var(--fbds-surface);
+  --color-fbds-surface-1: var(--fbds-surface-1);
+  --color-fbds-on-surface-contrast-low: var(--fbds-on-surface-contrast-low);
+  --color-fbds-on-surface-contrast-medium: var(--fbds-on-surface-contrast-medium);
+  --color-fbds-on-surface-contrast-high: var(--fbds-on-surface-contrast-high);
 
-  --color-fbds-surface-elevation-neutral-lowest: var(--fbds-surface-elevation-neutral-lowest);
-  --color-fbds-surface-elevation-neutral-low: var(--fbds-surface-elevation-neutral-low);
-  --color-fbds-surface-elevation-neutral-medium: var(--fbds-surface-elevation-neutral-medium);
-  --color-fbds-surface-elevation-neutral-high: var(--fbds-surface-elevation-neutral-high);
-  --color-fbds-surface-elevation-neutral-highest: var(--fbds-surface-elevation-neutral-highest);
+  --color-fbds-primary: var(--fbds-primary);
+  --color-fbds-on-primary: var(--fbds-on-primary);
+  --color-fbds-state-layer-primary-hover: var(--fbds-state-layer-primary-hover);
+  --color-fbds-state-layer-primary-press: var(--fbds-state-layer-primary-press);
 
-  --color-fbds-surface-elevation-primary-lowest: var(--fbds-surface-elevation-primary-lowest);
-  --color-fbds-surface-elevation-primary-low: var(--fbds-surface-elevation-primary-low);
-  --color-fbds-surface-elevation-primary-medium: var(--fbds-surface-elevation-primary-medium);
-  --color-fbds-surface-elevation-primary-high: var(--fbds-surface-elevation-primary-high);
-  --color-fbds-surface-elevation-primary-highest: var(--fbds-surface-elevation-primary-highest);
+  --color-fbds-alert: var(--fbds-alert);
+  --color-fbds-on-alert: var(--fbds-on-alert);
+  --color-fbds-state-layer-alert-hover: var(--fbds-state-layer-alert-hover);
+  --color-fbds-state-layer-alert-press: var(--fbds-state-layer-alert-press);
 
-  --color-fbds-base-primary: var(--fbds-base-primary);
-  --color-fbds-on-base-primary: var(--fbds-on-base-primary);
-  --color-fbds-state-layer-base-primary-hover: var(--fbds-state-layer-base-primary-hover);
-  --color-fbds-state-layer-base-primary-press: var(--fbds-state-layer-base-primary-press);
+  --color-fbds-warning: var(--fbds-warning);
+  --color-fbds-on-warning: var(--fbds-on-warning);
+  --color-fbds-state-layer-warning-hover: var(--fbds-state-layer-warning-hover);
+  --color-fbds-state-layer-warning-press: var(--fbds-state-layer-warning-press);
 
-  --color-fbds-base-alert: var(--fbds-base-alert);
-  --color-fbds-on-base-alert: var(--fbds-on-base-alert);
-  --color-fbds-state-layer-base-alert-hover: var(--fbds-state-layer-base-alert-hover);
-  --color-fbds-state-layer-base-alert-press: var(--fbds-state-layer-base-alert-press);
+  --color-fbds-success: var(--fbds-success);
+  --color-fbds-on-success: var(--fbds-on-success);
+  --color-fbds-state-layer-success-hover: var(--fbds-state-layer-success-hover);
+  --color-fbds-state-layer-success-press: var(--fbds-state-layer-success-press);
 
-  --color-fbds-base-warning: var(--fbds-base-warning);
-  --color-fbds-on-base-warning: var(--fbds-on-base-warning);
-  --color-fbds-state-layer-base-warning-hover: var(--fbds-state-layer-base-warning-hover);
-  --color-fbds-state-layer-base-warning-press: var(--fbds-state-layer-base-warning-press);
+  --color-fbds-info: var(--fbds-info);
+  --color-fbds-on-info: var(--fbds-on-info);
+  --color-fbds-state-layer-info-hover: var(--fbds-state-layer-info-hover);
+  --color-fbds-state-layer-info-press: var(--fbds-state-layer-info-press);
 
-  --color-fbds-base-success: var(--fbds-base-success);
-  --color-fbds-on-base-success: var(--fbds-on-base-success);
-  --color-fbds-state-layer-base-success-hover: var(--fbds-state-layer-base-success-hover);
-  --color-fbds-state-layer-base-success-press: var(--fbds-state-layer-base-success-press);
-
-  --color-fbds-base-info: var(--fbds-base-info);
-  --color-fbds-on-base-info: var(--fbds-on-base-info);
-  --color-fbds-state-layer-base-info-hover: var(--fbds-state-layer-base-info-hover);
-  --color-fbds-state-layer-base-info-press: var(--fbds-state-layer-base-info-press);
+  --color-fbds-disable: var(--fbds-disable);
+  --color-fbds-on-disable: var(--fbds-on-disable);
 
   --color-fbds-container-primary: var(--fbds-container-primary);
   --color-fbds-on-container-primary: var(--fbds-on-container-primary);
@@ -120,14 +101,11 @@
     --fbds-state-layer-container-accent-4-press
   );
 
-  --color-fbds-base-disable: var(--fbds-base-disable);
-  --color-fbds-on-base-disable: var(--fbds-on-base-disable);
-
-  --color-fbds-border-low: var(--fbds-border-low);
-  --color-fbds-border-medium: var(--fbds-border-medium);
-  --color-fbds-border-high: var(--fbds-border-high);
+  --color-fbds-border: var(--fbds-border);
 
   --color-fbds-overlay: var(--fbds-overlay);
+
+  --color-fbds-scrollbar: var(--fbds-scrollbar);
 
   --color-fbds-state-layer-low-hover: var(--fbds-state-layer-low-hover);
   --color-fbds-state-layer-low-press: var(--fbds-state-layer-low-press);

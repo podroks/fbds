@@ -45,7 +45,7 @@ const fontProperties = computed<string>(() => {
     >
       <div
         ref="preview"
-        class="rounded-md shadow-md border border-fbds-border-low overflow-hidden text-center"
+        class="rounded-md shadow-md border border-fbds-border overflow-hidden text-center"
         :class="`fbds-font-${font}`"
       >
         {{ font }}

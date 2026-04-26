@@ -45,35 +45,35 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
 const input = ref<HTMLInputElement | null>(null);
 const focusVisibleClass =
-  'has-[textarea:focus-visible]:outline-2 has-[textarea:focus-visible]:outline-fbds-base-primary has-[textarea:focus-visible]:outline-offset-2';
+  'has-[textarea:focus-visible]:outline-2 has-[textarea:focus-visible]:outline-fbds-primary has-[textarea:focus-visible]:outline-offset-2';
 
 const outlineClass = computed<string>(() => {
   if (props.disabled) {
-    return 'outline -outline-offset-1 outline-fbds-on-base-disable';
+    return 'outline -outline-offset-1 outline-fbds-on-disable';
   }
   if (props.status?.theme && props.status.theme !== StatusTheme.Neutral) {
     return `outline -outline-offset-1 outline-fbds-${props.status.theme}`;
   }
-  return 'outline -outline-offset-1 outline-fbds-border-medium';
+  return 'outline -outline-offset-1 outline-fbds-border';
 });
 
-const bgClass = computed<string>(() => (props.disabled ? 'bg-fbds-base-disable' : 'bg-fbds-base-surface'));
+const bgClass = computed<string>(() => (props.disabled ? 'bg-fbds-disable' : 'bg-fbds-surface'));
 
 const textClass = computed<string>(() =>
-  props.disabled ? 'text-fbds-on-base-disable' : 'text-fbds-on-base-surface-high',
+  props.disabled ? 'text-fbds-on-disable' : 'text-fbds-on-surface-contrast-high',
 );
 
 const cursorClass = computed<string>(() => (props.disabled ? 'cursor-not-allowed' : 'cursor-text'));
 
 const placeholderClass = computed<string>(() =>
-  props.disabled ? 'placeholder:text-fbds-on-base-disable' : 'placeholder:text-fbds-on-base-surface-medium',
+  props.disabled ? 'placeholder:text-fbds-on-disable' : 'placeholder:text-fbds-on-surface-contrast-medium',
 );
 
-const hrBgClass = computed<string>(() => (props.disabled ? 'bg-fbds-on-base-disable' : 'bg-fbds-border-medium'));
+const hrBgClass = computed<string>(() => (props.disabled ? 'bg-fbds-on-disable' : 'bg-fbds-border'));
 
 const prependIconTextClass = computed<string | undefined>(() => {
   if (props.disabled) {
-    return 'text-fbds-on-base-disable';
+    return 'text-fbds-on-disable';
   }
   return props.prependIconTheme ? `text-fbds-${props.prependIconTheme}` : undefined;
 });

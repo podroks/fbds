@@ -65,59 +65,59 @@ const inputRangeClasses = computed(() => [
 
 const focusVisibleClass = computed(
   () =>
-    'has-[#range-input:focus]:outline-2 has-[#range-input:focus]:outline-fbds-base-primary has-[#range-input:focus]:outline-offset-2',
+    'has-[#range-input:focus]:outline-2 has-[#range-input:focus]:outline-fbds-primary has-[#range-input:focus]:outline-offset-2',
 );
 
 const outlineClass = computed(() => {
   if (props.disabled) {
-    return 'outline -outline-offset-1 outline-fbds-on-base-disable';
+    return 'outline -outline-offset-1 outline-fbds-on-disable';
   }
   if (props.status?.theme && props.status.theme !== StatusTheme.Neutral) {
     return `outline -outline-offset-1 outline-fbds-${props.status.theme}`;
   }
-  return 'outline -outline-offset-1 outline-fbds-border-medium';
+  return 'outline -outline-offset-1 outline-fbds-border';
 });
 
-const bgClass = computed(() => (props.disabled ? 'bg-fbds-base-disable' : 'bg-fbds-base-surface'));
-const textClass = computed(() => (props.disabled ? 'text-fbds-on-base-disable' : 'text-fbds-on-base-surface-high'));
+const bgClass = computed(() => (props.disabled ? 'bg-fbds-disable' : 'bg-fbds-surface'));
+const textClass = computed(() => (props.disabled ? 'text-fbds-on-disable' : 'text-fbds-on-surface-contrast-high'));
 const cursorClass = computed(() => (props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'));
-const hrBgClass = computed(() => (props.disabled ? 'bg-fbds-on-base-disable' : 'bg-fbds-border-medium'));
+const hrBgClass = computed(() => (props.disabled ? 'bg-fbds-on-disable' : 'bg-fbds-border'));
 
 const prependIconClass = computed(() => {
   if (props.disabled) {
-    return 'text-fbds-on-base-disable';
+    return 'text-fbds-on-disable';
   }
   return props.prependIconTheme ? `text-fbds-${props.prependIconTheme}` : undefined;
 });
 const appendIconClass = computed(() => {
   if (props.disabled) {
-    return 'text-fbds-on-base-disable';
+    return 'text-fbds-on-disable';
   }
   return props.appendIconTheme ? `text-fbds-${props.appendIconTheme}` : undefined;
 });
 
-const barFillClass = computed(() => (props.disabled ? 'bg-fbds-on-base-disable' : 'bg-fbds-base-primary'));
+const barFillClass = computed(() => (props.disabled ? 'bg-fbds-on-disable' : 'bg-fbds-primary'));
 const pinClass = computed(() =>
   [
     'absolute -top-1.5 size-4 rounded-full border-2 box-content',
     props.disabled
-      ? 'bg-fbds-on-base-disable border-fbds-base-disable'
-      : 'bg-fbds-base-primary border-fbds-base-surface',
+      ? 'bg-fbds-on-disable border-fbds-disable'
+      : 'bg-fbds-primary border-fbds-surface',
   ].join(' '),
 );
 
 function stepClass(s: number) {
   const currentStep = min.value + (s - 1) * step.value;
   if (tmpValue.value === undefined) {
-    return 'bg-fbds-on-base-surface-low';
+    return 'bg-fbds-on-surface-contrast-low';
   }
   if (currentStep === tmpValue.value) {
     return 'bg-transparent';
   }
   if (currentStep < tmpValue.value) {
-    return props.disabled ? 'bg-fbds-base-disable' : 'bg-fbds-on-base-primary';
+    return props.disabled ? 'bg-fbds-disable' : 'bg-fbds-on-primary';
   }
-  return props.disabled ? 'bg-fbds-on-base-disable' : 'bg-fbds-on-base-surface-low';
+  return props.disabled ? 'bg-fbds-on-disable' : 'bg-fbds-on-surface-contrast-low';
 }
 /* ----------------------------- \Style Classes ----------------------------- */
 
@@ -267,7 +267,7 @@ function handleClick(event: MouseEvent) {
             @keydown.left="decrementStep"
             @keydown.right="incrementStep"
           >
-            <div class="relative h-2 w-full bg-fbds-surface-elevation-neutral-medium rounded-full">
+            <div class="relative h-2 w-full bg-fbds-surface-1 rounded-full">
               <div
                 class="h-full rounded-full"
                 :class="barFillClass"
@@ -319,7 +319,7 @@ function handleClick(event: MouseEvent) {
         :trigger
         :positioning="Positioning.Top"
         :persistant="isDragging || showTooltipFromKeypress"
-        class="bg-fbds-base-primary! text-fbds-on-base-primary!"
+        class="bg-fbds-primary! text-fbds-on-primary!"
       >
         {{ tmpValue ?? min }}
       </FbdsTooltip>
