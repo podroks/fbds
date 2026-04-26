@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Variant } from '@/constants/atoms/fbds-button';
+import { Size, Variant } from '@/constants/atoms/fbds-button';
 import { Icon } from '@/constants/icon';
 
 import FbdsButton from '@/components/atoms/button/FbdsButton.vue';
@@ -13,6 +13,10 @@ const meta = {
     variant: {
       control: 'select',
       options: Object.values(Variant),
+    },
+    size: {
+      control: 'select',
+      options: Object.values(Size),
     },
     label: {
       control: 'text',
@@ -44,6 +48,7 @@ const meta = {
   },
   args: {
     variant: Variant.Primary,
+    size: Size.Md,
     label: 'Button',
     icon: undefined,
     disabled: false,

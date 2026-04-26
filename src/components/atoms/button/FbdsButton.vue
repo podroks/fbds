@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import { type ButtonProps, Variant } from '@/constants/atoms/fbds-button';
+import { type ButtonProps, Size, Variant } from '@/constants/atoms/fbds-button';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   label: undefined,
   icon: undefined,
   variant: Variant.Primary,
+  size: Size.Md,
   disabled: false,
   href: undefined,
   target: undefined,
@@ -95,6 +96,16 @@ const config = computed<VariantConfig>(() => {
   return variantConfigs[props.variant];
 });
 
+const fontClass = computed<string>(() => (props.size === Size.Md ? 'fbds-font-button' : 'fbds-font-button-sm'));
+
+const sizeClass = computed<string>(() => {
+  const isMd = props.size === Size.Md;
+  if (!props.label && props.icon) {
+    return isMd ? 'size-10 justify-center' : 'size-8 justify-center';
+  }
+  return isMd ? 'h-10 px-3 gap-2' : 'h-8 px-2.5 gap-1.5';
+});
+
 const stateLayerClass = computed<string>(() => {
   if (!config.value.stateLayerHover) return '';
   return `group-hover/button:${config.value.stateLayerHover} group-active/button:${config.value.stateLayerPress}`;
@@ -128,14 +139,14 @@ defineExpose({
     :is="component"
     v-bind="componentProps"
     ref="trigger"
-    class="fbds-font-button rounded-md group/button"
-    :class="[config.bg, config.text, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
+    class="rounded-md group/button"
+    :class="[fontClass, config.bg, config.text, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
     :disabled
     @click="handleClick"
   >
     <div
-      class="relative z-1 flex flex-nowrap gap-2 rounded-[inherit] fbds-state-layer"
-      :class="[stateLayerClass, config.outline, !label && icon ? 'size-10' : 'py-2.5 px-3']"
+      class="relative z-1 flex flex-nowrap items-center rounded-[inherit] fbds-state-layer"
+      :class="[stateLayerClass, config.outline, sizeClass]"
     >
       <FbdsIcon
         v-if="icon"
