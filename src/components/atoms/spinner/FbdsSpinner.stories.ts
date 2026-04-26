@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
+import { SpinnerSize } from '@/constants/atoms/fbds-spinner';
 
 import FbdsSpinner from '@/components/atoms/spinner/FbdsSpinner.vue';
 
@@ -10,23 +9,13 @@ const meta = {
   component: FbdsSpinner,
   tags: ['!dev'],
   argTypes: {
-    icon: {
-      control: 'select',
-      options: Object.keys(Icon),
-      mapping: Icon,
-    },
     size: {
-      control: 'number',
-    },
-    theme: {
       control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
+      options: Object.values(SpinnerSize),
     },
   },
   args: {
-    icon: Icon.facSpinner,
-    size: 5,
-    theme: Theme.BaseSurfaceInverted,
+    size: SpinnerSize.Md,
   },
   render: (args) => ({
     components: { FbdsSpinner },

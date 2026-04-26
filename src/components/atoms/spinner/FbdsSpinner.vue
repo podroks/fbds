@@ -1,28 +1,29 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
+import { SpinnerSize } from '@/constants/atoms/fbds-spinner';
 import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
 
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    icon?: Icon;
-    size?: number;
-    theme?: Exclude<Theme, 'base-disable'>;
+    size?: SpinnerSize;
   }>(),
   {
-    icon: () => Icon.facSpinner,
-    size: 5,
-    theme: Theme.BaseSurfaceInverted,
+    size: SpinnerSize.Md,
   },
 );
+
+const sizeMap: Record<SpinnerSize, number> = { sm: 5, md: 8, lg: 11 };
+
+const iconSize = computed(() => sizeMap[props.size]);
 </script>
 
 <template>
   <FbdsIcon
-    :class="`text-fbds-${theme}`"
-    :icon
-    :size
+    :icon="Icon.facSpinner"
+    :size="iconSize"
     inner-class="animate-spin"
   />
 </template>
