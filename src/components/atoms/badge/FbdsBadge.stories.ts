@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Theme } from '@/constants/theme';
-
 import FbdsBadge from '@/components/atoms/badge/FbdsBadge.vue';
 
 const meta = {
@@ -18,10 +16,6 @@ const meta = {
     pined: {
       control: 'boolean',
     },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
     tooltip: {
       control: 'text',
     },
@@ -33,7 +27,6 @@ const meta = {
     value: 10,
     max: 99,
     pined: false,
-    theme: Theme.BasePrimary,
     tooltip: '',
     tooltipOptions: {},
   },

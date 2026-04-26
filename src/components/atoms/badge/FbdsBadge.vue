@@ -2,7 +2,6 @@
 import { computed, useTemplateRef } from 'vue';
 
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
-import { OnTheme, Theme } from '@/constants/theme';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 
@@ -11,14 +10,12 @@ const props = withDefaults(
     value: number;
     max?: number;
     pined?: boolean;
-    theme?: Exclude<Theme, 'base-disable'>;
     tooltip?: string;
     tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     max: 99,
     pined: false,
-    theme: Theme.BasePrimary,
     tooltip: undefined,
     tooltipOptions: () => ({}),
   },
@@ -26,22 +23,14 @@ const props = withDefaults(
 
 const trigger = useTemplateRef<HTMLDivElement | HTMLButtonElement>('trigger');
 
-const bgClass = computed<`bg-fbds-${Theme}` | 'bg-transparent'>(() => {
-  return `bg-fbds-${props.theme}`;
-});
-
-const textClass = computed<`text-fbds-${OnTheme}`>(() => {
-  return `text-fbds-${OnTheme[props.theme]}`;
-});
-
 const label = computed(() => (props.value > props.max ? `+${props.max}` : `${Math.max(0, props.value)}`));
 </script>
 
 <template>
   <div
     ref="trigger"
-    class="rounded-full flex justify-center"
-    :class="[bgClass, textClass, pined ? 'size-2' : 'w-fit min-w-6 p-1 fbds-font-label indent-[0.5px]']"
+    class="rounded-full flex justify-center bg-fbds-primary text-fbds-on-primary"
+    :class="pined ? 'size-2' : 'w-fit min-w-6 h-6 p-1 fbds-font-caption indent-[0.5px]'"
   >
     {{ pined ? null : label }}
     <FbdsTooltip
