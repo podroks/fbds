@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Theme } from '@/constants/theme';
-
 import FbdsAvatar from '@/components/atoms/avatar/FbdsAvatar.vue';
 
 const meta = {
@@ -10,13 +8,7 @@ const meta = {
   tags: ['!dev'],
   argTypes: {
     fallback: { control: 'text' },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
-    color: {
-      control: 'color',
-    },
+    color: { control: 'color' },
     src: { control: 'text' },
     alt: { control: 'text' },
     tooltip: { control: 'text' },
@@ -24,8 +16,7 @@ const meta = {
   },
   args: {
     fallback: 'AB',
-    theme: Theme.BasePrimary,
-    color: undefined,
+    color: '#8362cd',
     tooltip: 'Tooltip',
     tooltipOptions: {},
   },
