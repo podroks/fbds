@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 import type { Icon } from '@/constants/icon';
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     icon: Icon;
     size?: number;
@@ -15,11 +15,8 @@ const props = withDefaults(
   },
 );
 
-const isVueComponent = computed<boolean>(() => {
-  return typeof props.icon === 'object' && 'render' in props.icon;
-});
+const el = ref<HTMLDivElement | null>(null);
 
-const el = ref(null);
 defineExpose({ el });
 </script>
 
@@ -31,14 +28,7 @@ defineExpose({ el });
   >
     <component
       :is="icon"
-      v-if="isVueComponent"
-      class="size-4/5!"
-      :class="innerClass"
-    />
-    <font-awesome-icon
-      v-else
-      :icon
-      class="size-4/5!"
+      class="size-full"
       :class="innerClass"
     />
   </div>

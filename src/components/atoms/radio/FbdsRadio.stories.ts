@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { useArgs } from 'storybook/internal/preview-api';
 
-import { Theme } from '@/constants/theme';
-
 import FbdsRadio from '@/components/atoms/radio/FbdsRadio.vue';
 
 const meta = {
@@ -22,10 +20,6 @@ const meta = {
     disabled: {
       control: 'boolean',
     },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
     tooltip: {
       control: 'text',
     },
@@ -38,7 +32,6 @@ const meta = {
     label: 'libellé Radio',
     name: 'select',
     disabled: false,
-    theme: Theme.BasePrimary,
     tooltip: 'Tooltip',
     tooltipOptions: {},
   },

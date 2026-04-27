@@ -22,7 +22,7 @@ const iconSize = computed(() => sizeMap[props.size]);
 
 <template>
   <FbdsIcon
-    :icon="Icon.facSpinner"
+    :icon="Icon.Spinner"
     :size="iconSize"
     inner-class="animate-spin"
   />

@@ -2,11 +2,8 @@
 import { useTemplateRef } from 'vue';
 
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
-import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
-import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
 
 const checked = defineModel<boolean>('checked', { required: true });
 const props = withDefaults(
@@ -14,14 +11,12 @@ const props = withDefaults(
     name: string;
     label?: string;
     disabled?: boolean;
-    theme?: Theme;
     tooltip?: string;
     tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     label: undefined,
     disabled: false,
-    theme: Theme.BasePrimary,
     tooltip: undefined,
     tooltipOptions: () => ({}),
   },
@@ -41,8 +36,10 @@ function handleClick() {
     ref="trigger"
     class="flex flex-nowrap items-center gap-1 fbds-font-label rounded-full"
     :class="disabled ? 'cursor-not-allowed text-fbds-on-base-disable' : 'cursor-pointer text-fbds-on-base-surface-high'"
-    :tabindex="1"
+    :tabindex="disabled ? -1 : 1"
     @click="handleClick"
+    @keydown.space.prevent="handleClick"
+    @keydown.enter="handleClick"
   >
     <input
       class="absolute invisible pointer-events-none"
@@ -51,45 +48,38 @@ function handleClick() {
       :checked
     />
     <div
-      class="relative rounded-full p-1 size-8"
-      :class="disabled ? '' : `hover:bg-fbds-state-layer-${theme}-hover active:bg-fbds-state-layer-${theme}-press`"
+      class="rounded-full p-2"
+      :class="{ 'hover:bg-fbds-state-layer-high-hover active:bg-fbds-state-layer-high-press': !disabled }"
     >
-      <Transition
-        enter-active-class="transition duration-0"
-        enter-from-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="transition delay-150 duration-0"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
+      <div
+        class="relative size-4 rounded-full -outline-offset-1 outline transition duration-150 ease-in-out"
+        :class="checked ? 'outline-transparent' : 'outline-fbds-on-surface-contrast-medium'"
       >
-        <FbdsIcon
-          v-if="!checked"
-          class="absolute"
-          :icon="Icon.farCircle"
-          :size="6"
-        />
-      </Transition>
-      <Transition
-        enter-active-class="transition duration-150 ease-in-out"
-        enter-from-class="opacity-0 scale-50"
-        enter-to-class="opacity-100 scale-100"
-        leave-active-class="transition duration-150 ease-in-out"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <FbdsIcon
-          v-if="checked"
-          class="absolute"
-          :class="disabled ? 'text-fbds-on-base-disable' : `text-fbds-${theme}`"
-          :icon="Icon.fasCircleDot"
-          :size="6"
-        />
-      </Transition>
+        <Transition
+          enter-active-class="transition duration-150 ease-in-out"
+          enter-from-class="opacity-0 scale-50"
+          enter-to-class="opacity-100 scale-100"
+          leave-active-class="transition duration-150 ease-in-out"
+          leave-from-class="opacity-100"
+          leave-to-class="opacity-0"
+        >
+          <div
+            v-if="checked"
+            class="absolute top-0 left-0 size-full rounded-full"
+            :class="
+              disabled
+                ? 'outline outline-fbds-disable shadow-[inset_0_0_0_4px] shadow-fbds-disable'
+                : 'outline outline-fbds-primary shadow-[inset_0_0_0_4px] shadow-fbds-primary'
+            "
+          />
+        </Transition>
+      </div>
     </div>
     <label
       v-if="label"
       :for="name"
-      class="pr-2 pointer-events-none"
+      class="pr-2 pointer-events-none fbds-font-label-subtle"
+      :class="disabled ? 'text-fbds-on-disable' : 'text-fbds-on-surface-contrast-high'"
     >
       {{ label }}
     </label>

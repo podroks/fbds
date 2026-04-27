@@ -52,6 +52,7 @@ watch(
 <template>
   <span
     ref="textRef"
+    class="text-left"
     :class="truncateClass"
   >
     {{ text }}

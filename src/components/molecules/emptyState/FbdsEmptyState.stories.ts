@@ -28,7 +28,7 @@ const meta = {
     icon: undefined,
     text: 'Pas de données disponibles',
     truncateAtLine: 0,
-    button: { label: 'Ajouter une donnée', icon: Icon.fasPlus },
+    button: { label: 'Ajouter une donnée', icon: Icon.Add },
   },
   render: (args) => ({
     components: { FbdsEmptyState },

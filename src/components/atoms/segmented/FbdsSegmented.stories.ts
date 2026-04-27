@@ -19,9 +19,9 @@ const meta = {
   },
   args: {
     segments: [
-      { id: '1', icon: Icon.farCircle },
+      { id: '1', icon: Icon.Visibility },
       { id: '2', label: 'Segment 2' },
-      { id: '3', label: 'Segment 3', icon: Icon.farCircle, disabled: true },
+      { id: '3', label: 'Segment 3', icon: Icon.Visibility, disabled: true },
     ],
     selected: undefined,
   },

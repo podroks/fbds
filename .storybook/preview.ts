@@ -1,14 +1,9 @@
 import { setup } from '@storybook/vue3-vite';
 import type { Preview, StoryContext } from '@storybook/vue3'
 import { watch } from 'vue';
-import { fbdsFontAwesomePlugin } from '../src/plugins/fbds-font-awesome.plugin';
 import '../src/assets/styles/main.css'
 import '../src/assets/styles/main.scss'
 import './preview.scss'
-
-setup((app) => {
-  fbdsFontAwesomePlugin(app)
-});
 
 const preview: Preview = {
   parameters: {

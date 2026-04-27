@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { useArgs } from 'storybook/internal/preview-api';
 
 import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
 
 import FbdsSwitch from '@/components/atoms/switch/FbdsSwitch.vue';
 
@@ -20,29 +19,15 @@ const meta = {
     label: {
       control: 'text',
     },
-    theme: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
     icon: {
       control: 'select',
       options: Object.keys(Icon),
       mapping: Icon,
     },
-    border: {
-      control: 'boolean',
-    },
-    themeUnchecked: {
-      control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
-    },
     iconUnchecked: {
       control: 'select',
       options: Object.keys(Icon),
       mapping: Icon,
-    },
-    borderUnchecked: {
-      control: 'boolean',
     },
     disabled: {
       control: 'boolean',
@@ -58,12 +43,8 @@ const meta = {
     checked: true,
     label: 'libellé Switch',
     name: 'select',
-    theme: Theme.BasePrimary,
     icon: undefined,
-    border: false,
-    themeUnchecked: undefined,
     iconUnchecked: undefined,
-    borderUnchecked: false,
     disabled: false,
     tooltip: 'Tooltip',
     tooltipOptions: {},

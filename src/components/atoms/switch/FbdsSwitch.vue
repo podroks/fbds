@@ -3,7 +3,6 @@ import { computed, useTemplateRef } from 'vue';
 
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import { Icon } from '@/constants/icon';
-import { OnTheme, Theme } from '@/constants/theme';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -13,24 +12,16 @@ const props = withDefaults(
   defineProps<{
     name: string;
     label?: string;
-    theme?: Exclude<Theme, 'base-disable'>;
     icon?: Icon;
-    border?: boolean;
-    themeUnchecked?: Exclude<Theme, 'base-disable'>;
     iconUnchecked?: Icon;
-    borderUnchecked?: boolean;
     disabled?: boolean;
     tooltip?: string;
     tooltipOptions?: TooltipPropsOptionnal;
   }>(),
   {
     label: undefined,
-    theme: Theme.BasePrimary,
-    icon: () => Icon.fasCircle,
-    border: false,
-    themeUnchecked: undefined,
-    iconUnchecked: () => Icon.fasCircle,
-    borderUnchecked: false,
+    icon: () => Icon.Circle,
+    iconUnchecked: () => Icon.Circle,
     disabled: false,
     tooltip: undefined,
     tooltipOptions: () => ({}),
@@ -39,37 +30,24 @@ const props = withDefaults(
 
 const trigger = useTemplateRef('trigger');
 
-const currentTheme = computed<Theme>(() => (props.disabled ? Theme.BaseDisable : props.theme));
-
 const bgClass = computed<string>(() => {
-  if (checked.value || props.disabled) {
-    return `bg-fbds-${currentTheme.value}`;
+  if (props.disabled) {
+    return 'bg-fbds-disable';
   }
-  return `bg-fbds-${props.themeUnchecked ?? 'surface-elevation-neutral-highest'}`;
+  if (checked.value) {
+    return 'bg-fbds-primary';
+  }
+  return 'bg-fbds-on-surface-contrast-low';
 });
 
 const textClass = computed<string>(() => {
-  if (checked.value || props.disabled) {
-    return `text-fbds-${OnTheme[currentTheme.value]}`;
+  if (props.disabled) {
+    return 'text-fbds-on-disable';
   }
-  if (props.themeUnchecked) {
-    return `text-fbds-${OnTheme[props.themeUnchecked]}`;
-  }
-  return 'text-fbds-on-base-surface-inverted-high';
-});
-
-const outlineClass = computed<string>(() => {
-  if ((checked.value && !props.border) || (!checked.value && !props.borderUnchecked) || props.disabled) {
-    return '';
-  }
-  const outlineBase = 'outline -outline-offset-1';
   if (checked.value) {
-    return `${outlineBase} outline-fbds-${OnTheme[currentTheme.value]}`;
+    return 'text-fbds-on-primary';
   }
-  if (props.themeUnchecked) {
-    return `${outlineBase} outline-fbds-${OnTheme[props.themeUnchecked]}`;
-  }
-  return `${outlineBase} outline-fbds-${props.themeUnchecked ?? 'on-base-surface-inverted-high'}`;
+  return 'text-fbds-surface';
 });
 
 function handleClick() {
@@ -84,8 +62,10 @@ function handleClick() {
     ref="trigger"
     class="flex flex-nowrap items-center gap-1 fbds-font-label rounded-full"
     :class="disabled ? 'cursor-not-allowed text-fbds-on-base-disable' : 'cursor-pointer text-fbds-on-base-surface-high'"
-    :tabindex="1"
+    :tabindex="disabled ? -1 : 1"
     @click="handleClick"
+    @keydown.space.prevent="handleClick"
+    @keydown.enter="handleClick"
   >
     <button
       class="relative rounded-full p-1 pointer-events-none"
@@ -94,7 +74,7 @@ function handleClick() {
     >
       <div
         class="h-6 w-10 flex items-center px-1 rounded-full"
-        :class="[bgClass, textClass, outlineClass]"
+        :class="[bgClass, textClass]"
       >
         <FbdsIcon
           :icon="checked ? icon : iconUnchecked"
@@ -106,7 +86,8 @@ function handleClick() {
     <label
       v-if="label"
       :for="name"
-      class="pr-2 pointer-events-none"
+      class="pr-2 pointer-events-none fbds-font-label-subtle"
+      :class="disabled ? 'text-fbds-on-disable' : 'text-fbds-on-surface-contrast-high'"
     >
       {{ label }}
     </label>

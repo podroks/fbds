@@ -137,13 +137,13 @@ function handleClick(event: MouseEvent) {
           />
           <div class="flex flex-col group-hover/input-number:visible invisible">
             <FbdsIcon
-              :icon="Icon.fasCaretUp"
+              :icon="Icon.CaretUp"
               class="text-fbds-on-base-surface-low cursor-pointer px-1 pt-1.5 box-content hover:text-fbds-on-base-surface-medium active:text-fbds-on-base-surface-high"
               :size="3"
               @click="input?.stepUp()"
             />
             <FbdsIcon
-              :icon="Icon.fasCaretDown"
+              :icon="Icon.CaretDown"
               class="text-fbds-on-base-surface-low cursor-pointer px-1 pb-1.5 box-content hover:text-fbds-on-base-surface-medium active:text-fbds-on-base-surface-high"
               :size="3"
               @click="input?.stepDown()"

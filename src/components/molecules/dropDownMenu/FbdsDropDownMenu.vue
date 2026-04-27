@@ -185,7 +185,7 @@ onClickOutside(dropDownMenu, () => (isOpen.value = false), { ignore: ['.drop-dow
                 />
                 <FbdsIcon
                   v-if="option.children"
-                  :icon="Icon.fasCaretRight"
+                  :icon="Icon.ChevronRight"
                 />
               </slot>
             </div>

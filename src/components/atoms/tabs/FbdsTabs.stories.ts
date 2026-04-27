@@ -21,9 +21,9 @@ const meta = {
       {
         id: 'tab2',
         label: 'Tab 2 beaucoup beaucoup beaucoup beaucoup trop long',
-        icon: Icon.farSquare,
+        icon: Icon.Visibility,
       },
-      { id: 'tab3', icon: Icon.farSquare, tooltip: 'Tooltip sur Tab 3' },
+      { id: 'tab3', icon: Icon.Visibility, tooltip: 'Tooltip sur Tab 3' },
       { id: 'tab4', label: 'Tab 4', disabled: true },
     ],
     showContent: false,

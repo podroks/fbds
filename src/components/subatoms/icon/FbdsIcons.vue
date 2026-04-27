@@ -1,35 +1,53 @@
 <script setup lang="ts">
+import { useClipboard } from '@vueuse/core';
+import { reactive, ref } from 'vue';
+
 import { Icon } from '@/constants/icon';
 
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
+import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 
-const group = [
-  { prefix: 'fas', label: 'Solid' },
-  { prefix: 'far', label: 'Regular' },
-  { prefix: 'fab', label: 'Brend' },
-  { prefix: 'fac', label: 'Custom' },
-];
+const { copy } = useClipboard();
+
+const copiedKey = ref<string | null>(null);
+const triggers = reactive<Record<string, HTMLElement | null>>({});
+
+const stateLayerClass =
+  'rounded-[inherit] group-hover:bg-fbds-state-layer-high-hover group-active:bg-fbds-state-layer-high-press';
+
+const icons = Object.entries(Icon);
+
+async function handleCopy(key: string) {
+  await copy(key);
+  copiedKey.value = key;
+  setTimeout(() => {
+    if (copiedKey.value === key) copiedKey.value = null;
+  }, 2000);
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-6 w-full">
-    <template
-      v-for="{ prefix, label } in group"
-      :key="prefix"
+  <div class="flex flex-wrap gap-4">
+    <div
+      v-for="[key, icon] in icons"
+      :key
+      :ref="
+        (el) => {
+          triggers[key] = el as HTMLElement | null;
+        }
+      "
+      class="relative group cursor-pointer rounded-xs"
+      @click="handleCopy(key)"
     >
-      <h1 class="fbds-font-heading-lg border-b border-fbds-border">
-        {{ label }}
-      </h1>
-
-      <div class="flex flex-wrap gap-4">
+      <div :class="stateLayerClass">
         <FbdsIcon
-          v-for="[key, icon] in Object.entries(Icon).filter(([key]) => key.match(new RegExp(`^${prefix}`, 'g')))"
-          :key
           :icon
-          class="rounded-xs"
-          :tabindex="1"
+          :size="5"
         />
       </div>
-    </template>
+      <FbdsTooltip :trigger="triggers[key]">
+        {{ copiedKey === key ? 'Copié !' : key }}
+      </FbdsTooltip>
+    </div>
   </div>
 </template>

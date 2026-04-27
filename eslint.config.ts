@@ -20,13 +20,7 @@ const vueTemplateConfig: Linter.Config = {
   files: ['**/*.{vue,ts}'],
   rules: {
     'vue/html-indent': ['error', 2],
-    'vue/first-attribute-linebreak': [
-      'error',
-      {
-        singleline: 'beside',
-        multiline: 'below',
-      },
-    ],
+    'vue/first-attribute-linebreak': 'off',
     'vue/max-attributes-per-line': [
       'error',
       {
