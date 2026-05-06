@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 
 defineSlots<{ default?(): unknown }>();
 
+const isFocusVisible = ref<boolean>(false);
 const tooltip = ref<HTMLElement | null>(null);
 
 const { top, left, height, width, maxHeight, maxWidth, triggerEl, updateAllRect } = useFloating(
@@ -27,6 +28,7 @@ const { top, left, height, width, maxHeight, maxWidth, triggerEl, updateAllRect 
     container: computed(() => props.container),
     triggerOffset: computed<number>(() => props.offset),
     containerOffset: computed<number>(() => props.containerOffset),
+    follow: computed(() => isFocusVisible.value),
   },
 );
 
@@ -42,16 +44,28 @@ watch(
     el.addEventListener('mouseleave', hideTooltip);
     el.addEventListener('focus', showTooltip);
     el.addEventListener('blur', hideTooltip);
+    el.addEventListener('focusin', onFocusIn);
+    el.addEventListener('focusout', onFocusOut);
 
     onCleanup(() => {
       el.removeEventListener('mouseenter', showTooltip);
       el.removeEventListener('mouseleave', hideTooltip);
       el.removeEventListener('focus', showTooltip);
       el.removeEventListener('blur', hideTooltip);
+      el.removeEventListener('focusin', onFocusIn);
+      el.removeEventListener('focusout', onFocusOut);
     });
   },
   { immediate: true },
 );
+
+function onFocusIn(event: FocusEvent) {
+  isFocusVisible.value = (event.target as HTMLElement)?.matches(':focus-visible') ?? false;
+}
+
+function onFocusOut() {
+  isFocusVisible.value = false;
+}
 
 function showTooltip() {
   tooltipVisible.value = true;

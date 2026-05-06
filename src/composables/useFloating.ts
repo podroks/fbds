@@ -19,6 +19,7 @@ export function useFloating(
     triggerOffset?: Ref<number>;
     container?: Ref<HTMLElement | { el: HTMLElement | null } | string | null>;
     containerOffset?: Ref<number>;
+    follow?: Ref<boolean>;
   } = {},
 ) {
   const { observe, unobserve } = useBoundingRectObserver();
@@ -82,6 +83,20 @@ export function useFloating(
     triggerRect.value = triggerEl.value?.getBoundingClientRect() ?? null;
     containerRect.value = containerEl.value?.getBoundingClientRect() ?? null;
   }
+
+  watch(
+    () => options.follow?.value,
+    (enabled, _, onCleanup) => {
+      if (!enabled) return;
+      window.addEventListener('scroll', updateAllRect, { capture: true, passive: true });
+      window.addEventListener('resize', updateAllRect, { passive: true });
+      onCleanup(() => {
+        window.removeEventListener('scroll', updateAllRect, { capture: true });
+        window.removeEventListener('resize', updateAllRect);
+      });
+    },
+    { immediate: true },
+  );
 
   /* ----------------------------- Positioning ----------------------------- */
   function startWith(pos: Positioning, prefix: SecondaryPositioning) {
