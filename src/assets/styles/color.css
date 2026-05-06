@@ -129,8 +129,8 @@
   --fbds-disable: #2a2a2a;
   --fbds-on-disable: #6b7280;
 
-  --fbds-container-primary: #131c2a;
-  --fbds-on-container-primary: #5294ff;
+  --fbds-container-primary: #2a2545;
+  --fbds-on-container-primary: #c4b5fd;
   --fbds-state-layer-container-primary-hover: rgb(from var(--fbds-container-primary) r g b / 10%);
   --fbds-state-layer-container-primary-press: rgb(from var(--fbds-container-primary) r g b / 16%);
 
