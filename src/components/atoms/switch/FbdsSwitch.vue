@@ -68,9 +68,12 @@ function handleClick() {
     @keydown.enter="handleClick"
   >
     <button
-      class="relative rounded-full p-1 pointer-events-none"
+      class="relative rounded-full p-1"
       :disabled
       :tabindex="-1"
+      :class="{
+        'hover:bg-fbds-state-layer-high-hover active:bg-fbds-state-layer-high-press': !disabled,
+      }"
     >
       <div
         class="h-6 w-10 flex items-center px-1 rounded-full"
