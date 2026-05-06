@@ -3,10 +3,8 @@ import { computed, useTemplateRef } from 'vue';
 
 import type { TooltipPropsOptionnal } from '@/constants/atoms/fbds-tooltip';
 import type { Icon } from '@/constants/icon';
-import { OnTheme, StateLayerDefault, Theme } from '@/constants/theme';
 
-import { useColorTheme } from '@/composables/useColorTheme';
-import { getContrast } from '@/utils/contrast.util';
+import { TagTheme } from './FbdsTag';
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
@@ -17,7 +15,7 @@ const props = withDefaults(
     icon?: Icon;
     rightIcon?: Icon;
     interactif?: boolean;
-    theme?: Exclude<Theme, 'base-disable'>;
+    theme?: TagTheme;
     tooltip?: string;
     tooltipOptions?: TooltipPropsOptionnal;
   }>(),
@@ -25,7 +23,7 @@ const props = withDefaults(
     icon: undefined,
     rightIcon: undefined,
     interactif: false,
-    theme: Theme.BasePrimary,
+    theme: TagTheme.Primary,
     tooltip: undefined,
     tooltipOptions: () => ({}),
   },
@@ -33,15 +31,20 @@ const props = withDefaults(
 
 const emit = defineEmits<{ click: [event: MouseEvent] }>();
 
-const { isDark } = useColorTheme();
 const trigger = useTemplateRef<HTMLDivElement | HTMLButtonElement>('trigger');
 
-const bgClass = computed<`bg-fbds-${Theme}` | 'bg-transparent'>(() => {
-  return `bg-fbds-${props.theme}`;
+const bgClass = computed<string>(() => {
+  if (props.theme === TagTheme.Ghost) {
+    return 'bg-fbds-surface-1';
+  }
+  return `bg-fbds-container-${props.theme}`;
 });
 
-const textClass = computed<`text-fbds-${OnTheme}`>(() => {
-  return `text-fbds-${OnTheme[props.theme]}`;
+const textClass = computed<string>(() => {
+  if (props.theme === TagTheme.Ghost) {
+    return 'text-fbds-on-surface-contrast-medium';
+  }
+  return `text-fbds-on-container-${props.theme}`;
 });
 
 const stateLayerClass = computed<string>(() => {
@@ -49,16 +52,7 @@ const stateLayerClass = computed<string>(() => {
     return '';
   }
 
-  let stateLayerClass: StateLayerDefault;
-  const contrast = getContrast(props.theme);
-
-  if (isDark.value) {
-    stateLayerClass = contrast < 128 ? StateLayerDefault.High : StateLayerDefault.Low;
-  } else {
-    stateLayerClass = contrast < 128 ? StateLayerDefault.Low : StateLayerDefault.High;
-  }
-
-  return `group-hover/tag:${stateLayerClass.hover} group-active/tag:${stateLayerClass.press}`;
+  return 'group-hover/tag:bg-fbds-state-layer-high-hover group-active/tag:bg-fbds-state-layer-high-press';
 });
 
 function handleClick(event: MouseEvent) {
@@ -72,12 +66,12 @@ function handleClick(event: MouseEvent) {
   <component
     :is="interactif ? 'button' : 'div'"
     ref="trigger"
-    class="group/tag rounded-full w-fit fbds-font-label"
+    class="group/tag rounded-md w-fit fbds-font-label"
     :class="[bgClass, textClass, { 'cursor-pointer': interactif }]"
     @click="handleClick"
   >
     <div
-      class="relative z-1 flex flex-nowrap gap-1 py-1 px-2.5 rounded-[inherit]"
+      class="relative z-1 flex flex-nowrap gap-1 p-1.5 rounded-[inherit]"
       :class="stateLayerClass"
     >
       <FbdsIcon

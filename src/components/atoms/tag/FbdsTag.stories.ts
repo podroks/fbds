@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import { Icon } from '@/constants/icon';
-import { Theme } from '@/constants/theme';
+import { TagTheme } from './FbdsTag';
 
 import FbdsTag from '@/components/atoms/tag/FbdsTag.vue';
 
@@ -28,7 +28,7 @@ const meta = {
     },
     theme: {
       control: 'select',
-      options: Object.values(Theme).filter((t) => t !== Theme.BaseDisable),
+      options: Object.values(TagTheme),
     },
     tooltip: {
       control: 'text',
@@ -42,7 +42,7 @@ const meta = {
     icon: undefined,
     rightIcon: undefined,
     interactif: false,
-    theme: Theme.BasePrimary,
+    theme: TagTheme.Primary,
     tooltip: undefined,
     tooltipOptions: {},
   },
