@@ -25,6 +25,7 @@ export type ButtonProps = {
   size?: ButtonSize;
   label?: string;
   icon?: Icon;
+  loading?: boolean;
   disabled?: boolean;
   href?: string;
   target?: string;

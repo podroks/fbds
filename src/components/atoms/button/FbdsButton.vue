@@ -5,12 +5,15 @@ import { type ButtonProps, ButtonSize, ButtonVariant } from '@/constants/atoms/f
 
 import FbdsTooltip from '@/components/atoms/tooltip/FbdsTooltip.vue';
 import FbdsIcon from '@/components/subatoms/icon/FbdsIcon.vue';
+import FbdsSpinner from '../spinner/FbdsSpinner.vue';
+import { SpinnerSize } from '@/constants/atoms/fbds-spinner';
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: undefined,
   icon: undefined,
   variant: ButtonVariant.Primary,
   size: ButtonSize.Md,
+  loading: false,
   disabled: false,
   href: undefined,
   target: undefined,
@@ -83,8 +86,10 @@ const variantConfigs: Record<ButtonVariant, VariantConfig> = {
   },
 };
 
+const isDisabled = computed(() => props.disabled || props.loading);
+
 const config = computed<VariantConfig>(() => {
-  if (props.disabled) {
+  if (isDisabled.value) {
     return {
       bg: 'bg-fbds-disable',
       text: 'text-fbds-on-disable',
@@ -124,7 +129,7 @@ const componentProps = computed(() => {
 });
 
 function handleClick(event: MouseEvent) {
-  if (!props.disabled) {
+  if (!isDisabled.value) {
     emit('click', event);
   }
 }
@@ -140,16 +145,20 @@ defineExpose({
     v-bind="componentProps"
     ref="trigger"
     class="rounded-md group/button"
-    :class="[fontClass, config.bg, config.text, disabled ? 'cursor-not-allowed' : 'cursor-pointer']"
-    :disabled
+    :class="[fontClass, config.bg, config.text, isDisabled ? 'cursor-not-allowed' : 'cursor-pointer']"
+    :disabled="isDisabled"
     @click="handleClick"
   >
     <div
       class="relative z-1 flex flex-nowrap items-center rounded-[inherit] fbds-state-layer"
       :class="[stateLayerClass, config.outline, sizeClass]"
     >
+      <FbdsSpinner
+        v-if="loading"
+        :size="SpinnerSize.Sm"
+      />
       <FbdsIcon
-        v-if="icon"
+        v-else-if="icon"
         :icon
       />
       {{ label }}

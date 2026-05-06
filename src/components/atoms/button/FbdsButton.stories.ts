@@ -26,6 +26,9 @@ const meta = {
       options: Object.keys(Icon),
       mapping: Icon,
     },
+    loading: {
+      control: 'boolean',
+    },
     disabled: {
       control: 'boolean',
     },
@@ -51,6 +54,7 @@ const meta = {
     size: ButtonSize.Md,
     label: 'Button',
     icon: undefined,
+    loading: false,
     disabled: false,
     href: undefined,
     target: '_blank',
