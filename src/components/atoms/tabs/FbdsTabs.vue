@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
         v-for="(tab, i) in tabs"
         :key="tab.id"
         :ref="(el) => (tabRefs[i] = el as HTMLElement | null)"
-        class="group/tab rounded-t-md fbds-font-label flex-1 overflow-hidden"
+        class="group/tab rounded-t-md fbds-font-label flex-1 overflow-hidden focus-visible:z-1"
         :class="[cursorClass(tab), bgClass(tab), textClass(tab)]"
         :disabled="tab.disabled"
         @click="handleClick(tab)"
@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
         <div
           class="flex gap-2 flex-nowrap items-center justify-center h-10 p-2.5 rounded-[inherit]"
           :class="{
-            'group-hover/tab:bg-fbds-state-layer-base-primary-hover group-active/tab:bg-fbds-state-layer-base-primary-press':
+            'group-hover/tab:bg-fbds-state-layer-primary-hover group-active/tab:bg-fbds-state-layer-primary-press':
               !tab.disabled,
           }"
         >
